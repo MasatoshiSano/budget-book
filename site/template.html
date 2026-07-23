@@ -1,0 +1,1152 @@
+<title>家計簿 — 2026年 支出ダッシュボード</title>
+<style>
+  @font-face {
+    font-family: 'Manrope Var';
+    src: url(data:font/woff2;base64,__MANROPE_B64__) format('woff2');
+    font-weight: 400 800;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Plex Mono';
+    src: url(data:font/woff2;base64,__PLEX500_B64__) format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Plex Mono';
+    src: url(data:font/woff2;base64,__PLEX600_B64__) format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    color-scheme: light;
+    --bg-page: #f6f4ee;
+    --bg-surface: #ffffff;
+    --bg-surface-alt: #fbfaf6;
+    --bg-inset: #f1efe7;
+    --ink-primary: #14161a;
+    --ink-secondary: #5b5e68;
+    --ink-muted: #92968f;
+    --line: #e8e4d9;
+    --line-strong: #d8d3c4;
+    --accent: #1b3a5c;
+    --accent-ink: #ffffff;
+    --accent-soft: #e6edf3;
+    --accent-soft-ink: #1b3a5c;
+    --shadow-sm: 0 1px 2px rgba(20,18,10,0.05);
+    --shadow-md: 0 10px 30px rgba(20,18,10,0.06);
+
+    --card-sumitomo: #2a78d6;
+    --card-paypay: #eb6834;
+    --card-rakuten: #1baf7a;
+
+    --cat-1: #2a78d6; /* 旅行・宿泊 */
+    --cat-2: #eb6834; /* 交通費 */
+    --cat-3: #1baf7a; /* 通信費・サブスク */
+    --cat-4: #eda100; /* 外食・カフェ */
+    --cat-5: #e87ba4; /* 保険 */
+    --cat-6: #008300; /* 食費 */
+    --cat-7: #4a3aa7; /* ショッピングモール・百貨店 */
+    --cat-8: #e34948; /* ネットショッピング */
+    --cat-other: #9a9d94; /* その他 */
+
+    --good: #0ca30c;
+    --warning: #fab219;
+    --serious: #ec835a;
+    --critical: #d03b3b;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --bg-page: #100f0c;
+      --bg-surface: #1a1917;
+      --bg-surface-alt: #201f1c;
+      --bg-inset: #26251f;
+      --ink-primary: #f7f6f2;
+      --ink-secondary: #c3c2b7;
+      --ink-muted: #8b8a80;
+      --line: #322f27;
+      --line-strong: #423f34;
+      --accent: #7fa8d1;
+      --accent-ink: #0d1720;
+      --accent-soft: #223142;
+      --accent-soft-ink: #a9c7e6;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+      --shadow-md: 0 10px 30px rgba(0,0,0,0.35);
+
+      --card-sumitomo: #3987e5;
+      --card-paypay: #d95926;
+      --card-rakuten: #199e70;
+
+      --cat-1: #3987e5;
+      --cat-2: #d95926;
+      --cat-3: #199e70;
+      --cat-4: #c98500;
+      --cat-5: #d55181;
+      --cat-6: #1fae1f;
+      --cat-7: #9085e9;
+      --cat-8: #e66767;
+      --cat-other: #83867c;
+
+      --good: #0ca30c;
+      --warning: #fab219;
+      --serious: #ec835a;
+      --critical: #e66767;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg-page: #100f0c;
+    --bg-surface: #1a1917;
+    --bg-surface-alt: #201f1c;
+    --bg-inset: #26251f;
+    --ink-primary: #f7f6f2;
+    --ink-secondary: #c3c2b7;
+    --ink-muted: #8b8a80;
+    --line: #322f27;
+    --line-strong: #423f34;
+    --accent: #7fa8d1;
+    --accent-ink: #0d1720;
+    --accent-soft: #223142;
+    --accent-soft-ink: #a9c7e6;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md: 0 10px 30px rgba(0,0,0,0.35);
+    --card-sumitomo: #3987e5;
+    --card-paypay: #d95926;
+    --card-rakuten: #199e70;
+    --cat-1: #3987e5;
+    --cat-2: #d95926;
+    --cat-3: #199e70;
+    --cat-4: #c98500;
+    --cat-5: #d55181;
+    --cat-6: #1fae1f;
+    --cat-7: #9085e9;
+    --cat-8: #e66767;
+    --cat-other: #83867c;
+    --good: #0ca30c;
+    --warning: #fab219;
+    --serious: #ec835a;
+    --critical: #e66767;
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg-page);
+    color: var(--ink-primary);
+    font-family: 'Manrope Var', -apple-system, BlinkMacSystemFont, "Hiragino Sans",
+      "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Noto Sans JP", "Segoe UI", sans-serif;
+    font-weight: 500;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .panel, .stat-tile { transition: box-shadow .2s ease, transform .2s ease; }
+    .bar-fill, .donut-seg { transition: stroke-dashoffset .5s ease, width .5s ease; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  a { color: var(--accent); }
+  button, input, select { font-family: inherit; }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  .tabular { font-variant-numeric: tabular-nums; }
+  .mono { font-family: 'Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-variant-numeric: tabular-nums; }
+
+  .shell {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px 96px;
+  }
+
+  /* ---------------- top bar ---------------- */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--bg-page) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .brand-mark {
+    font-family: 'Manrope Var';
+    font-weight: 800;
+    font-size: 19px;
+    letter-spacing: -0.01em;
+  }
+  .brand-mark .dot { color: var(--accent); }
+  .brand-sub {
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    font-weight: 600;
+  }
+  .topbar-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .chip-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 4px;
+    background: var(--bg-inset);
+    border-radius: 12px;
+  }
+  .chip {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--ink-secondary);
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 12.5px;
+    padding: 7px 12px;
+    border-radius: 9px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .chip:hover { color: var(--ink-primary); }
+  .chip[aria-pressed="true"] {
+    background: var(--bg-surface);
+    color: var(--ink-primary);
+    box-shadow: var(--shadow-sm);
+  }
+  .chip .swatch {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  /* ---------------- hero ---------------- */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 28px 0;
+  }
+  @media (max-width: 880px) {
+    .hero { grid-template-columns: 1fr 1fr; }
+  }
+  .stat-tile {
+    background: var(--bg-surface);
+    border-radius: 20px;
+    padding: 22px 24px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--line);
+  }
+  .stat-tile.hero-tile {
+    background: linear-gradient(160deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 78%, black 10%) 100%);
+    color: var(--accent-ink);
+    border: none;
+  }
+  .stat-label {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .hero-tile .stat-label { color: color-mix(in srgb, var(--accent-ink) 72%, transparent); }
+  .stat-value {
+    font-family: 'Plex Mono';
+    font-weight: 600;
+    font-size: 30px;
+    margin-top: 10px;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .hero-tile .stat-value { font-size: 34px; }
+  .stat-foot {
+    margin-top: 10px;
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    font-weight: 600;
+  }
+  .hero-tile .stat-foot { color: color-mix(in srgb, var(--accent-ink) 78%, transparent); }
+  .delta {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 700;
+  }
+  .delta.up { color: var(--critical); }
+  .delta.down { color: var(--good); }
+  .hero-tile .delta.up { color: #ffd7c9; }
+  .hero-tile .delta.down { color: #c9f0c9; }
+
+  .card-tile-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+
+  /* ---------------- panels ---------------- */
+  .panel {
+    background: var(--bg-surface);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 26px 28px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 20px;
+  }
+  .panel-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .panel-title {
+    font-size: 16.5px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .panel-note {
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    font-weight: 600;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 900px) {
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+
+  /* ---------------- trend chart ---------------- */
+  .trend-svg-wrap { overflow-x: auto; }
+  .trend-legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink-secondary);
+  }
+  .trend-legend .item { display: flex; align-items: center; gap: 6px; }
+  .trend-legend .sw { width: 9px; height: 9px; border-radius: 3px; }
+
+  .tooltip {
+    position: fixed;
+    pointer-events: none;
+    background: var(--ink-primary);
+    color: var(--bg-surface);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 10px 12px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    z-index: 50;
+    opacity: 0;
+    transform: translate(-50%, calc(-100% - 10px));
+    transition: opacity .12s ease;
+    max-width: 220px;
+    line-height: 1.5;
+  }
+  .tooltip.show { opacity: 1; }
+  .tooltip .t-row { display: flex; justify-content: space-between; gap: 10px; }
+  .tooltip .t-title { font-weight: 800; margin-bottom: 6px; }
+
+  /* ---------------- donut ---------------- */
+  .donut-wrap { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; justify-content: center; }
+  .donut-center-label { font-family: 'Plex Mono'; font-weight: 600; }
+  .legend-list { list-style: none; margin: 0; padding: 0; flex: 1; min-width: 220px; }
+  .legend-list li {
+    display: flex; align-items: center; gap: 10px;
+    padding: 7px 0;
+    font-size: 13px;
+    border-bottom: 1px solid var(--line);
+  }
+  .legend-list li:last-child { border-bottom: none; }
+  .legend-list .sw { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+  .legend-list .name { flex: 1; font-weight: 700; color: var(--ink-primary); }
+  .legend-list .amt { font-family: 'Plex Mono'; font-weight: 600; color: var(--ink-secondary); font-size: 12.5px; }
+  .legend-list .pct { font-family: 'Plex Mono'; font-weight: 600; color: var(--ink-muted); font-size: 11.5px; width: 42px; text-align: right; }
+
+  /* ---------------- fixed costs ---------------- */
+  .fixed-list { display: flex; flex-direction: column; }
+  .fixed-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .fixed-row:last-child { border-bottom: none; }
+  .fixed-left { min-width: 0; }
+  .fixed-name {
+    font-weight: 700; font-size: 13px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    max-width: 220px;
+  }
+  .fixed-meta { font-size: 11px; color: var(--ink-muted); font-weight: 600; margin-top: 2px; }
+  .fixed-meta .fixed-cat-pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 20px;
+    background: var(--bg-inset);
+    color: var(--ink-secondary);
+    margin-right: 4px;
+  }
+  .fixed-right { display: flex; align-items: center; gap: 10px; flex: none; }
+  .fixed-amt { font-family: 'Plex Mono'; font-weight: 600; text-align: right; font-size: 13px; white-space: nowrap; }
+  .fixed-more {
+    padding: 12px 0 2px;
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+  }
+  @media (max-width: 640px) {
+    .fixed-name { max-width: 120px; }
+    .fixed-row .fixed-spark { display: none; }
+  }
+
+  /* ---------------- budget ---------------- */
+  .budget-row { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .budget-row:last-child { border-bottom: none; }
+  .budget-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+  .budget-name { font-weight: 700; font-size: 13.5px; display: flex; align-items: center; gap: 8px; }
+  .budget-figures { font-family: 'Plex Mono'; font-size: 12.5px; font-weight: 600; color: var(--ink-secondary); display: flex; align-items: center; gap: 8px; }
+  .budget-input {
+    width: 92px;
+    border: 1px solid var(--line-strong);
+    background: var(--bg-surface-alt);
+    color: var(--ink-primary);
+    border-radius: 8px;
+    padding: 4px 8px;
+    font-family: 'Plex Mono';
+    font-size: 12px;
+    text-align: right;
+  }
+  .budget-track {
+    height: 9px;
+    border-radius: 5px;
+    background: var(--bg-inset);
+    overflow: hidden;
+    position: relative;
+  }
+  .budget-fill { height: 100%; border-radius: 5px; }
+  .badge {
+    font-size: 10.5px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 20px;
+  }
+  .badge.good { background: color-mix(in srgb, var(--good) 16%, transparent); color: var(--good); }
+  .badge.warning { background: color-mix(in srgb, var(--warning) 22%, transparent); color: color-mix(in srgb, var(--warning) 70%, black 30%); }
+  .badge.critical { background: color-mix(in srgb, var(--critical) 16%, transparent); color: var(--critical); }
+
+  /* ---------------- transactions table ---------------- */
+  .table-controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    align-items: center;
+  }
+  .search-input {
+    flex: 1;
+    min-width: 180px;
+    border: 1px solid var(--line-strong);
+    background: var(--bg-surface-alt);
+    color: var(--ink-primary);
+    border-radius: 10px;
+    padding: 9px 12px;
+    font-family: inherit;
+    font-size: 13px;
+  }
+  select.filter-select {
+    border: 1px solid var(--line-strong);
+    background: var(--bg-surface-alt);
+    color: var(--ink-primary);
+    border-radius: 10px;
+    padding: 9px 10px;
+    font-family: inherit;
+    font-size: 13px;
+  }
+  .table-scroll { overflow-x: auto; max-height: 480px; overflow-y: auto; border: 1px solid var(--line); border-radius: 14px; }
+  table.txn-table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 640px; }
+  table.txn-table thead th {
+    position: sticky; top: 0;
+    background: var(--bg-surface-alt);
+    text-align: left;
+    padding: 10px 14px;
+    font-weight: 800;
+    color: var(--ink-muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-bottom: 1px solid var(--line);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  table.txn-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-secondary);
+    white-space: nowrap;
+  }
+  table.txn-table td.name-cell { white-space: normal; color: var(--ink-primary); font-weight: 600; }
+  table.txn-table td.amt-cell { font-family: 'Plex Mono'; font-weight: 600; text-align: right; color: var(--ink-primary); }
+  table.txn-table tbody tr:hover td { background: var(--bg-surface-alt); }
+  .row-count { font-size: 12px; color: var(--ink-muted); font-weight: 600; margin-top: 10px; }
+
+  .card-pill { display: inline-flex; align-items: center; gap: 5px; font-weight: 700; }
+  .card-pill .card-dot { width: 7px; height: 7px; }
+
+  footer {
+    max-width: 1180px;
+    margin: 40px auto 0;
+    padding: 20px 24px 40px;
+    color: var(--ink-muted);
+    font-size: 12px;
+    font-weight: 600;
+    border-top: 1px solid var(--line);
+  }
+</style>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-mark">家計簿<span class="dot">.</span></span>
+      <span class="brand-sub">2026年 支出ダッシュボード</span>
+    </div>
+    <div class="topbar-controls">
+      <div class="chip-row" id="monthChips" role="group" aria-label="対象月"></div>
+      <div class="chip-row" id="cardChips" role="group" aria-label="カード"></div>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+
+  <section class="hero" id="hero"></section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="panel-title">月別支出推移</div>
+        <div class="panel-note">カード別の内訳付き。棒をホバーすると詳細が見られます。</div>
+      </div>
+    </div>
+    <div class="trend-svg-wrap"><div id="trendChart"></div></div>
+    <div class="trend-legend" id="trendLegend"></div>
+  </section>
+
+  <section class="grid-2">
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">カテゴリ別内訳</div>
+          <div class="panel-note">選択中の期間・カードでの支出構成比</div>
+        </div>
+      </div>
+      <div class="donut-wrap">
+        <div id="donutChart"></div>
+        <ul class="legend-list" id="donutLegend"></ul>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">固定費一覧</div>
+          <div class="panel-note">サブスク・保険・水道光熱費など</div>
+        </div>
+      </div>
+      <div class="fixed-list" id="fixedList"></div>
+    </section>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="panel-title">予算 vs 実績</div>
+        <div class="panel-note">カテゴリごとに予算額を入力すると、超過時にアラート表示されます（この端末に保存されます）</div>
+      </div>
+    </div>
+    <div id="budgetList"></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <div>
+        <div class="panel-title">取引明細</div>
+        <div class="panel-note">全カード横断で検索・絞り込みできます</div>
+      </div>
+    </div>
+    <div class="table-controls">
+      <input class="search-input" id="txnSearch" type="text" placeholder="店名で検索…" />
+      <select class="filter-select" id="txnCategoryFilter"></select>
+    </div>
+    <div class="table-scroll">
+      <table class="txn-table" id="txnTable">
+        <thead>
+          <tr>
+            <th data-sort="date">利用日</th>
+            <th data-sort="name">店名</th>
+            <th data-sort="card">カード</th>
+            <th data-sort="category">カテゴリ</th>
+            <th data-sort="amount" style="text-align:right;">金額</th>
+          </tr>
+        </thead>
+        <tbody id="txnTbody"></tbody>
+      </table>
+    </div>
+    <div class="row-count" id="txnCount"></div>
+  </section>
+
+</div>
+
+<footer>
+  三井住友カード・PayPayカード・楽天カードの明細から作成。新しい月のPDF/CSVをアップロードすると、このダッシュボードのデータが更新されます。最終更新: __GENERATED_AT__
+</footer>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+const TRANSACTIONS = __DATA_JSON__;
+const CARD_ORDER = ['三井住友カード', 'PayPayカード', '楽天カード'];
+const CARD_COLOR_VAR = {
+  '三井住友カード': '--card-sumitomo',
+  'PayPayカード': '--card-paypay',
+  '楽天カード': '--card-rakuten',
+};
+const MONTH_ORDER = ['1月','2月','3月','4月','5月','6月','7月'];
+const TOP_CATEGORIES = ['旅行・宿泊','交通費','通信費・サブスク','外食・カフェ','保険','食費（スーパー・コンビニ）','ショッピングモール・百貨店','ネットショッピング'];
+const CAT_COLOR_VAR = {
+  '旅行・宿泊': '--cat-1',
+  '交通費': '--cat-2',
+  '通信費・サブスク': '--cat-3',
+  '外食・カフェ': '--cat-4',
+  '保険': '--cat-5',
+  '食費（スーパー・コンビニ）': '--cat-6',
+  'ショッピングモール・百貨店': '--cat-7',
+  'ネットショッピング': '--cat-8',
+};
+const OTHER_COLOR_VAR = '--cat-other';
+
+function cssVar(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+function yen(n) { return '¥' + Math.round(n).toLocaleString('ja-JP'); }
+function yenShort(n) {
+  const a = Math.abs(n);
+  if (a >= 10000) return '¥' + (n/10000).toFixed(1).replace(/\.0$/,'') + '万';
+  return yen(n);
+}
+
+// ---------------- state ----------------
+const state = {
+  months: new Set(MONTH_ORDER),
+  cards: new Set(CARD_ORDER),
+  search: '',
+  category: '__ALL__',
+  sortKey: 'date',
+  sortDir: -1,
+};
+
+function loadBudgets() {
+  try {
+    const raw = localStorage.getItem('kakeibo_budgets_v1');
+    if (raw) return JSON.parse(raw);
+  } catch (e) {}
+  return {};
+}
+function saveBudgets(b) {
+  try { localStorage.setItem('kakeibo_budgets_v1', JSON.stringify(b)); } catch (e) {}
+}
+let budgets = loadBudgets();
+
+// ---------------- filtering ----------------
+function filtered() {
+  return TRANSACTIONS.filter(t => state.months.has(t.pay_month) && state.cards.has(t.card));
+}
+
+// ---------------- chips ----------------
+function buildChips() {
+  const monthWrap = document.getElementById('monthChips');
+  const allBtn = document.createElement('button');
+  allBtn.className = 'chip';
+  allBtn.textContent = '全期間';
+  allBtn.setAttribute('aria-pressed', 'true');
+  allBtn.onclick = () => {
+    state.months = new Set(MONTH_ORDER);
+    render();
+  };
+  monthWrap.appendChild(allBtn);
+  MONTH_ORDER.forEach(m => {
+    const b = document.createElement('button');
+    b.className = 'chip';
+    b.textContent = m;
+    b.setAttribute('aria-pressed', 'true');
+    b.onclick = () => {
+      if (state.months.has(m) && state.months.size === 1) {
+        state.months = new Set(MONTH_ORDER);
+      } else {
+        state.months = new Set([m]);
+      }
+      render();
+    };
+    monthWrap.appendChild(b);
+  });
+
+  const cardWrap = document.getElementById('cardChips');
+  CARD_ORDER.forEach(c => {
+    const b = document.createElement('button');
+    b.className = 'chip';
+    b.setAttribute('aria-pressed', 'true');
+    const sw = document.createElement('span');
+    sw.className = 'swatch';
+    sw.style.background = cssVar(CARD_COLOR_VAR[c]);
+    b.appendChild(sw);
+    b.appendChild(document.createTextNode(c.replace('カード','')));
+    b.onclick = () => {
+      if (state.cards.has(c)) {
+        if (state.cards.size > 1) state.cards.delete(c);
+      } else {
+        state.cards.add(c);
+      }
+      render();
+    };
+    b._card = c;
+    cardWrap.appendChild(b);
+  });
+}
+function syncChips() {
+  document.querySelectorAll('#monthChips .chip').forEach(b => {
+    if (b.textContent === '全期間') {
+      b.setAttribute('aria-pressed', state.months.size === MONTH_ORDER.length ? 'true' : 'false');
+    } else {
+      b.setAttribute('aria-pressed', state.months.has(b.textContent) ? 'true' : 'false');
+    }
+  });
+  document.querySelectorAll('#cardChips .chip').forEach(b => {
+    b.setAttribute('aria-pressed', state.cards.has(b._card) ? 'true' : 'false');
+  });
+}
+
+// ---------------- hero ----------------
+function renderHero() {
+  const rows = filtered();
+  const total = rows.reduce((s, t) => s + t.amount, 0);
+  const monthsSelected = MONTH_ORDER.filter(m => state.months.has(m));
+  const label = monthsSelected.length === MONTH_ORDER.length
+    ? '2026年1月〜7月 合計'
+    : monthsSelected.map(m => m).join('・') + ' 支払分';
+
+  let deltaHtml = '';
+  if (monthsSelected.length === 1) {
+    const idx = MONTH_ORDER.indexOf(monthsSelected[0]);
+    if (idx > 0) {
+      const prevMonth = MONTH_ORDER[idx - 1];
+      const prevTotal = TRANSACTIONS.filter(t => t.pay_month === prevMonth && state.cards.has(t.card))
+        .reduce((s, t) => s + t.amount, 0);
+      if (prevTotal > 0) {
+        const diff = total - prevTotal;
+        const pct = (diff / prevTotal * 100);
+        const up = diff >= 0;
+        deltaHtml = `<span class="delta ${up ? 'up' : 'down'}">${up ? '▲' : '▼'} ${Math.abs(pct).toFixed(1)}%</span> 前月比`;
+      }
+    }
+  }
+
+  const byCard = {};
+  CARD_ORDER.forEach(c => byCard[c] = 0);
+  rows.forEach(t => byCard[t.card] += t.amount);
+
+  const hero = document.getElementById('hero');
+  hero.innerHTML = '';
+
+  const heroTile = document.createElement('div');
+  heroTile.className = 'stat-tile hero-tile';
+  heroTile.innerHTML = `
+    <div class="stat-label">${label}</div>
+    <div class="stat-value tabular">${yen(total)}</div>
+    <div class="stat-foot">${deltaHtml || '&nbsp;'}</div>
+  `;
+  hero.appendChild(heroTile);
+
+  CARD_ORDER.forEach(c => {
+    const tile = document.createElement('div');
+    tile.className = 'stat-tile';
+    const pct = total > 0 ? (byCard[c] / total * 100) : 0;
+    tile.innerHTML = `
+      <div class="card-tile-head">
+        <span class="card-dot" style="background:${cssVar(CARD_COLOR_VAR[c])}"></span>
+        <span class="stat-label">${c}</span>
+      </div>
+      <div class="stat-value tabular" style="font-size:22px;">${yen(byCard[c])}</div>
+      <div class="stat-foot">全体の ${pct.toFixed(1)}%</div>
+    `;
+    hero.appendChild(tile);
+  });
+}
+
+// ---------------- trend chart (stacked bars) ----------------
+function renderTrend() {
+  const rows = TRANSACTIONS.filter(t => state.cards.has(t.card));
+  const byMonth = {};
+  MONTH_ORDER.forEach(m => byMonth[m] = {});
+  rows.forEach(t => {
+    byMonth[t.pay_month][t.card] = (byMonth[t.pay_month][t.card] || 0) + t.amount;
+  });
+  const totals = MONTH_ORDER.map(m => CARD_ORDER.reduce((s, c) => s + (byMonth[m][c] || 0), 0));
+  const maxTotal = Math.max(...totals, 1);
+
+  const W = 900, H = 260, padL = 54, padR = 16, padT = 20, padB = 34;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+  const bw = plotW / MONTH_ORDER.length;
+  const barW = Math.min(bw * 0.52, 64);
+
+  const gridLines = 4;
+  let gridSvg = '';
+  for (let i = 0; i <= gridLines; i++) {
+    const v = maxTotal * i / gridLines;
+    const y = padT + plotH - (v / maxTotal) * plotH;
+    gridSvg += `<line x1="${padL}" y1="${y}" x2="${W-padR}" y2="${y}" stroke="var(--line)" stroke-width="1"/>`;
+    gridSvg += `<text x="${padL-10}" y="${y+4}" text-anchor="end" font-size="10.5" fill="var(--ink-muted)" font-family="Plex Mono" class="tabular">${yenShort(v)}</text>`;
+  }
+
+  let bars = '';
+  MONTH_ORDER.forEach((m, i) => {
+    const cx = padL + bw * i + bw / 2;
+    let yCursor = padT + plotH;
+    const isSelected = state.months.has(m);
+    const opacity = isSelected ? 1 : 0.32;
+    CARD_ORDER.forEach((c, ci) => {
+      const val = byMonth[m][c] || 0;
+      if (val <= 0) return;
+      const segH = (val / maxTotal) * plotH;
+      const y = yCursor - segH;
+      const isLast = ci === CARD_ORDER.length - 1 || CARD_ORDER.slice(ci+1).every(cc => !(byMonth[m][cc] > 0));
+      const rTop = isLast ? 4 : 0;
+      bars += `<path data-month="${m}" class="seg" opacity="${opacity}"
+        d="${roundedTopRect(cx - barW/2, y, barW, segH, rTop)}"
+        fill="${cssVar(CARD_COLOR_VAR[c])}" stroke="var(--bg-surface)" stroke-width="1.5"/>`;
+      yCursor -= segH + (segH > 0 ? 2 : 0);
+    });
+    const total = totals[i];
+    bars += `<rect data-month="${m}" class="hit" x="${cx - bw/2}" y="${padT}" width="${bw}" height="${plotH}" fill="transparent" style="cursor:pointer"/>`;
+    bars += `<text x="${cx}" y="${H-padB+18}" text-anchor="middle" font-size="11.5" font-weight="700" fill="${isSelected ? 'var(--ink-secondary)' : 'var(--ink-muted)'}">${m}</text>`;
+  });
+
+  const svg = `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="月別支出推移の積み上げ棒グラフ">
+    ${gridSvg}
+    ${bars}
+  </svg>`;
+  const el = document.getElementById('trendChart');
+  el.innerHTML = svg;
+
+  const tooltip = document.getElementById('tooltip');
+  el.querySelectorAll('.hit').forEach(hit => {
+    hit.addEventListener('mousemove', (e) => {
+      const m = hit.dataset.month;
+      const parts = CARD_ORDER.filter(c => (byMonth[m][c] || 0) > 0)
+        .map(c => `<div class="t-row"><span>${c.replace('カード','')}</span><span class="mono">${yen(byMonth[m][c])}</span></div>`).join('');
+      tooltip.innerHTML = `<div class="t-title">${m}支払 ・ 合計 ${yen(totals[MONTH_ORDER.indexOf(m)])}</div>${parts}`;
+      tooltip.style.left = e.clientX + 'px';
+      tooltip.style.top = e.clientY + 'px';
+      tooltip.classList.add('show');
+    });
+    hit.addEventListener('mouseleave', () => tooltip.classList.remove('show'));
+    hit.addEventListener('click', () => {
+      const m = hit.dataset.month;
+      if (state.months.has(m) && state.months.size === 1) state.months = new Set(MONTH_ORDER);
+      else state.months = new Set([m]);
+      render();
+    });
+  });
+
+  const legend = document.getElementById('trendLegend');
+  legend.innerHTML = CARD_ORDER.map(c => `<span class="item"><span class="sw" style="background:${cssVar(CARD_COLOR_VAR[c])}"></span>${c}</span>`).join('');
+}
+
+function roundedTopRect(x, y, w, h, r) {
+  if (h <= 0) return '';
+  r = Math.min(r, w / 2, h);
+  if (r <= 0.5) return `M${x},${y} h${w} v${h} h${-w} Z`;
+  return `M${x},${y+r} a${r},${r} 0 0 1 ${r},${-r} h${w-2*r} a${r},${r} 0 0 1 ${r},${r} v${h-r} h${-w} Z`;
+}
+
+// ---------------- donut ----------------
+function renderDonut() {
+  const rows = filtered();
+  const totalsByCat = {};
+  rows.forEach(t => { totalsByCat[t.category] = (totalsByCat[t.category] || 0) + t.amount; });
+
+  const slices = TOP_CATEGORIES.map(cat => ({ cat, amt: totalsByCat[cat] || 0, colorVar: CAT_COLOR_VAR[cat] }));
+  const otherAmt = Object.keys(totalsByCat).filter(c => !TOP_CATEGORIES.includes(c)).reduce((s, c) => s + totalsByCat[c], 0);
+  if (otherAmt > 0) slices.push({ cat: 'その他', amt: otherAmt, colorVar: OTHER_COLOR_VAR });
+  const total = slices.reduce((s, x) => s + x.amt, 0);
+  const nonZero = slices.filter(s => s.amt > 0).sort((a,b) => b.amt - a.amt);
+
+  const size = 220, cx = size/2, cy = size/2, rOuter = 96, rInner = 62;
+  let angle = -90;
+  let arcs = '';
+  nonZero.forEach(s => {
+    const frac = total > 0 ? s.amt / total : 0;
+    const sweep = frac * 360;
+    if (sweep <= 0) return;
+    const gap = nonZero.length > 1 ? 1.4 : 0;
+    const a0 = (angle + gap/2) * Math.PI/180, a1 = (angle + sweep - gap/2) * Math.PI/180;
+    const large = (sweep - gap) > 180 ? 1 : 0;
+    const x0o = cx + rOuter*Math.cos(a0), y0o = cy + rOuter*Math.sin(a0);
+    const x1o = cx + rOuter*Math.cos(a1), y1o = cy + rOuter*Math.sin(a1);
+    const x1i = cx + rInner*Math.cos(a1), y1i = cy + rInner*Math.sin(a1);
+    const x0i = cx + rInner*Math.cos(a0), y0i = cy + rInner*Math.sin(a0);
+    const d = `M${x0o},${y0o} A${rOuter},${rOuter} 0 ${large} 1 ${x1o},${y1o} L${x1i},${y1i} A${rInner},${rInner} 0 ${large} 0 ${x0i},${y0i} Z`;
+    arcs += `<path class="donut-seg" d="${d}" fill="${cssVar(s.colorVar)}" data-cat="${s.cat}"><title>${s.cat}: ${yen(s.amt)} (${(frac*100).toFixed(1)}%)</title></path>`;
+    angle += sweep;
+  });
+
+  const svg = `<svg viewBox="0 0 ${size} ${size}" width="220" height="220" role="img" aria-label="カテゴリ別支出構成比">
+    ${arcs}
+    <text x="${cx}" y="${cy-6}" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink-muted)">合計</text>
+    <text x="${cx}" y="${cy+16}" text-anchor="middle" font-size="17" font-weight="700" font-family="Plex Mono" class="donut-center-label" fill="var(--ink-primary)">${yenShort(total)}</text>
+  </svg>`;
+  document.getElementById('donutChart').innerHTML = svg;
+
+  const legend = document.getElementById('donutLegend');
+  legend.innerHTML = nonZero.map(s => `
+    <li>
+      <span class="sw" style="background:${cssVar(s.colorVar)}"></span>
+      <span class="name">${s.cat}</span>
+      <span class="amt tabular">${yen(s.amt)}</span>
+      <span class="pct tabular">${total > 0 ? (s.amt/total*100).toFixed(1) : '0.0'}%</span>
+    </li>
+  `).join('');
+}
+
+// ---------------- fixed costs ----------------
+function renderFixed() {
+  const FIXED_CATS = new Set(['保険','通信費・サブスク','水道光熱費','投資・貯蓄']);
+  const rows = TRANSACTIONS.filter(t => FIXED_CATS.has(t.category) && state.cards.has(t.card));
+  const groups = {};
+  rows.forEach(t => {
+    const key = t.card + '||' + t.name;
+    if (!groups[key]) groups[key] = { name: t.name, card: t.card, category: t.category, byMonth: {} };
+    groups[key].byMonth[t.pay_month] = (groups[key].byMonth[t.pay_month] || 0) + t.amount;
+  });
+  const list = Object.values(groups).map(g => {
+    const vals = MONTH_ORDER.map(m => g.byMonth[m] || 0);
+    const total = vals.reduce((a,b) => a+b, 0);
+    const count = vals.filter(v => v > 0).length;
+    return { ...g, vals, total, avg: total / Math.max(count,1) };
+  }).sort((a,b) => b.total - a.total);
+
+  const wrap = document.getElementById('fixedList');
+  if (list.length === 0) { wrap.innerHTML = '<div class="panel-note">該当する固定費はありません</div>'; return; }
+
+  const TOP_N = 9;
+  const shown = list.slice(0, TOP_N);
+  const rest = list.slice(TOP_N);
+
+  const rowHtml = (g) => {
+    const max = Math.max(...g.vals, 1);
+    const pts = g.vals.map((v,i) => {
+      const x = 2 + i * (44/(MONTH_ORDER.length-1));
+      const y = 18 - (v/max)*14;
+      return `${x},${y}`;
+    }).join(' ');
+    const lastIdx = g.vals.length - 1;
+    const lastPt = { x: 2 + lastIdx * (44/(MONTH_ORDER.length-1)), y: 18 - (g.vals[lastIdx]/max)*14 };
+    return `
+      <div class="fixed-row">
+        <div class="fixed-left">
+          <div class="fixed-name" title="${g.name}">${g.name}</div>
+          <div class="fixed-meta"><span class="fixed-cat-pill">${g.category}</span>${g.card.replace('カード','')} ・ 7ヶ月合計 ${yen(g.total)}</div>
+        </div>
+        <div class="fixed-right">
+          <svg width="48" height="20" viewBox="0 0 48 20" aria-hidden="true">
+            <polyline points="${pts}" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="${lastPt.x}" cy="${lastPt.y}" r="2.2" fill="var(--accent)"/>
+          </svg>
+          <div class="fixed-amt tabular">月平均 ${yen(g.avg)}</div>
+        </div>
+      </div>
+    `;
+  };
+
+  let html = shown.map(rowHtml).join('');
+  if (rest.length > 0) {
+    const restTotal = rest.reduce((s,g) => s + g.total, 0);
+    html += `<div class="fixed-more"><span>ほか ${rest.length} 件の少額固定費</span><span class="tabular">合計 ${yen(restTotal)}</span></div>`;
+  }
+  wrap.innerHTML = html;
+}
+
+// ---------------- budget ----------------
+const ALL_CATS_FOR_BUDGET = [...TOP_CATEGORIES];
+
+function defaultBudget(cat) {
+  const vals = MONTH_ORDER.map(m => TRANSACTIONS.filter(t => t.category === cat && t.pay_month === m).reduce((s,t)=>s+t.amount,0));
+  const nonZero = vals.filter(v => v > 0);
+  const avg = nonZero.length ? nonZero.reduce((a,b)=>a+b,0)/nonZero.length : 0;
+  return Math.ceil(avg / 1000) * 1000 || 10000;
+}
+
+function renderBudget() {
+  const monthsSelected = MONTH_ORDER.filter(m => state.months.has(m));
+  const nMonths = Math.max(monthsSelected.length, 1);
+  const rows = filtered();
+  const totalsByCat = {};
+  rows.forEach(t => { if (TOP_CATEGORIES.includes(t.category)) totalsByCat[t.category] = (totalsByCat[t.category]||0) + t.amount; });
+
+  const wrap = document.getElementById('budgetList');
+  wrap.innerHTML = '';
+  ALL_CATS_FOR_BUDGET.forEach(cat => {
+    if (!(cat in budgets)) budgets[cat] = defaultBudget(cat);
+    const budgetPerMonth = budgets[cat];
+    const budgetForPeriod = budgetPerMonth * nMonths;
+    const actual = totalsByCat[cat] || 0;
+    const ratio = budgetForPeriod > 0 ? actual / budgetForPeriod : 0;
+    let status = 'good', badgeText = '予算内';
+    if (ratio >= 1) { status = 'critical'; badgeText = '予算超過'; }
+    else if (ratio >= 0.85) { status = 'warning'; badgeText = 'もうすぐ上限'; }
+    const fillColor = status === 'critical' ? 'var(--critical)' : status === 'warning' ? 'var(--warning)' : 'var(--good)';
+
+    const row = document.createElement('div');
+    row.className = 'budget-row';
+    row.innerHTML = `
+      <div class="budget-top">
+        <div class="budget-name">
+          <span class="card-dot" style="background:${cssVar(CAT_COLOR_VAR[cat])}"></span>
+          ${cat}
+          <span class="badge ${status}">${badgeText}</span>
+        </div>
+        <div class="budget-figures">
+          <span class="tabular">${yen(actual)}</span> / 月 <input class="budget-input tabular" type="number" step="1000" min="0" value="${budgetPerMonth}" data-cat="${cat}"> 円
+        </div>
+      </div>
+      <div class="budget-track"><div class="budget-fill" style="width:${Math.min(ratio,1)*100}%; background:${fillColor};"></div></div>
+    `;
+    wrap.appendChild(row);
+  });
+
+  wrap.querySelectorAll('.budget-input').forEach(inp => {
+    inp.addEventListener('change', () => {
+      const cat = inp.dataset.cat;
+      const v = Math.max(0, parseInt(inp.value || '0', 10));
+      budgets[cat] = v;
+      saveBudgets(budgets);
+      renderBudget();
+    });
+  });
+}
+
+// ---------------- transactions table ----------------
+function buildCategoryFilterOptions() {
+  const sel = document.getElementById('txnCategoryFilter');
+  const cats = [...new Set(TRANSACTIONS.map(t => t.category))].sort((a,b) => {
+    const ta = TRANSACTIONS.filter(t=>t.category===a).reduce((s,t)=>s+t.amount,0);
+    const tb = TRANSACTIONS.filter(t=>t.category===b).reduce((s,t)=>s+t.amount,0);
+    return tb - ta;
+  });
+  sel.innerHTML = '<option value="__ALL__">すべてのカテゴリ</option>' + cats.map(c => `<option value="${c}">${c}</option>`).join('');
+  sel.addEventListener('change', () => { state.category = sel.value; renderTable(); });
+}
+
+function renderTable() {
+  let rows = filtered();
+  if (state.category !== '__ALL__') rows = rows.filter(t => t.category === state.category);
+  if (state.search) {
+    const q = state.search.toLowerCase();
+    rows = rows.filter(t => t.name.toLowerCase().includes(q));
+  }
+  rows = rows.slice().sort((a, b) => {
+    let av = a[state.sortKey], bv = b[state.sortKey];
+    if (state.sortKey === 'amount') return (av - bv) * state.sortDir;
+    return String(av).localeCompare(String(bv)) * state.sortDir;
+  });
+
+  const tbody = document.getElementById('txnTbody');
+  const frag = document.createDocumentFragment();
+  rows.forEach(t => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="tabular">${t.date}</td>
+      <td class="name-cell">${t.name}</td>
+      <td><span class="card-pill"><span class="card-dot" style="background:${cssVar(CARD_COLOR_VAR[t.card])}"></span>${t.card.replace('カード','')}</span></td>
+      <td>${t.category}</td>
+      <td class="amt-cell">${yen(t.amount)}</td>
+    `;
+    frag.appendChild(tr);
+  });
+  tbody.innerHTML = '';
+  tbody.appendChild(frag);
+  document.getElementById('txnCount').textContent = `${rows.length.toLocaleString('ja-JP')} 件 ・ 合計 ${yen(rows.reduce((s,t)=>s+t.amount,0))}`;
+}
+
+function bindTableControls() {
+  document.getElementById('txnSearch').addEventListener('input', (e) => { state.search = e.target.value; renderTable(); });
+  document.querySelectorAll('#txnTable thead th[data-sort]').forEach(th => {
+    th.addEventListener('click', () => {
+      const key = th.dataset.sort;
+      if (state.sortKey === key) state.sortDir *= -1; else { state.sortKey = key; state.sortDir = key === 'amount' ? -1 : -1; }
+      renderTable();
+    });
+  });
+}
+
+// ---------------- render all ----------------
+function render() {
+  syncChips();
+  renderHero();
+  renderTrend();
+  renderDonut();
+  renderFixed();
+  renderBudget();
+  renderTable();
+}
+
+buildChips();
+buildCategoryFilterOptions();
+bindTableControls();
+render();
+</script>

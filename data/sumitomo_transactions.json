@@ -1,0 +1,2702 @@
+[
+  {
+    "use_date": "2025-11-27",
+    "name": "関⻄電⼒ 電気",
+    "amount": 6309,
+    "memo": "２５年１１⽉ ◎",
+    "pay_date": "2026-01-26",
+    "pay_month_label": "1月",
+    "category": "水道光熱費"
+  },
+  {
+    "use_date": "2025-12-02",
+    "name": "ＡＭＡＺＯＮ．ＣＯ．ＪＰ",
+    "amount": 11480,
+    "memo": "◎",
+    "pay_date": "2026-01-26",
+    "pay_month_label": "1月",
+    "category": "ネットショッピング"
+  },
+  {
+    "use_date": "2025-12-02",
+    "name": "ダイエー",
+    "amount": 725,
+    "memo": "◎",
+    "pay_date": "2026-01-26",
+    "pay_month_label": "1月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2025-12-06",
+    "name": "ニトリ",
+    "amount": 3012,
+    "memo": "◎",
+    "pay_date": "2026-01-26",
+    "pay_month_label": "1月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2025-12-07",
+    "name": "ＡＭＡＺＯＮ．ＣＯ．ＪＰ",
+    "amount": 31980,
+    "memo": "◎",
+    "pay_date": "2026-01-26",
+    "pay_month_label": "1月",
+    "category": "ネットショッピング"
+  },
+  {
+    "use_date": "2025-12-07",
+    "name": "ＡＭＡＺＯＮ．ＣＯ．ＪＰ",
+    "amount": 21949,
+    "memo": "◎",
+    "pay_date": "2026-01-26",
+    "pay_month_label": "1月",
+    "category": "ネットショッピング"
+  },
+  {
+    "use_date": "2025-12-10",
+    "name": "関⻄電⼒ガス",
+    "amount": 4910,
+    "memo": "２５年１２⽉ ◎",
+    "pay_date": "2026-01-26",
+    "pay_month_label": "1月",
+    "category": "水道光熱費"
+  },
+  {
+    "use_date": "2025-12-26",
+    "name": "Ｒｅｎｔｉｏ",
+    "amount": 6282,
+    "memo": "◎",
+    "pay_date": "2026-01-26",
+    "pay_month_label": "1月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2025-12-28",
+    "name": "Ａｍａｚｏｎプライム会費",
+    "amount": 600,
+    "memo": "◎",
+    "pay_date": "2026-01-26",
+    "pay_month_label": "1月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2025-12-29",
+    "name": "ＡＭＡＺＯＮ．ＣＯ．ＪＰ",
+    "amount": 34176,
+    "memo": "◎",
+    "pay_date": "2026-01-26",
+    "pay_month_label": "1月",
+    "category": "ネットショッピング"
+  },
+  {
+    "use_date": "2025-12-30",
+    "name": "キャトルエピス 静岡店",
+    "amount": 2928,
+    "memo": "◎",
+    "pay_date": "2026-01-26",
+    "pay_month_label": "1月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2025-12-30",
+    "name": "ななや 藤枝本店",
+    "amount": 8359,
+    "memo": "◎",
+    "pay_date": "2026-01-26",
+    "pay_month_label": "1月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2025-12-30",
+    "name": "ななや 藤枝本店",
+    "amount": 11032,
+    "memo": "◎",
+    "pay_date": "2026-01-26",
+    "pay_month_label": "1月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2025-12-31",
+    "name": "ＧＲＥＥＮＩＴＹ ＩＷＡＴＡ∕ＮＦＣ",
+    "amount": 1160,
+    "memo": "◎",
+    "pay_date": "2026-01-26",
+    "pay_month_label": "1月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2025-12-31",
+    "name": "株式会社⼀休",
+    "amount": 45913,
+    "memo": "◎",
+    "pay_date": "2026-01-26",
+    "pay_month_label": "1月",
+    "category": "旅行・宿泊（予約サイト）"
+  },
+  {
+    "use_date": "2025-12-31",
+    "name": "セブン－イレブン",
+    "amount": 6372,
+    "memo": "◎",
+    "pay_date": "2026-01-26",
+    "pay_month_label": "1月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2025-12-31",
+    "name": "Ａｍａｚｏｎふるさと納税",
+    "amount": 85000,
+    "memo": "◎",
+    "pay_date": "2026-01-26",
+    "pay_month_label": "1月",
+    "category": "ふるさと納税"
+  },
+  {
+    "use_date": "2025-12-31",
+    "name": "Ｓｑｕａｒｅ",
+    "amount": 2040,
+    "memo": "ＳＱ＊ミモザショコラトリー本店 ◎",
+    "pay_date": "2026-01-26",
+    "pay_month_label": "1月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2025-12-25",
+    "name": "関⻄電⼒ 電気",
+    "amount": 8640,
+    "memo": "２５年１２⽉ ◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "水道光熱費"
+  },
+  {
+    "use_date": "2026-01-01",
+    "name": "三井アウトレットパ－ク ジャズドリ－ム⻑",
+    "amount": 2660,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-01-01",
+    "name": "三井アウトレットパ－ク ジャズドリ－ム⻑",
+    "amount": 5990,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-01-02",
+    "name": "廻鮮鮨 喜⼗郎",
+    "amount": 6116,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-01-06",
+    "name": "ダイエー",
+    "amount": 673,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-01-07",
+    "name": "ダイエー",
+    "amount": 1345,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-01-08",
+    "name": "ダイエー",
+    "amount": 494,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-01-09",
+    "name": "ダイエー",
+    "amount": 1703,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-01-10",
+    "name": "関⻄スーパー 苦楽園店",
+    "amount": 3556,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-01-10",
+    "name": "ＢＩＧ ＢＥＡＮＳ芦屋店",
+    "amount": 2608,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-01-11",
+    "name": "ｅｋｉｍｏ梅⽥∕ＮＦＣ",
+    "amount": 110,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-01-11",
+    "name": "阪急三番街",
+    "amount": 1400,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-01-11",
+    "name": "ダイニー",
+    "amount": 28670,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-01-11",
+    "name": "コクミンＷｈｉｔｙうめだファルル店",
+    "amount": 658,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-01-12",
+    "name": "ＭＯＶＩＸあまがさき",
+    "amount": 4200,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "レジャー・娯楽"
+  },
+  {
+    "use_date": "2026-01-12",
+    "name": "あまがさき キューズモール",
+    "amount": 3366,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-01-12",
+    "name": "ＭＯＶＩＸ あまがさき",
+    "amount": 820,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "レジャー・娯楽"
+  },
+  {
+    "use_date": "2026-01-14",
+    "name": "関⻄電⼒ガス",
+    "amount": 7522,
+    "memo": "２６年 １⽉ ◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "水道光熱費"
+  },
+  {
+    "use_date": "2026-01-16",
+    "name": "ダイエー",
+    "amount": 384,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-01-17",
+    "name": "ローソン",
+    "amount": 460,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-01-17",
+    "name": "イズミヤ",
+    "amount": 1827,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-01-17",
+    "name": "阪急⻄宮ガーデンズ",
+    "amount": 2234,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-01-17",
+    "name": "阪急⻄宮ガーデンズ",
+    "amount": 1444,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-01-18",
+    "name": "業務ス－パ－⻄宮薬師店",
+    "amount": 3838,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-01-20",
+    "name": "ダイエー",
+    "amount": 446,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-01-22",
+    "name": "ダイエー",
+    "amount": 865,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-01-24",
+    "name": "ルクア⼤阪∕ＮＦＣ",
+    "amount": 3307,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-01-24",
+    "name": "ららぽーと甲⼦園",
+    "amount": 1078,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-01-24",
+    "name": "ココカラファイン",
+    "amount": 128,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "ドラッグストア"
+  },
+  {
+    "use_date": "2026-01-25",
+    "name": "マクドナルド",
+    "amount": 1200,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-01-25",
+    "name": "スターバックスコーヒージャパン",
+    "amount": 735,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-01-25",
+    "name": "ファミリーマート",
+    "amount": 389,
+    "memo": "ファミリーマート 摂津学園町 ◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-01-26",
+    "name": "セブン－イレブン",
+    "amount": 181,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-01-27",
+    "name": "ダイエー",
+    "amount": 693,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-01-28",
+    "name": "Ａｍａｚｏｎプライム会費",
+    "amount": 600,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026-01-29",
+    "name": "ダイエー",
+    "amount": 213,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-01-30",
+    "name": "ダイエー",
+    "amount": 1591,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-01-31",
+    "name": "ダイソー∕ＮＦＣ",
+    "amount": 110,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-01-31",
+    "name": "ダイソー∕ＮＦＣ",
+    "amount": 220,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-01-31",
+    "name": "スターバックスコーヒージャパン",
+    "amount": 1344,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-01-31",
+    "name": "ニトリ",
+    "amount": 1569,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-01-31",
+    "name": "イオンリテール",
+    "amount": 663,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-01-31",
+    "name": "イオンリテール",
+    "amount": 3288,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-01-31",
+    "name": "ドン‧キホーテ⻄宮店",
+    "amount": 1501,
+    "memo": "◎",
+    "pay_date": "2026-02-26",
+    "pay_month_label": "2月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-01-28",
+    "name": "関⻄電⼒ 電気",
+    "amount": 16355,
+    "memo": "２６年 １⽉ ◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "水道光熱費"
+  },
+  {
+    "use_date": "2026-02-01",
+    "name": "ミント神⼾",
+    "amount": 830,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-02-01",
+    "name": "神⼾阪急",
+    "amount": 1279,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-02-01",
+    "name": "神⼾阪急",
+    "amount": 945,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-02-01",
+    "name": "神⼾阪急",
+    "amount": 1051,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-02-01",
+    "name": "ダニエル本店",
+    "amount": 2500,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-02-01",
+    "name": "イオンモール神⼾南",
+    "amount": 340,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-02-04",
+    "name": "ダイエー",
+    "amount": 2041,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-02-05",
+    "name": "焼⾁きんぐ ⻄宮鞍掛店",
+    "amount": 7436,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-02-06",
+    "name": "ダイエー",
+    "amount": 636,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-02-07",
+    "name": "ルクア⼤阪∕ＮＦＣ",
+    "amount": 980,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-02-08",
+    "name": "阪急百貨店",
+    "amount": 219,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-02-08",
+    "name": "阪急百貨店",
+    "amount": 1361,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-02-10",
+    "name": "ダイエー",
+    "amount": 1252,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-02-12",
+    "name": "関⻄電⼒ガス",
+    "amount": 6865,
+    "memo": "２６年 ２⽉ ◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "水道光熱費"
+  },
+  {
+    "use_date": "2026-02-14",
+    "name": "ライフ夙川店",
+    "amount": 2312,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-02-14",
+    "name": "ＫＩＴＴＥ⼤阪",
+    "amount": 2950,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-02-15",
+    "name": "ライフ夙川店",
+    "amount": 2752,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-02-16",
+    "name": "ダイエー",
+    "amount": 1531,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-02-22",
+    "name": "セブン－イレブン",
+    "amount": 373,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-02-22",
+    "name": "ファレットフル－ル⻄宮北⼝店∕ＮＦＣ",
+    "amount": 2331,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-02-23",
+    "name": "ロイヤルホームセンター⻄宮中央店",
+    "amount": 6627,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-02-23",
+    "name": "ロイヤルホームセンター⻄宮中央店",
+    "amount": 176,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-02-23",
+    "name": "ロイヤルホームセンター⻄宮中央店",
+    "amount": 4052,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-02-23",
+    "name": "ダイソー∕ＮＦＣ",
+    "amount": 440,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-02-27",
+    "name": "ライフ夙川店",
+    "amount": 1366,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-02-27",
+    "name": "関⻄スーパー 苦楽園店",
+    "amount": 347,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-02-28",
+    "name": "ローソン",
+    "amount": 532,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-02-28",
+    "name": "Ａｍａｚｏｎプライム会費",
+    "amount": 600,
+    "memo": "◎",
+    "pay_date": "2026-03-26",
+    "pay_month_label": "3月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026-02-24",
+    "name": "タイムズカー",
+    "amount": 660,
+    "memo": "２０２６０２カ―ドハツコウリヨウ ◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026-02-26",
+    "name": "関⻄電⼒ 電気",
+    "amount": 10992,
+    "memo": "２６年 ２⽉ ◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "水道光熱費"
+  },
+  {
+    "use_date": "2026-03-01",
+    "name": "セブン－イレブン",
+    "amount": 159,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-03-01",
+    "name": "Ｓｑｕａｒｅ",
+    "amount": 1441,
+    "memo": "ＳＱ＊Ｂｌｕｅ Ｂｏｔｔｌｅ Ｃｏｆｆｅ ◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-03-01",
+    "name": "ＫＩＮＯＫＵＮＩＹＡｅｎｔｒｅｅさんちか",
+    "amount": 496,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-03-01",
+    "name": "ぎょうざの店 ひょうたん",
+    "amount": 2610,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-03-03",
+    "name": "いかり 夙川店",
+    "amount": 469,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-03-06",
+    "name": "ローソン",
+    "amount": 432,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-03-06",
+    "name": "スシロー",
+    "amount": 3400,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-03-07",
+    "name": "ローソン",
+    "amount": 371,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-03-07",
+    "name": "神⼾阪急",
+    "amount": 2101,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-03-07",
+    "name": "神⼾阪急",
+    "amount": 378,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-03-07",
+    "name": "神⼾阪急",
+    "amount": 609,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-03-07",
+    "name": "シネ‧リーブル神⼾",
+    "amount": 1250,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "レジャー・娯楽"
+  },
+  {
+    "use_date": "2026-03-08",
+    "name": "ホームセンターコーナン ⻄宮今津店",
+    "amount": 2719,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-03-10",
+    "name": "ＡＭＡＺＯＮ．ＣＯ．ＪＰ",
+    "amount": 6990,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "ネットショッピング"
+  },
+  {
+    "use_date": "2026-03-10",
+    "name": "ＫＩＴＴＥ⼤阪",
+    "amount": 6020,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-03-12",
+    "name": "ローソン",
+    "amount": 300,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-03-12",
+    "name": "関⻄電⼒ガス",
+    "amount": 6916,
+    "memo": "２６年 ３⽉ ◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "水道光熱費"
+  },
+  {
+    "use_date": "2026-03-14",
+    "name": "星乃珈琲店 ⻄宮店∕ＮＦＣ",
+    "amount": 3390,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-03-14",
+    "name": "イズミヤ",
+    "amount": 1193,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-03-14",
+    "name": "イズミヤ",
+    "amount": 225,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-03-14",
+    "name": "ユニクロ∕ＮＦＣ",
+    "amount": 6300,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "ファッション・美容"
+  },
+  {
+    "use_date": "2026-03-14",
+    "name": "阪急⻄宮ガーデンズ",
+    "amount": 766,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-03-14",
+    "name": "阪急⻄宮ガーデンズ",
+    "amount": 4440,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-03-14",
+    "name": "阪急⻄宮ガーデンズ",
+    "amount": 302,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-03-14",
+    "name": "阪急⻄宮ガーデンズ",
+    "amount": 1404,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-03-14",
+    "name": "無印良品",
+    "amount": 1750,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-03-15",
+    "name": "セブン－イレブン",
+    "amount": 698,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-03-15",
+    "name": "ファミリーマート",
+    "amount": 239,
+    "memo": "ファミリーマート 三宮南 ◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-03-15",
+    "name": "無印良品",
+    "amount": 5630,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-03-19",
+    "name": "ブーランジェリー‧フリアンド夙川グリーン",
+    "amount": 1310,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-03-19",
+    "name": "ワンカルビ 今津店",
+    "amount": 9394,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-03-20",
+    "name": "ミント神⼾",
+    "amount": 7920,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-03-20",
+    "name": "阪急オアシス",
+    "amount": 1208,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-03-20",
+    "name": "阪急オアシス",
+    "amount": 2060,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-03-20",
+    "name": "ファミリーマート",
+    "amount": 135,
+    "memo": "ファミリーマート ポートライナー三宮 ◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-03-20",
+    "name": "ｙｏｕ ｄｏｎｕｔ＊ＵＳＥＮ",
+    "amount": 2140,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-03-21",
+    "name": "ららぽーと甲⼦園",
+    "amount": 1436,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-03-21",
+    "name": "Ｓｑｕａｒｅ",
+    "amount": 7200,
+    "memo": "ＳＱ＊ぶたしょう ◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-03-21",
+    "name": "ダイエー",
+    "amount": 220,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-03-22",
+    "name": "無印良品 神⼾ハ－バ－ランドｕｍｉｅ",
+    "amount": 1873,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-03-22",
+    "name": "ローソン",
+    "amount": 785,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-03-22",
+    "name": "放⾹堂加琲∕ＮＦＣ",
+    "amount": 780,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-03-23",
+    "name": "Ｔｒｉｐ．ｃｏｍ",
+    "amount": 444092,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "旅行・宿泊（予約サイト）"
+  },
+  {
+    "use_date": "2026-03-25",
+    "name": "ソニ－⽣命保険料",
+    "amount": 55420,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "保険"
+  },
+  {
+    "use_date": "2026-03-27",
+    "name": "阪急梅⽥２階中央催事店∕ＮＦＣ",
+    "amount": 3010,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-03-27",
+    "name": "阪急梅⽥２階中央催事店∕ＮＦＣ",
+    "amount": 2210,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-03-27",
+    "name": "成城⽯井 梅⽥店∕ＮＦＣ",
+    "amount": 2099,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-03-27",
+    "name": "阪急梅⽥２階中央催事店∕ＮＦＣ",
+    "amount": -3010,
+    "memo": "返品 ◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-03-28",
+    "name": "Ａｍａｚｏｎプライム会費",
+    "amount": 600,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026-03-28",
+    "name": "ファミリーマート",
+    "amount": 243,
+    "memo": "ファミリーマート 旧居留地東 ◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-03-28",
+    "name": "ＥＮＥＯＳ－ＳＳ",
+    "amount": 5825,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026-03-29",
+    "name": "ローソン",
+    "amount": 353,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-03-29",
+    "name": "イズミヤ",
+    "amount": 225,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-03-29",
+    "name": "阪急⻄宮ガーデンズ",
+    "amount": 978,
+    "memo": "◎",
+    "pay_date": "2026-04-27",
+    "pay_month_label": "4月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-03-03",
+    "name": "タイムズカー",
+    "amount": 660,
+    "memo": "２０２６０３カ―ドハツコウリヨウ ◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026-03-27",
+    "name": "関⻄電⼒ 電気",
+    "amount": 8164,
+    "memo": "２６年 ３⽉ ◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "水道光熱費"
+  },
+  {
+    "use_date": "2026-04-03",
+    "name": "お好み焼き 鉄板焼き 遼＊ＵＳＥＮ",
+    "amount": 5120,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-04-04",
+    "name": "ブーランジェリー‧フリアンド夙川グリーン",
+    "amount": 300,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-04-04",
+    "name": "モンテメール∕ＮＦＣ",
+    "amount": 2980,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-04-04",
+    "name": "エルベラン",
+    "amount": 1166,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-04-05",
+    "name": "ちひろ菓⼦店",
+    "amount": 720,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-04-05",
+    "name": "Ｓｑｕａｒｅ",
+    "amount": 3930,
+    "memo": "ＳＱ＊ＡＷＡＪＩ Ｓｅａｓｉｄｅ Ｗａｌ ◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-04-05",
+    "name": "タカムラ淡路島ロースタリー＆カフェ",
+    "amount": 3887,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-04-05",
+    "name": "淡路サービスエリア下り売店",
+    "amount": 157,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-04-06",
+    "name": "ライフ夙川店",
+    "amount": 213,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-04-07",
+    "name": "ローソン",
+    "amount": 648,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-04-10",
+    "name": "ダイエー",
+    "amount": 110,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-04-10",
+    "name": "関⻄電⼒ガス",
+    "amount": 7379,
+    "memo": "２６年 ４⽉ ◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "水道光熱費"
+  },
+  {
+    "use_date": "2026-04-11",
+    "name": "マサヒコ オズミ パリ ヨドヤバ∕ＮＦＣ",
+    "amount": 1820,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "その他"
+  },
+  {
+    "use_date": "2026-04-11",
+    "name": "イズミヤ",
+    "amount": 192,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-04-11",
+    "name": "ノムラクリーニング 夙川サービスショップ",
+    "amount": 14551,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "ファッション・美容"
+  },
+  {
+    "use_date": "2026-04-11",
+    "name": "サニーサイド⻄宮⼤社店",
+    "amount": 1873,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-04-11",
+    "name": "いかり 夙川店",
+    "amount": 213,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-04-12",
+    "name": "正家さんちか店",
+    "amount": 3110,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-04-12",
+    "name": "上島珈琲店 さんちか店",
+    "amount": 1400,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-04-12",
+    "name": "いかり 三宮店",
+    "amount": 918,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-04-15",
+    "name": "ピオレ姫路∕ＮＦＣ",
+    "amount": 781,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-04-18",
+    "name": "セブン－イレブン",
+    "amount": 2632,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-04-18",
+    "name": "ファミリーマート",
+    "amount": 614,
+    "memo": "ファミリーマート 丸⻲⼟居町 ◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-04-18",
+    "name": "三本松ぱん",
+    "amount": 1107,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-04-18",
+    "name": "ＳＵＮＮＹＳＩＤＥ ＦＩＥＬＤＳ",
+    "amount": 3050,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-04-18",
+    "name": "⼀鶴 ⼟器川店",
+    "amount": 3278,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-04-19",
+    "name": "タイムズパーキング",
+    "amount": 300,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026-04-19",
+    "name": "イズミヤ",
+    "amount": 2558,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-04-19",
+    "name": "イズミヤ",
+    "amount": 1097,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-04-19",
+    "name": "阪急⻄宮ガーデンズ",
+    "amount": 2248,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-04-19",
+    "name": "ＥＮＣＯＲＥ ＵＮ ＭＡＴＩＮ",
+    "amount": 1630,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-04-20",
+    "name": "ＡＭＡＺＯＮ．ＣＯ．ＪＰ",
+    "amount": 6990,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "ネットショッピング"
+  },
+  {
+    "use_date": "2026-04-24",
+    "name": "ＡＭＡＺＯＮ．ＣＯ．ＪＰ",
+    "amount": 764,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "ネットショッピング"
+  },
+  {
+    "use_date": "2026-04-24",
+    "name": "ドン‧キホーテ⻄宮店",
+    "amount": 1618,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-04-24",
+    "name": "スシロー",
+    "amount": 2900,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-04-25",
+    "name": "神⼾どうぶつ王国∕ＮＦＣ",
+    "amount": 4800,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-04-25",
+    "name": "ソニ－⽣命保険料",
+    "amount": 55420,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "保険"
+  },
+  {
+    "use_date": "2026-04-25",
+    "name": "ＩＫＥＡ神⼾",
+    "amount": 50,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-04-25",
+    "name": "ＩＫＥＡ神⼾",
+    "amount": 2697,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-04-25",
+    "name": "関⻄スーパー 苦楽園店",
+    "amount": 1423,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-04-26",
+    "name": "ブーランジェリー‧フリアンド本店",
+    "amount": 1155,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-04-26",
+    "name": "ローソン",
+    "amount": 390,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-04-27",
+    "name": "ダイソー∕ＮＦＣ",
+    "amount": 223,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-04-27",
+    "name": "いかり 夙川店",
+    "amount": 258,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-04-28",
+    "name": "Ａｍａｚｏｎプライム会費",
+    "amount": 600,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026-04-28",
+    "name": "いかり 夙川店",
+    "amount": 1811,
+    "memo": "◎",
+    "pay_date": "2026-05-26",
+    "pay_month_label": "5月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-04-24",
+    "name": "関⻄電⼒ 電気",
+    "amount": 6003,
+    "memo": "２６年 ４⽉ ◎",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "水道光熱費"
+  },
+  {
+    "use_date": "2026-04-27",
+    "name": "遅延損害⾦（ショッピング利⽤）",
+    "amount": 2741,
+    "memo": "",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "手数料・利息"
+  },
+  {
+    "use_date": "2026-05-14",
+    "name": "関⻄電⼒ガス",
+    "amount": 6160,
+    "memo": "２６年 ５⽉ ◎",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "水道光熱費"
+  },
+  {
+    "use_date": "2026-05-15",
+    "name": "回収事務⼿数料",
+    "amount": 495,
+    "memo": "４⽉分",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "手数料・利息"
+  },
+  {
+    "use_date": "2026-05-22",
+    "name": "ドン‧キホーテ⻄宮店",
+    "amount": 4369,
+    "memo": "◎",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-05-22",
+    "name": "ヤマダデンキ ＷＥＢ．ＣＯＭ",
+    "amount": 15120,
+    "memo": "◎",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "ネットショッピング"
+  },
+  {
+    "use_date": "2026-05-23",
+    "name": "マクドナルド",
+    "amount": 1080,
+    "memo": "◎",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-05-23",
+    "name": "オーケー 新在家店",
+    "amount": 3497,
+    "memo": "◎",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-05-25",
+    "name": "ＡＭＡＺＯＮ．ＣＯ．ＪＰ",
+    "amount": 3843,
+    "memo": "◎",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "ネットショッピング"
+  },
+  {
+    "use_date": "2026-05-25",
+    "name": "ソニ－⽣命保険料",
+    "amount": 55420,
+    "memo": "◎",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "保険"
+  },
+  {
+    "use_date": "2026-05-28",
+    "name": "Ａｍａｚｏｎプライム会費",
+    "amount": 600,
+    "memo": "◎",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026-05-28",
+    "name": "ファミリーマート",
+    "amount": 700,
+    "memo": "ファミリーマート 旧居留地東 ◎",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-05-28",
+    "name": "ａｇｏｄａ",
+    "amount": 8884,
+    "memo": "◎",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "旅行・宿泊（予約サイト）"
+  },
+  {
+    "use_date": "2026-05-28",
+    "name": "ａｇｏｄａ",
+    "amount": 9734,
+    "memo": "◎",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "旅行・宿泊（予約サイト）"
+  },
+  {
+    "use_date": "2026-05-29",
+    "name": "セブン－イレブン",
+    "amount": 729,
+    "memo": "◎",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-05-29",
+    "name": "Ｍａｓｈｉｓｓｏｙｏ",
+    "amount": 3420,
+    "memo": "◎",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-05-31",
+    "name": "スターバックスコーヒージャパン",
+    "amount": 1091,
+    "memo": "◎",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-05-31",
+    "name": "ファミリーマート",
+    "amount": 193,
+    "memo": "ファミリーマート ザロイヤルパークキャン ◎",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-05-31",
+    "name": "ドン‧キホーテ三宮オーパセンター街店",
+    "amount": 646,
+    "memo": "◎",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-05-31",
+    "name": "⼤阪中華 サワダ飯店",
+    "amount": 2930,
+    "memo": "◎",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-05-31",
+    "name": "パンカラト",
+    "amount": 1158,
+    "memo": "◎",
+    "pay_date": "2026-06-26",
+    "pay_month_label": "6月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-05-28",
+    "name": "関⻄電⼒ 電気",
+    "amount": 8005,
+    "memo": "２６年 ５⽉ ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "水道光熱費"
+  },
+  {
+    "use_date": "2026-06-02",
+    "name": "関⻄電⼒ 電気",
+    "amount": 3705,
+    "memo": "２６年 ６⽉ ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "水道光熱費"
+  },
+  {
+    "use_date": "2026-06-03",
+    "name": "関⻄電⼒ 電気",
+    "amount": 288,
+    "memo": "２６年 ６⽉ ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "水道光熱費"
+  },
+  {
+    "use_date": "2026-06-06",
+    "name": "セブン－イレブン",
+    "amount": 314,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-06-06",
+    "name": "タイムズカー",
+    "amount": 5740,
+    "memo": "２０２６０６リヨウリヨウキン ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026-06-06",
+    "name": "リンガーハット 垂⽔⼩束⼭店",
+    "amount": 2360,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-06-07",
+    "name": "ＡＭＡＺＯＮ．ＣＯ．ＪＰ",
+    "amount": 1268,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "ネットショッピング"
+  },
+  {
+    "use_date": "2026-06-07",
+    "name": "ＡＭＡＺＯＮ．ＣＯ．ＪＰ",
+    "amount": 1047,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "ネットショッピング"
+  },
+  {
+    "use_date": "2026-06-07",
+    "name": "タイムズカー",
+    "amount": 3080,
+    "memo": "２０２６０６リヨウリヨウキン ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026-06-08",
+    "name": "スギ薬局 三宮店",
+    "amount": 1022,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "ドラッグストア"
+  },
+  {
+    "use_date": "2026-06-09",
+    "name": "阪急オアシス",
+    "amount": 572,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-06-09",
+    "name": "ファミリーマート",
+    "amount": 398,
+    "memo": "ファミリーマート 旧居留地東 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "コンビニ"
+  },
+  {
+    "use_date": "2026-06-11",
+    "name": "ＡＭＡＺＯＮ．ＣＯ．ＪＰ",
+    "amount": 1894,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "ネットショッピング"
+  },
+  {
+    "use_date": "2026-06-11",
+    "name": "関⻄電⼒ガス",
+    "amount": 3161,
+    "memo": "２６年 ６⽉ ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "水道光熱費"
+  },
+  {
+    "use_date": "2026-06-13",
+    "name": "タイムズカー",
+    "amount": 2420,
+    "memo": "２０２６０６リヨウリヨウキン ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026-06-14",
+    "name": "ＡＭＡＺＯＮ．ＣＯ．ＪＰ",
+    "amount": 2102,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "ネットショッピング"
+  },
+  {
+    "use_date": "2026-06-14",
+    "name": "ベルトラ",
+    "amount": 34008,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "旅行・宿泊（予約サイト）"
+  },
+  {
+    "use_date": "2026-06-14",
+    "name": "ＧＯ（タクシーアプリ）＊アプリ配⾞",
+    "amount": 1900,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026-06-14",
+    "name": "ＧＯアプリ（プレミアム）",
+    "amount": 1900,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026-06-16",
+    "name": "スギ薬局 三宮店",
+    "amount": 1030,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "ドラッグストア"
+  },
+  {
+    "use_date": "2026-06-17",
+    "name": "ベルトラ",
+    "amount": 65886,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "旅行・宿泊（予約サイト）"
+  },
+  {
+    "use_date": "2026-06-19",
+    "name": "ＩＫＥＡ神⼾",
+    "amount": 948,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-06-19",
+    "name": "ＣＯＮＥ",
+    "amount": 2330,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026-06-20",
+    "name": "ＫＯＢＥニュ－ワ－ルド阪急三宮∕ＮＦＣ",
+    "amount": 2838,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "レジャー・娯楽"
+  },
+  {
+    "use_date": "2026-06-20",
+    "name": "スターバックスコーヒージャパン",
+    "amount": 700,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-06-21",
+    "name": "ホームセンターコーナン ハーバーランド店",
+    "amount": 4773,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-06-21",
+    "name": "ｕｍｉｅＮＯＲＴＨＭＡＬＬ‧ＳＯＵＴＨＭ",
+    "amount": 3520,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "use_date": "2026-06-21",
+    "name": "ダイソー∕ＮＦＣ",
+    "amount": 550,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-06-21",
+    "name": "イオンリテール",
+    "amount": 2532,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-06-21",
+    "name": "タイムズカー",
+    "amount": 3300,
+    "memo": "２０２６０６リヨウリヨウキン ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026-06-22",
+    "name": "ＡＭＡＺＯＮ．ＣＯ．ＪＰ",
+    "amount": 768,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "ネットショッピング"
+  },
+  {
+    "use_date": "2026-06-22",
+    "name": "ＡＭＡＺＯＮ．ＣＯ．ＪＰ",
+    "amount": 5240,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "ネットショッピング"
+  },
+  {
+    "use_date": "2026-06-22",
+    "name": "ＡＭＡＺＯＮ．ＣＯ．ＪＰ",
+    "amount": 1698,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "ネットショッピング"
+  },
+  {
+    "use_date": "2026-06-22",
+    "name": "阪急オアシス",
+    "amount": 549,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-06-22",
+    "name": "ユニクロ∕ＮＦＣ",
+    "amount": 2020,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "ファッション・美容"
+  },
+  {
+    "use_date": "2026-06-22",
+    "name": "ユニクロ∕ＮＦＣ",
+    "amount": 1980,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "ファッション・美容"
+  },
+  {
+    "use_date": "2026-06-23",
+    "name": "ユニクロ∕ＮＦＣ",
+    "amount": 11000,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "ファッション・美容"
+  },
+  {
+    "use_date": "2026-06-24",
+    "name": "Ｔｒｉｐ．ｃｏｍ",
+    "amount": 13590,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "旅行・宿泊（予約サイト）"
+  },
+  {
+    "use_date": "2026-06-24",
+    "name": "OMIO (BERLIN ALEMAN)",
+    "amount": 17588,
+    "memo": "17588.00 JPY 1.0000 06 25 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "旅行・宿泊（予約サイト）"
+  },
+  {
+    "use_date": "2026-06-25",
+    "name": "Ｒｅｎｔｉｏ",
+    "amount": 5988,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026-06-25",
+    "name": "阪急オアシス",
+    "amount": 1271,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-06-25",
+    "name": "スギ薬局 三宮店",
+    "amount": 5829,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "ドラッグストア"
+  },
+  {
+    "use_date": "2026-06-25",
+    "name": "ソニ－⽣命保険料",
+    "amount": 55420,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "保険"
+  },
+  {
+    "use_date": "2026-06-25",
+    "name": "ダイエー",
+    "amount": 1507,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-06-26",
+    "name": "ダイエー",
+    "amount": 760,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-06-27",
+    "name": "ジュンク堂書店 三宮店∕ＮＦＣ",
+    "amount": 6270,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "レジャー・娯楽"
+  },
+  {
+    "use_date": "2026-06-27",
+    "name": "ダイソー∕ＮＦＣ",
+    "amount": 2425,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "日用品・インテリア"
+  },
+  {
+    "use_date": "2026-06-27",
+    "name": "ココカラファイン",
+    "amount": 327,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "ドラッグストア"
+  },
+  {
+    "use_date": "2026-06-27",
+    "name": "スギ薬局 三宮店",
+    "amount": 3952,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "ドラッグストア"
+  },
+  {
+    "use_date": "2026-06-27",
+    "name": "ヒシミツ醤油 磯上出張所＊ＵＳＥＮ",
+    "amount": 2780,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-06-28",
+    "name": "Ａｍａｚｏｎプライム会費",
+    "amount": 600,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026-06-28",
+    "name": "CAQPTAIN CANDY (ROME )",
+    "amount": 1662,
+    "memo": "8.68 EUR 191.509 06 29 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-06-28",
+    "name": "KERAK SRL (ROMA )",
+    "amount": 861,
+    "memo": "4.50 EUR 191.509 06 29 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "その他"
+  },
+  {
+    "use_date": "2026-06-28",
+    "name": "FIUMICINO AEROPORTO SS D (FIUMICINO )",
+    "amount": 5362,
+    "memo": "28.00 EUR 191.509 06 29 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026-06-29",
+    "name": "FREENOW* DSFGYT-2 (FREE-NOW.COM/)",
+    "amount": 2317,
+    "memo": "12.10 EUR 191.509 06 29 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026-06-29",
+    "name": "STAIANOAUT* PTK STAIAN (ANACAPRI )",
+    "amount": 919,
+    "memo": "4.80 EUR 191.521 06 30 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026-06-29",
+    "name": "COOPERATIVA BATTELLIERI (CAPRI )",
+    "amount": 4596,
+    "memo": "24.00 EUR 191.521 06 30 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "レジャー・娯楽"
+  },
+  {
+    "use_date": "2026-06-29",
+    "name": "NINO & FRIENDS ANACAPRI (ANACAPRI )",
+    "amount": 2298,
+    "memo": "12.00 EUR 191.521 06 30 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-06-29",
+    "name": "RISTORANTE DUE PINI (ANACAPRI )",
+    "amount": 13789,
+    "memo": "72.00 EUR 191.521 06 30 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-06-29",
+    "name": "5400604 (NAPOLI )",
+    "amount": 574,
+    "memo": "3.00 EUR 191.521 06 30 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "レジャー・娯楽"
+  },
+  {
+    "use_date": "2026-06-29",
+    "name": "SOC. COOP. CULTURE (ANACAPRI )",
+    "amount": 2298,
+    "memo": "12.00 EUR 191.521 06 30 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "レジャー・娯楽"
+  },
+  {
+    "use_date": "2026-06-29",
+    "name": "GRAN BAR RIVIERA (NAPOLI )",
+    "amount": 957,
+    "memo": "5.00 EUR 191.521 06 30 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-06-29",
+    "name": "CONSORZIO (ANACAPRI )",
+    "amount": 3830,
+    "memo": "20.00 EUR 191.521 06 30 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "レジャー・娯楽"
+  },
+  {
+    "use_date": "2026-06-29",
+    "name": "SNAV (NAPOLI )",
+    "amount": 19152,
+    "memo": "100.00 EUR 191.521 06 30 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026-06-29",
+    "name": "BETREE (ANACAPRI )",
+    "amount": 2489,
+    "memo": "13.00 EUR 191.521 06 30 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-06-29",
+    "name": "DA ROMEO (ROMA )",
+    "amount": 11491,
+    "memo": "60.00 EUR 191.521 06 30 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-06-29",
+    "name": "CONAD (ROMA )",
+    "amount": 5739,
+    "memo": "29.97 EUR 191.521 06 30 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-06-29",
+    "name": "PZA DELLA VITTORIA 28 (ANACAPRI )",
+    "amount": 10615,
+    "memo": "10615.00 JPY 1.0000 06 29",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "手数料・利息"
+  },
+  {
+    "use_date": "2026-06-29",
+    "name": "海外キャッシュサービス利息",
+    "amount": 146,
+    "memo": "(海外キャッシュサービス ご返済期間28日間)",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "手数料・利息"
+  },
+  {
+    "use_date": "2026-06-29",
+    "name": "ＡＴＭ利⽤⼿数料 海外キャッシング",
+    "amount": 220,
+    "memo": "",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "手数料・利息"
+  },
+  {
+    "use_date": "2026-06-30",
+    "name": "フェリカポケットマーケティング（株）",
+    "amount": 20000,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026-06-30",
+    "name": "フェリカポケットマーケティング（株）",
+    "amount": 20000,
+    "memo": "◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026-06-30",
+    "name": "POMPI IL REGNO (ROMA )",
+    "amount": 1150,
+    "memo": "6.00 EUR 191.822 07 01 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-06-30",
+    "name": "FREENOW* DSO7TU-2 (FREE-NOW.COM/)",
+    "amount": 2205,
+    "memo": "11.50 EUR 191.822 07 01 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026-06-30",
+    "name": "TRECAFFE RISTORANTE CA (ROMA )",
+    "amount": 383,
+    "memo": "2.00 EUR 191.822 07 01 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-06-30",
+    "name": "CARREFOUR EXPRESS (ROMA )",
+    "amount": 1290,
+    "memo": "6.73 EUR 191.822 07 01 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-06-30",
+    "name": "FLOR (ROMA )",
+    "amount": 767,
+    "memo": "4.00 EUR 191.822 07 01 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-06-30",
+    "name": "LARINASCENTE TRITONE 4 (ROMA )",
+    "amount": 7001,
+    "memo": "36.50 EUR 191.822 07 01 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-06-30",
+    "name": "RISTORANTE TEMA (ROMA )",
+    "amount": 9591,
+    "memo": "50.00 EUR 191.822 07 01 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-06-30",
+    "name": "CAFFE' VALORANI (ROMA )",
+    "amount": 479,
+    "memo": "2.50 EUR 191.822 07 01 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-06-30",
+    "name": "LA CASA DEL CAFFE' TAZZA (ROMA )",
+    "amount": 4891,
+    "memo": "25.50 EUR 191.822 07 01 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-06-30",
+    "name": "CASTRONI (ROMA )",
+    "amount": 479,
+    "memo": "2.50 EUR 191.822 07 01 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026-06-30",
+    "name": "RAVIOLO D'ORO (ROMA )",
+    "amount": 8919,
+    "memo": "46.50 EUR 191.822 07 01 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "外食・カフェ"
+  },
+  {
+    "use_date": "2026-06-30",
+    "name": "ATAC TAP&GO (ROMA )",
+    "amount": 866,
+    "memo": "4.50 EUR 192.474 07 03 ◎",
+    "pay_date": "2026-07-27",
+    "pay_month_label": "7月",
+    "category": "交通費"
+  }
+]

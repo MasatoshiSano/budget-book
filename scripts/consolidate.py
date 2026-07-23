@@ -1,0 +1,88 @@
+# -*- coding: utf-8 -*-
+# Merges the three per-card transaction files into data/unified_transactions.json,
+# mapping each card's own category taxonomy onto one shared set of categories.
+# Run after re-running parse_sumitomo.py / parse_categorize_paypay.py / parse_rakuten.py
+# (+ categorize_sumitomo.py / categorize_rakuten.py) on newly uploaded statements.
+import json
+import os
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA = os.path.join(ROOT, 'data')
+
+with open(os.path.join(DATA, 'sumitomo_transactions.json'), encoding='utf-8') as f:
+    sumitomo = json.load(f)
+with open(os.path.join(DATA, 'paypay_transactions.json'), encoding='utf-8') as f:
+    paypay = json.load(f)
+with open(os.path.join(DATA, 'rakuten_transactions.json'), encoding='utf-8') as f:
+    rakuten = json.load(f)
+
+# unify category taxonomy across the three cards
+SUMITOMO_MAP = {
+    '水道光熱費': '水道光熱費', '保険': '保険', '通信費・サブスク': '通信費・サブスク',
+    'コンビニ': '食費（スーパー・コンビニ）', 'スーパー・食料品': '食費（スーパー・コンビニ）',
+    'ドラッグストア': 'ドラッグストア', '外食・カフェ': '外食・カフェ',
+    'ショッピングモール・百貨店': 'ショッピングモール・百貨店', '日用品・インテリア': '日用品・インテリア',
+    'ファッション・美容': 'ファッション・美容', 'ネットショッピング': 'ネットショッピング',
+    '交通費': '交通費', '旅行・宿泊（予約サイト）': '旅行・宿泊', 'レジャー・娯楽': 'レジャー・娯楽',
+    'ふるさと納税': 'ふるさと納税', '手数料・利息': '手数料・利息', 'その他': 'その他',
+}
+PAYPAY_MAP = {
+    '通信費・サブスク': '通信費・サブスク', 'コンビニ': '食費（スーパー・コンビニ）',
+    'スーパー・食料品': '食費（スーパー・コンビニ）', 'ドラッグストア': 'ドラッグストア',
+    '外食・カフェ': '外食・カフェ', 'ショッピングモール・百貨店': 'ショッピングモール・百貨店',
+    '日用品・インテリア': '日用品・インテリア', 'ファッション・美容': 'ファッション・美容',
+    '美容・健康': '美容・健康', '交通費': '交通費', '旅行・宿泊': '旅行・宿泊',
+    '教育・資格': '教育・資格', 'その他': 'その他',
+}
+RAKUTEN_MAP = {
+    '投資': '投資・貯蓄', '電子マネー・チャージ': '電子マネー・チャージ',
+    '通信費・サブスク': '通信費・サブスク', '交通費': '交通費',
+    'ネットショッピング': 'ネットショッピング', 'スーパー・食料品': '食費（スーパー・コンビニ）',
+    'その他': 'その他',
+}
+
+FIXED_CATEGORIES = {'保険', '通信費・サブスク', '水道光熱費', '投資・貯蓄'}
+FIXED_NAME_HINTS = ['プライム会費', 'フェリカポケット', 'ＧＯアプリ', 'モバイル', 'ｍｏｂｉｌｅ',
+                     'ＮＥＴＦＬＩＸ', 'ﾈｯﾄﾌﾘｯｸｽ', 'ＧＯＯＧＬＥ', 'ＣＬＡＵＤＥ', 'ＡＮＴＨＲＯＰＩＣ',
+                     'ｃｈｏｃｏＺＡＰ', 'レンタルサーバー', '楽天キャッシュ']
+
+unified = []
+for r in sumitomo:
+    unified.append({
+        'date': r['use_date'], 'name': r['name'], 'amount': r['amount'],
+        'card': '三井住友カード', 'pay_month': r['pay_month_label'],
+        'category': SUMITOMO_MAP.get(r['category'], 'その他'),
+    })
+for r in paypay:
+    unified.append({
+        'date': r['use_date'].replace('/', '-'), 'name': r['name'], 'amount': r['amount'],
+        'card': 'PayPayカード', 'pay_month': r['pay_month_label'],
+        'category': PAYPAY_MAP.get(r['category'], 'その他'),
+    })
+for r in rakuten:
+    unified.append({
+        'date': r['use_date'].replace('/', '-'), 'name': r['name'], 'amount': r['amount'],
+        'card': '楽天カード', 'pay_month': r['pay_month_label'],
+        'category': RAKUTEN_MAP.get(r['category'], 'その他'),
+    })
+
+for t in unified:
+    is_fixed = t['category'] in FIXED_CATEGORIES
+    t['is_fixed'] = is_fixed
+
+# sanity checks
+from collections import Counter, defaultdict
+print('total txns:', len(unified))
+print('total amount:', sum(t['amount'] for t in unified))
+by_card = defaultdict(int)
+for t in unified:
+    by_card[t['card']] += t['amount']
+print('by card:', dict(by_card))
+
+cats = Counter(t['category'] for t in unified)
+print('categories:', len(cats))
+for c, n in cats.most_common():
+    print(' ', c, n)
+
+with open(os.path.join(DATA, 'unified_transactions.json'), 'w', encoding='utf-8') as f:
+    json.dump(unified, f, ensure_ascii=False, indent=2)

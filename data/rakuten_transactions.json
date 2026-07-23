@@ -1,0 +1,650 @@
+[
+  {
+    "use_date": "2025/11/30",
+    "name": "ＵＱ ｍｏｂｉｌｅご利用料金",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 3743,
+    "pay_month_label": "1月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2025/12/01",
+    "name": "GOOGLE*CLOUD 8V57",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 1,
+    "pay_month_label": "1月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2025/12/05",
+    "name": "ﾈｯﾄﾌﾘｯｸｽ",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 890,
+    "pay_month_label": "1月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2025/12/08",
+    "name": "お名前．ｃｏｍレンタルサーバー",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 484,
+    "pay_month_label": "1月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2025/12/14",
+    "name": "楽天キャッシュ チャージ",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 29559,
+    "pay_month_label": "1月",
+    "category": "電子マネー・チャージ"
+  },
+  {
+    "use_date": "2025/12/16",
+    "name": "楽天証券投信積立０．５％〜",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 49994,
+    "pay_month_label": "1月",
+    "category": "投資"
+  },
+  {
+    "use_date": "2025/12/30",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 5960,
+    "pay_month_label": "2月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2025/12/31",
+    "name": "ＵＱ ｍｏｂｉｌｅご利用料金",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 3750,
+    "pay_month_label": "2月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2025/12/31",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 2430,
+    "pay_month_label": "2月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2025/12/31",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 710,
+    "pay_month_label": "2月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/01/01",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 4180,
+    "pay_month_label": "2月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/01/02",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 940,
+    "pay_month_label": "2月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/01/02",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 1860,
+    "pay_month_label": "2月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/01/03",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 710,
+    "pay_month_label": "2月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/01/03",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 760,
+    "pay_month_label": "2月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/01/06",
+    "name": "ﾈｯﾄﾌﾘｯｸｽ",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 890,
+    "pay_month_label": "2月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026/01/09",
+    "name": "お名前．ｃｏｍレンタルサーバー",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 484,
+    "pay_month_label": "2月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026/01/12",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 370,
+    "pay_month_label": "2月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/01/25",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 710,
+    "pay_month_label": "3月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/01/25",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 300,
+    "pay_month_label": "3月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/01/31",
+    "name": "ＵＱ ｍｏｂｉｌｅご利用料金",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 3742,
+    "pay_month_label": "3月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026/02/06",
+    "name": "ＮＥＴＦＬＩＸ．ＣＯＭ",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 890,
+    "pay_month_label": "3月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026/02/06",
+    "name": "お名前．ｃｏｍレンタルサーバー",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 484,
+    "pay_month_label": "3月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026/02/28",
+    "name": "ＵＱ ｍｏｂｉｌｅご利用料金",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 3745,
+    "pay_month_label": "4月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026/03/01",
+    "name": "ｵﾅﾏｴﾄﾞﾂﾄｺﾑﾚﾝﾀﾙｻｰﾊ",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 484,
+    "pay_month_label": "4月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026/03/05",
+    "name": "ﾈｯﾄﾌﾘｯｸｽ",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 890,
+    "pay_month_label": "4月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026/03/31",
+    "name": "ＵＱ ｍｏｂｉｌｅご利用料金",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 3744,
+    "pay_month_label": "5月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026/04/05",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 160,
+    "pay_month_label": "5月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/04/05",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 160,
+    "pay_month_label": "5月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/04/05",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 870,
+    "pay_month_label": "5月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/04/05",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 1020,
+    "pay_month_label": "5月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/04/05",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 1470,
+    "pay_month_label": "5月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/04/05",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 1060,
+    "pay_month_label": "5月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/04/06",
+    "name": "ﾈｯﾄﾌﾘｯｸｽ",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 890,
+    "pay_month_label": "5月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026/04/24",
+    "name": "ﾗｲﾌｼﾕｸｶﾞﾜﾃﾝ",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 517,
+    "pay_month_label": "5月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026/04/25",
+    "name": "ｺｽﾓｾｷﾕﾏｰｹﾃｲﾝｸﾞ(ｶ",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 5705,
+    "pay_month_label": "5月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/04/18",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 160,
+    "pay_month_label": "6月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/04/18",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 870,
+    "pay_month_label": "6月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/04/18",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 2570,
+    "pay_month_label": "6月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/04/18",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 1990,
+    "pay_month_label": "6月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/04/18",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 2280,
+    "pay_month_label": "6月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/04/18",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 320,
+    "pay_month_label": "6月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/04/18",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 1100,
+    "pay_month_label": "6月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/04/24",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 810,
+    "pay_month_label": "6月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/04/26",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 810,
+    "pay_month_label": "6月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/04/26",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 810,
+    "pay_month_label": "6月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/04/26",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 1390,
+    "pay_month_label": "6月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/04/26",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 1390,
+    "pay_month_label": "6月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/04/30",
+    "name": "ＵＱ ｍｏｂｉｌｅご利用料金",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 3739,
+    "pay_month_label": "6月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026/05/02",
+    "name": "ｶﾝｻｲｽ-ﾊﾟ- ｸﾗｸｴﾝﾃﾝ",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 452,
+    "pay_month_label": "6月",
+    "category": "スーパー・食料品"
+  },
+  {
+    "use_date": "2026/05/03",
+    "name": "AMAZON.CO.JP",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 12378,
+    "pay_month_label": "6月",
+    "category": "ネットショッピング"
+  },
+  {
+    "use_date": "2026/05/05",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 530,
+    "pay_month_label": "6月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/05/05",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 2170,
+    "pay_month_label": "6月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/05/05",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 1860,
+    "pay_month_label": "6月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/05/06",
+    "name": "ﾈｯﾄﾌﾘｯｸｽ",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 890,
+    "pay_month_label": "6月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026/05/06",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 1530,
+    "pay_month_label": "6月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/05/06",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 1530,
+    "pay_month_label": "6月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/05/06",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 1860,
+    "pay_month_label": "6月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/05/12",
+    "name": "楽天モバイル買い替え超トク",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 990,
+    "pay_month_label": "6月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026/05/13",
+    "name": "楽天キャッシュ チャージ",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 1000,
+    "pay_month_label": "6月",
+    "category": "電子マネー・チャージ"
+  },
+  {
+    "use_date": "2026/05/27",
+    "name": "CURSOR, AI POWERED I利用国US",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 31718,
+    "pay_month_label": "6月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026/05/16",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 120,
+    "pay_month_label": "7月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/05/16",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 2430,
+    "pay_month_label": "7月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/05/16",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 2060,
+    "pay_month_label": "7月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/05/17",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 620,
+    "pay_month_label": "7月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/05/17",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 1280,
+    "pay_month_label": "7月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/05/30",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 1860,
+    "pay_month_label": "7月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/05/30",
+    "name": "ＥＴＣカード売上",
+    "user": "ETC*",
+    "method": "1回払い",
+    "amount": 370,
+    "pay_month_label": "7月",
+    "category": "交通費"
+  },
+  {
+    "use_date": "2026/05/31",
+    "name": "ＵＱ ｍｏｂｉｌｅご利用料金",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 241,
+    "pay_month_label": "7月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026/06/05",
+    "name": "ﾈｯﾄﾌﾘｯｸｽ",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 890,
+    "pay_month_label": "7月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026/06/11",
+    "name": "楽天モバイル買い替え超トク",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 990,
+    "pay_month_label": "7月",
+    "category": "通信費・サブスク"
+  },
+  {
+    "use_date": "2026/06/13",
+    "name": "楽天キャッシュ チャージ",
+    "user": "本人*",
+    "method": "1回払い",
+    "amount": 2293,
+    "pay_month_label": "7月",
+    "category": "電子マネー・チャージ"
+  }
+]
