@@ -194,6 +194,13 @@
     gap: 16px;
     flex-wrap: wrap;
   }
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
   .brand {
     display: flex;
     align-items: baseline;
@@ -345,14 +352,41 @@
     font-weight: 600;
   }
 
-  .grid-2 {
-    display: grid;
-    grid-template-columns: 1.55fr 1fr;
-    gap: 20px;
+  /* ---------------- page nav ---------------- */
+  .pagenav {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
   }
-  @media (max-width: 900px) {
-    .grid-2 { grid-template-columns: 1fr; }
+  .navtab {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--ink-muted);
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 13.5px;
+    padding: 8px 4px;
+    cursor: pointer;
+    position: relative;
+    margin: 0 8px;
   }
+  .navtab::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -1px;
+    height: 2px;
+    border-radius: 2px;
+    background: transparent;
+  }
+  .navtab:hover { color: var(--ink-primary); }
+  .navtab[aria-selected="true"] {
+    color: var(--ink-primary);
+  }
+  .navtab[aria-selected="true"]::after {
+    background: var(--accent);
+  }
+  .page[hidden] { display: none; }
 
   /* ---------------- trend chart ---------------- */
   .trend-svg-wrap { overflow-x: auto; }
@@ -407,20 +441,27 @@
 
   /* ---------------- fixed costs ---------------- */
   .fixed-list { display: flex; flex-direction: column; }
+  .fixed-list-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+  }
+  @media (max-width: 760px) {
+    .fixed-list-grid { grid-template-columns: 1fr; }
+  }
   .fixed-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    padding: 10px 0;
+    padding: 12px 0;
     border-bottom: 1px solid var(--line);
   }
-  .fixed-row:last-child { border-bottom: none; }
+  .fixed-list:not(.fixed-list-grid) .fixed-row:last-child { border-bottom: none; }
   .fixed-left { min-width: 0; }
   .fixed-name {
     font-weight: 700; font-size: 13px;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    max-width: 220px;
   }
   .fixed-meta { font-size: 11px; color: var(--ink-muted); font-weight: 600; margin-top: 2px; }
   .fixed-meta .fixed-cat-pill {
@@ -511,7 +552,7 @@
     font-family: inherit;
     font-size: 13px;
   }
-  .table-scroll { overflow-x: auto; max-height: 480px; overflow-y: auto; border: 1px solid var(--line); border-radius: 14px; }
+  .table-scroll { overflow-x: auto; max-height: min(700px, calc(100vh - 320px)); overflow-y: auto; border: 1px solid var(--line); border-radius: 14px; }
   table.txn-table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 640px; }
   table.txn-table thead th {
     position: sticky; top: 0;
@@ -554,9 +595,17 @@
 
 <div class="topbar">
   <div class="topbar-inner">
-    <div class="brand">
-      <span class="brand-mark">家計簿<span class="dot">.</span></span>
-      <span class="brand-sub">2026年 支出ダッシュボード</span>
+    <div class="topbar-left">
+      <div class="brand">
+        <span class="brand-mark">家計簿<span class="dot">.</span></span>
+        <span class="brand-sub">2026年 支出ダッシュボード</span>
+      </div>
+      <nav class="pagenav" id="pagenav" role="tablist" aria-label="ページ切り替え">
+        <button class="navtab" data-page="overview" role="tab">概要</button>
+        <button class="navtab" data-page="fixed" role="tab">固定費</button>
+        <button class="navtab" data-page="budget" role="tab">予算</button>
+        <button class="navtab" data-page="transactions" role="tab">明細</button>
+      </nav>
     </div>
     <div class="topbar-controls">
       <div class="chip-row" id="monthChips" role="group" aria-label="対象月"></div>
@@ -567,20 +616,20 @@
 
 <div class="shell">
 
-  <section class="hero" id="hero"></section>
+  <div class="page" data-page="overview">
+    <section class="hero" id="hero"></section>
 
-  <section class="panel">
-    <div class="panel-head">
-      <div>
-        <div class="panel-title">月別支出推移</div>
-        <div class="panel-note">カード別の内訳付き。棒をホバーすると詳細が見られます。</div>
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">月別支出推移</div>
+          <div class="panel-note">カード別の内訳付き。棒をホバーすると詳細が見られます。</div>
+        </div>
       </div>
-    </div>
-    <div class="trend-svg-wrap"><div id="trendChart"></div></div>
-    <div class="trend-legend" id="trendLegend"></div>
-  </section>
+      <div class="trend-svg-wrap"><div id="trendChart"></div></div>
+      <div class="trend-legend" id="trendLegend"></div>
+    </section>
 
-  <section class="grid-2">
     <section class="panel">
       <div class="panel-head">
         <div>
@@ -593,55 +642,61 @@
         <ul class="legend-list" id="donutLegend"></ul>
       </div>
     </section>
+  </div>
 
+  <div class="page" data-page="fixed" hidden>
     <section class="panel">
       <div class="panel-head">
         <div>
           <div class="panel-title">固定費一覧</div>
-          <div class="panel-note">サブスク・保険・水道光熱費など</div>
+          <div class="panel-note">サブスク・保険・水道光熱費・積立投資など、毎月発生している支払いを店舗ごとに自動抽出しています</div>
         </div>
       </div>
-      <div class="fixed-list" id="fixedList"></div>
+      <div class="fixed-list fixed-list-grid" id="fixedList"></div>
     </section>
-  </section>
+  </div>
 
-  <section class="panel">
-    <div class="panel-head">
-      <div>
-        <div class="panel-title">予算 vs 実績</div>
-        <div class="panel-note">カテゴリごとに予算額を入力すると、超過時にアラート表示されます（この端末に保存されます）</div>
+  <div class="page" data-page="budget" hidden>
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">予算 vs 実績</div>
+          <div class="panel-note">カテゴリごとに予算額を入力すると、超過時にアラート表示されます（この端末に保存されます）</div>
+        </div>
       </div>
-    </div>
-    <div id="budgetList"></div>
-  </section>
+      <div id="budgetList"></div>
+    </section>
+  </div>
 
-  <section class="panel">
-    <div class="panel-head">
-      <div>
-        <div class="panel-title">取引明細</div>
-        <div class="panel-note">全カード横断で検索・絞り込みできます</div>
+  <div class="page" data-page="transactions" hidden>
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">取引明細</div>
+          <div class="panel-note">全カード横断で検索・絞り込みできます</div>
+        </div>
       </div>
-    </div>
-    <div class="table-controls">
-      <input class="search-input" id="txnSearch" type="text" placeholder="店名で検索…" />
-      <select class="filter-select" id="txnCategoryFilter"></select>
-    </div>
-    <div class="table-scroll">
-      <table class="txn-table" id="txnTable">
-        <thead>
-          <tr>
-            <th data-sort="date">利用日</th>
-            <th data-sort="name">店名</th>
-            <th data-sort="card">カード</th>
-            <th data-sort="category">カテゴリ</th>
-            <th data-sort="amount" style="text-align:right;">金額</th>
-          </tr>
-        </thead>
-        <tbody id="txnTbody"></tbody>
-      </table>
-    </div>
-    <div class="row-count" id="txnCount"></div>
-  </section>
+      <div class="table-controls">
+        <input class="search-input" id="txnSearch" type="text" placeholder="店名で検索…" />
+        <select class="filter-select" id="txnCategoryFilter"></select>
+      </div>
+      <div class="table-scroll">
+        <table class="txn-table" id="txnTable">
+          <thead>
+            <tr>
+              <th data-sort="date">利用日</th>
+              <th data-sort="name">店名</th>
+              <th data-sort="card">カード</th>
+              <th data-sort="category">カテゴリ</th>
+              <th data-sort="amount" style="text-align:right;">金額</th>
+            </tr>
+          </thead>
+          <tbody id="txnTbody"></tbody>
+        </table>
+      </div>
+      <div class="row-count" id="txnCount"></div>
+    </section>
+  </div>
 
 </div>
 
@@ -983,10 +1038,6 @@ function renderFixed() {
   const wrap = document.getElementById('fixedList');
   if (list.length === 0) { wrap.innerHTML = '<div class="panel-note">該当する固定費はありません</div>'; return; }
 
-  const TOP_N = 9;
-  const shown = list.slice(0, TOP_N);
-  const rest = list.slice(TOP_N);
-
   const rowHtml = (g) => {
     const max = Math.max(...g.vals, 1);
     const pts = g.vals.map((v,i) => {
@@ -1013,12 +1064,7 @@ function renderFixed() {
     `;
   };
 
-  let html = shown.map(rowHtml).join('');
-  if (rest.length > 0) {
-    const restTotal = rest.reduce((s,g) => s + g.total, 0);
-    html += `<div class="fixed-more"><span>ほか ${rest.length} 件の少額固定費</span><span class="tabular">合計 ${yen(restTotal)}</span></div>`;
-  }
-  wrap.innerHTML = html;
+  wrap.innerHTML = list.map(rowHtml).join('');
 }
 
 // ---------------- budget ----------------
@@ -1145,8 +1191,33 @@ function render() {
   renderTable();
 }
 
+// ---------------- page navigation ----------------
+const PAGES = ['overview', 'fixed', 'budget', 'transactions'];
+function showPage(name, opts) {
+  opts = opts || {};
+  if (!PAGES.includes(name)) name = 'overview';
+  document.querySelectorAll('.page').forEach(el => {
+    el.hidden = el.dataset.page !== name;
+  });
+  document.querySelectorAll('.navtab').forEach(btn => {
+    btn.setAttribute('aria-selected', btn.dataset.page === name ? 'true' : 'false');
+  });
+  if (!opts.skipHash) {
+    history.replaceState(null, '', '#' + name);
+  }
+  if (!opts.skipScroll) window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+}
+function bindNav() {
+  document.querySelectorAll('.navtab').forEach(btn => {
+    btn.addEventListener('click', () => showPage(btn.dataset.page));
+  });
+  window.addEventListener('hashchange', () => showPage(location.hash.slice(1), { skipHash: true }));
+}
+
 buildChips();
 buildCategoryFilterOptions();
 bindTableControls();
+bindNav();
 render();
+showPage(location.hash ? location.hash.slice(1) : 'overview', { skipHash: true, skipScroll: true });
 </script>
