@@ -221,8 +221,24 @@
   .topbar-controls {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 16px;
     flex-wrap: wrap;
+  }
+  .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .filter-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink-muted);
+    white-space: nowrap;
+    cursor: help;
+    border-bottom: 1px dotted var(--ink-muted);
+  }
+  .filter-group.is-inactive {
+    opacity: 0.4;
   }
 
   .chip-row {
@@ -506,6 +522,16 @@
     font-size: 12px;
     text-align: right;
   }
+  .auto-tag {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--ink-muted);
+    background: var(--bg-inset);
+    padding: 2px 7px;
+    border-radius: 20px;
+    cursor: help;
+    white-space: nowrap;
+  }
   .budget-track {
     height: 9px;
     border-radius: 5px;
@@ -608,8 +634,14 @@
       </nav>
     </div>
     <div class="topbar-controls">
-      <div class="chip-row" id="monthChips" role="group" aria-label="対象月"></div>
-      <div class="chip-row" id="cardChips" role="group" aria-label="カード"></div>
+      <div class="filter-group" id="monthFilterGroup">
+        <span class="filter-label" title="カード会社の請求日が属する月。例えば「1月」は1月に引き落とされた分で、11〜12月の利用分を含みます。">お支払月</span>
+        <div class="chip-row" id="monthChips" role="group" aria-label="お支払月（請求月）"></div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">カード</span>
+        <div class="chip-row" id="cardChips" role="group" aria-label="カード"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -649,7 +681,7 @@
       <div class="panel-head">
         <div>
           <div class="panel-title">固定費一覧</div>
-          <div class="panel-note">サブスク・保険・水道光熱費・積立投資など、毎月発生している支払いを店舗ごとに自動抽出しています</div>
+          <div class="panel-note">サブスク・保険・水道光熱費・積立投資など、毎月発生している支払いを店舗ごとに自動抽出しています。上のお支払月フィルタに関わらず直近7ヶ月分をすべて集計します（カードの絞り込みのみ反映されます）</div>
         </div>
       </div>
       <div class="fixed-list fixed-list-grid" id="fixedList"></div>
@@ -661,7 +693,7 @@
       <div class="panel-head">
         <div>
           <div class="panel-title">予算 vs 実績</div>
-          <div class="panel-note">カテゴリごとに予算額を入力すると、超過時にアラート表示されます（この端末に保存されます）</div>
+          <div class="panel-note">「自動提案」は過去の実績から仮に計算した金額です。金額を編集して確定すると、この端末に保存されます</div>
         </div>
       </div>
       <div id="budgetList"></div>
@@ -756,6 +788,9 @@ function loadBudgets() {
 function saveBudgets(b) {
   try { localStorage.setItem('kakeibo_budgets_v1', JSON.stringify(b)); } catch (e) {}
 }
+// Categories the user has actually saved a budget for (vs. ones only holding
+// our auto-suggested default), so the UI can label unedited values as such.
+const userSetCats = new Set(Object.keys(loadBudgets()));
 let budgets = loadBudgets();
 
 // ---------------- filtering ----------------
@@ -1097,6 +1132,8 @@ function renderBudget() {
     else if (ratio >= 0.85) { status = 'warning'; badgeText = 'もうすぐ上限'; }
     const fillColor = status === 'critical' ? 'var(--critical)' : status === 'warning' ? 'var(--warning)' : 'var(--good)';
 
+    const isAuto = !userSetCats.has(cat);
+
     const row = document.createElement('div');
     row.className = 'budget-row';
     row.innerHTML = `
@@ -1107,7 +1144,8 @@ function renderBudget() {
           <span class="badge ${status}">${badgeText}</span>
         </div>
         <div class="budget-figures">
-          <span class="tabular">${yen(actual)}</span> / 月 <input class="budget-input tabular" type="number" step="1000" min="0" value="${budgetPerMonth}" data-cat="${cat}"> 円
+          <span class="tabular">${yen(actual)}</span> / 月 <input class="budget-input tabular" type="number" step="1000" min="0" value="${budgetPerMonth}" data-cat="${cat}">円
+          ${isAuto ? '<span class="auto-tag" title="過去の実績から自動計算した仮の予算額です。編集して保存すると固定されます。">自動提案</span>' : ''}
         </div>
       </div>
       <div class="budget-track"><div class="budget-fill" style="width:${Math.min(ratio,1)*100}%; background:${fillColor};"></div></div>
@@ -1120,6 +1158,7 @@ function renderBudget() {
       const cat = inp.dataset.cat;
       const v = Math.max(0, parseInt(inp.value || '0', 10));
       budgets[cat] = v;
+      userSetCats.add(cat);
       saveBudgets(budgets);
       renderBudget();
     });
@@ -1202,6 +1241,7 @@ function showPage(name, opts) {
   document.querySelectorAll('.navtab').forEach(btn => {
     btn.setAttribute('aria-selected', btn.dataset.page === name ? 'true' : 'false');
   });
+  document.getElementById('monthFilterGroup').classList.toggle('is-inactive', name === 'fixed');
   if (!opts.skipHash) {
     history.replaceState(null, '', '#' + name);
   }
