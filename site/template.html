@@ -45,6 +45,7 @@
     --card-paypay: #eb6834;
     --card-rakuten: #1baf7a;
     --card-bank: #eda100;
+    --card-yucho: #e87ba4;
 
     --cat-1: #2a78d6; /* 旅行・宿泊 */
     --cat-2: #eb6834; /* 住居費 */
@@ -85,6 +86,7 @@
       --card-paypay: #d95926;
       --card-rakuten: #199e70;
       --card-bank: #c98500;
+      --card-yucho: #d55181;
 
       --cat-1: #3987e5;
       --cat-2: #d95926;
@@ -123,6 +125,7 @@
     --card-paypay: #d95926;
     --card-rakuten: #199e70;
     --card-bank: #c98500;
+    --card-yucho: #d55181;
     --cat-1: #3987e5;
     --cat-2: #d95926;
     --cat-3: #199e70;
@@ -500,11 +503,17 @@
   .legend-list { list-style: none; margin: 0; padding: 0; flex: 1; min-width: 220px; }
   .legend-list li {
     display: flex; align-items: center; gap: 10px;
-    padding: 7px 0;
+    padding: 7px 4px;
+    margin: 0 -4px;
     font-size: 13px;
     border-bottom: 1px solid var(--line);
+    border-radius: 8px;
+    cursor: pointer;
   }
   .legend-list li:last-child { border-bottom: none; }
+  .legend-list li:hover { background: var(--bg-surface-alt); }
+  .legend-list li.is-hidden { opacity: 0.42; }
+  .legend-list li.is-hidden .sw { background: var(--ink-muted) !important; }
   .legend-list .sw { width: 10px; height: 10px; border-radius: 3px; flex: none; }
   .legend-list .name { flex: 1; font-weight: 700; color: var(--ink-primary); }
   .legend-list .amt { font-family: 'Plex Mono'; font-weight: 600; color: var(--ink-secondary); font-size: 12.5px; }
@@ -730,7 +739,7 @@
       <div class="panel-head">
         <div>
           <div class="panel-title">カテゴリ別内訳</div>
-          <div class="panel-note">選択中の期間・カードでの支出構成比</div>
+          <div class="panel-note">選択中の期間・カードでの支出構成比。項目をクリックすると表示/非表示を切り替えられます（表示中の項目だけで100%になります）</div>
         </div>
       </div>
       <div class="donut-wrap">
@@ -804,14 +813,15 @@
 
 <script>
 const TRANSACTIONS = __DATA_JSON__;
-// 三井住友=夫婦共通の家計カード、PayPay・楽天=佐野様個人、銀行引落=住信SBI代表口座からの
-// 家賃・現金など(カード決済に含まれない支出のみ。カード引落分は重複除去済み)
-const CARD_ORDER = ['三井住友カード', 'PayPayカード', '楽天カード', '銀行引落'];
+// 三井住友=夫婦共通の家計カード、PayPay・楽天=佐野様個人、銀行引落/ゆうちょ引落=
+// 各口座からの家賃・現金・保険など(カード決済に含まれない支出のみ。カード引落分は重複除去済み)
+const CARD_ORDER = ['三井住友カード', 'PayPayカード', '楽天カード', '銀行引落', 'ゆうちょ引落'];
 const CARD_COLOR_VAR = {
   '三井住友カード': '--card-sumitomo',
   'PayPayカード': '--card-paypay',
   '楽天カード': '--card-rakuten',
   '銀行引落': '--card-bank',
+  'ゆうちょ引落': '--card-yucho',
 };
 // Month list is derived from the data (not hardcoded), so new statement months
 // just show up automatically the next time site/build.py runs.
@@ -852,6 +862,7 @@ const state = {
   category: '__ALL__',
   sortKey: 'date',
   sortDir: -1,
+  hiddenCats: new Set(), // categories toggled off in the カテゴリ別内訳 donut
 };
 
 function loadBudgets() {
@@ -1153,8 +1164,12 @@ function renderDonut() {
   const slices = TOP_CATEGORIES.map(cat => ({ cat, amt: totalsByCat[cat] || 0, colorVar: CAT_COLOR_VAR[cat] }));
   const otherAmt = Object.keys(totalsByCat).filter(c => !TOP_CATEGORIES.includes(c)).reduce((s, c) => s + totalsByCat[c], 0);
   if (otherAmt > 0) slices.push({ cat: 'その他', amt: otherAmt, colorVar: OTHER_COLOR_VAR });
-  const total = slices.reduce((s, x) => s + x.amt, 0);
-  const nonZero = slices.filter(s => s.amt > 0).sort((a,b) => b.amt - a.amt);
+
+  // Hidden categories drop out of both the chart AND the percentage base, so
+  // whatever stays checked always adds up to 100% (not 100% of everything).
+  const shown = slices.filter(s => !state.hiddenCats.has(s.cat));
+  const total = shown.reduce((s, x) => s + x.amt, 0);
+  const nonZero = shown.filter(s => s.amt > 0).sort((a,b) => b.amt - a.amt);
 
   const size = 220, cx = size/2, cy = size/2, rOuter = 96, rInner = 62;
   let angle = -90;
@@ -1175,22 +1190,39 @@ function renderDonut() {
     angle += sweep;
   });
 
-  const svg = `<svg viewBox="0 0 ${size} ${size}" width="220" height="220" role="img" aria-label="カテゴリ別支出構成比">
+  const svg = `<svg viewBox="0 0 ${size} ${size}" width="220" height="220" role="img" aria-label="カテゴリ別支出構成比（表示中の項目のみで100%）">
     ${arcs}
     <text x="${cx}" y="${cy-6}" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink-muted)">合計</text>
     <text x="${cx}" y="${cy+16}" text-anchor="middle" font-size="17" font-weight="700" font-family="Plex Mono" class="donut-center-label" fill="var(--ink-primary)">${yenShort(total)}</text>
   </svg>`;
   document.getElementById('donutChart').innerHTML = svg;
 
+  // Legend lists every category (sorted by amount, zero-amount ones last) so a
+  // hidden or zero category can still be found and re-enabled.
+  const allSorted = slices.slice().sort((a, b) => b.amt - a.amt);
   const legend = document.getElementById('donutLegend');
-  legend.innerHTML = nonZero.map(s => `
-    <li>
+  legend.innerHTML = allSorted.map(s => {
+    const hidden = state.hiddenCats.has(s.cat);
+    const pct = (!hidden && total > 0) ? (s.amt / total * 100).toFixed(1) + '%' : '—';
+    return `
+    <li class="${hidden ? 'is-hidden' : ''}" data-cat="${s.cat}" role="button" tabindex="0" aria-pressed="${!hidden}">
       <span class="sw" style="background:${cssVar(s.colorVar)}"></span>
       <span class="name">${s.cat}</span>
       <span class="amt tabular">${yen(s.amt)}</span>
-      <span class="pct tabular">${total > 0 ? (s.amt/total*100).toFixed(1) : '0.0'}%</span>
-    </li>
-  `).join('');
+      <span class="pct tabular">${pct}</span>
+    </li>`;
+  }).join('');
+
+  legend.querySelectorAll('li').forEach(li => {
+    const toggle = () => {
+      const cat = li.dataset.cat;
+      if (state.hiddenCats.has(cat)) state.hiddenCats.delete(cat);
+      else state.hiddenCats.add(cat);
+      renderDonut();
+    };
+    li.addEventListener('click', toggle);
+    li.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+  });
 }
 
 // ---------------- fixed costs ----------------

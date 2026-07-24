@@ -17,6 +17,8 @@ with open(os.path.join(DATA, 'rakuten_transactions.json'), encoding='utf-8') as 
     rakuten = json.load(f)
 bank_path = os.path.join(DATA, 'bank_transactions.json')
 bank = json.load(open(bank_path, encoding='utf-8')) if os.path.exists(bank_path) else []
+yucho_path = os.path.join(DATA, 'yucho_transactions.json')
+yucho = json.load(open(yucho_path, encoding='utf-8')) if os.path.exists(yucho_path) else []
 
 # unify category taxonomy across the three cards
 SUMITOMO_MAP = {
@@ -83,6 +85,14 @@ for r in bank:
     unified.append({
         'date': r['date'], 'name': r['name'], 'amount': r['amount'],
         'card': '銀行引落', 'pay_month': r['pay_month'],
+        'category': r['category'],
+    })
+# Yucho items already de-duplicated against the cards in scripts/parse_yucho.py
+# (salary/bonus, the SBI-funding transfer, and card-payment debits are excluded there).
+for r in yucho:
+    unified.append({
+        'date': r['date'], 'name': r['name'], 'amount': r['amount'],
+        'card': 'ゆうちょ引落', 'pay_month': r['pay_month'],
         'category': r['category'],
     })
 
