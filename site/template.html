@@ -930,6 +930,7 @@ function buildPeriodControl() {
       b.onclick = () => {
         if (state.months.has(k) && state.months.size === 1) setMonths(MONTH_KEYS);
         else setMonths([k]);
+        closePopover();
       };
       row.appendChild(b);
     });
