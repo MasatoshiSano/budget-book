@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>家計簿 — 2026年 支出ダッシュボード</title>
 <style>
   @font-face {
@@ -138,7 +139,7 @@
   }
 
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
+  html, body { margin: 0; padding: 0; overflow-x: hidden; }
   body {
     background: var(--bg-page);
     color: var(--ink-primary);
@@ -292,6 +293,7 @@
     padding: 22px 24px;
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--line);
+    min-width: 0;
   }
   .stat-tile.hero-tile {
     background: linear-gradient(160deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 78%, black 10%) 100%);
@@ -309,12 +311,12 @@
   .stat-value {
     font-family: 'Plex Mono';
     font-weight: 600;
-    font-size: 30px;
+    font-size: clamp(19px, 5.5vw, 30px);
     margin-top: 10px;
     letter-spacing: -0.01em;
     text-wrap: balance;
   }
-  .hero-tile .stat-value { font-size: 34px; }
+  .hero-tile .stat-value { font-size: clamp(21px, 6vw, 34px); }
   .stat-foot {
     margin-top: 10px;
     font-size: 12.5px;
