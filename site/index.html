@@ -1083,6 +1083,29 @@
     <section class="panel">
       <div class="panel-head">
         <div>
+          <div class="panel-title">生活費口座（住信SBI）への振込額</div>
+          <div class="panel-note">旅行などイレギュラーな支出を除いた、毎月の生活費の目安</div>
+        </div>
+      </div>
+      <div class="table-scroll strategy-table-wrap">
+        <table class="strategy-table">
+          <thead><tr><th></th><th>佐野様</th><th>奥様</th><th>合計</th></tr></thead>
+          <tbody>
+            <tr><td>現状（実績）</td><td class="tabular">180,000円</td><td class="tabular">130,000円</td><td class="tabular">310,000円</td></tr>
+            <tr><td>推奨（旅行除く）</td><td class="tabular hi">100,000円</td><td class="tabular hi">60,000円</td><td class="tabular hi">160,000円</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="trend-svg-wrap"><div id="livingCostChart"></div></div>
+      <div class="note-box">
+        三井住友カードの旅行関連支出を除いた6ヶ月平均は<b>144,799円/月</b>。これにATM現金（月平均7,143円）を足した<b>約152,000円/月</b>が実質的な生活費ベースライン。少し余裕を持たせて目標合計を<b>160,000円/月</b>とし、額面年収比（900万：550万 ≈ 62：38）で按分すると佐野様100,000円・奥様60,000円になる。<br>
+        現状の310,000円より<b>約150,000円少なくて済む</b>のは、5/23の引っ越しで旧居の家賃（192,902円/月）がこの口座を通らなくなったため。旅行費用はこの口座とは別に、専用の積立で用意するのがおすすめ。
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
           <div class="panel-title">アクションプラン</div>
           <div class="panel-note">チェックした内容はこの端末に保存されます</div>
         </div>
@@ -2028,6 +2051,48 @@ function renderYearChart() {
     `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="初年度と2年目以降の還元率比較">${svg}</svg>`;
 }
 
+function renderLivingCostChart() {
+  const groups = [
+    { label: '現状（実績）', parts: [
+      { who: '佐野様', amt: 180000, colorVar: '--cat-1' },
+      { who: '奥様', amt: 130000, colorVar: '--cat-5' },
+    ]},
+    { label: '推奨（旅行除く）', parts: [
+      { who: '佐野様', amt: 100000, colorVar: '--cat-1' },
+      { who: '奥様', amt: 60000, colorVar: '--cat-5' },
+    ]},
+  ];
+  const W = 900, H = 220, padL = 40, padR = 20, padT = 20, padB = 40;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+  const maxTotal = Math.max(...groups.map(g => g.parts.reduce((s,p)=>s+p.amt,0)));
+  const bw = plotW / groups.length;
+  const barW = Math.min(bw * 0.45, 140);
+
+  let svg = '';
+  for (let i = 0; i <= 4; i++) {
+    const v = maxTotal * i / 4;
+    const y = padT + plotH - (v/maxTotal)*plotH;
+    svg += `<line x1="${padL}" y1="${y}" x2="${W-padR}" y2="${y}" stroke="var(--line)" stroke-width="1"/>`;
+    svg += `<text x="${padL-10}" y="${y+4}" text-anchor="end" font-size="10.5" fill="var(--ink-muted)" font-family="Plex Mono">${yenShort(v)}</text>`;
+  }
+  groups.forEach((g, i) => {
+    const cx = padL + bw*i + bw/2;
+    let yCursor = padT + plotH;
+    const total = g.parts.reduce((s,p)=>s+p.amt,0);
+    g.parts.forEach(p => {
+      const h = (p.amt/maxTotal)*plotH;
+      const y = yCursor - h;
+      svg += `<rect x="${cx-barW/2}" y="${y}" width="${barW}" height="${h}" fill="${cssVar(p.colorVar)}" stroke="var(--bg-surface)" stroke-width="2"/>`;
+      svg += `<text x="${cx}" y="${y+h/2+4}" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">${p.who} ${yenShort(p.amt)}</text>`;
+      yCursor -= h;
+    });
+    svg += `<text x="${cx}" y="${padT+plotH-total/maxTotal*plotH-12}" text-anchor="middle" font-size="13" font-weight="800" font-family="Plex Mono" fill="var(--ink-primary)">${yen(total)}</text>`;
+    svg += `<text x="${cx}" y="${H-padB+18}" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink-secondary)">${g.label}</text>`;
+  });
+  document.getElementById('livingCostChart').innerHTML =
+    `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="生活費口座への振込額 現状と推奨の比較">${svg}</svg>`;
+}
+
 const ACTION_PLAN = [
   { group: '7月中（今すぐ）', items: [
     'dカード（年会費無料）を申し込む',
@@ -2094,6 +2159,7 @@ function renderStrategy() {
   renderEffRateChart();
   renderConflictChart();
   renderYearChart();
+  renderLivingCostChart();
   renderActionPlan();
 }
 
