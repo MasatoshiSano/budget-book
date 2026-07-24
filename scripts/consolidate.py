@@ -15,6 +15,8 @@ with open(os.path.join(DATA, 'paypay_transactions.json'), encoding='utf-8') as f
     paypay = json.load(f)
 with open(os.path.join(DATA, 'rakuten_transactions.json'), encoding='utf-8') as f:
     rakuten = json.load(f)
+bank_path = os.path.join(DATA, 'bank_transactions.json')
+bank = json.load(open(bank_path, encoding='utf-8')) if os.path.exists(bank_path) else []
 
 # unify category taxonomy across the three cards
 SUMITOMO_MAP = {
@@ -74,6 +76,14 @@ for r in rakuten:
         'date': r['use_date'].replace('/', '-'), 'name': r['name'], 'amount': r['amount'],
         'card': '楽天カード', 'pay_month': pay_month_key(RAKUTEN_PAY_DATES[r['pay_month_label']]),
         'category': RAKUTEN_MAP.get(r['category'], 'その他'),
+    })
+# Bank items already de-duplicated against the 3 cards in scripts/parse_bank.py
+# (card-payment debits, income, and interpersonal transfers are excluded there).
+for r in bank:
+    unified.append({
+        'date': r['date'], 'name': r['name'], 'amount': r['amount'],
+        'card': '銀行引落', 'pay_month': r['pay_month'],
+        'category': r['category'],
     })
 
 # sanity checks

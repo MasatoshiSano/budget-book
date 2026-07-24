@@ -44,15 +44,16 @@
     --card-sumitomo: #2a78d6;
     --card-paypay: #eb6834;
     --card-rakuten: #1baf7a;
+    --card-bank: #eda100;
 
     --cat-1: #2a78d6; /* 旅行・宿泊 */
-    --cat-2: #eb6834; /* 交通費 */
-    --cat-3: #1baf7a; /* 通信費・サブスク */
-    --cat-4: #eda100; /* 外食・カフェ */
-    --cat-5: #e87ba4; /* 保険 */
-    --cat-6: #008300; /* 食費 */
-    --cat-7: #4a3aa7; /* ショッピングモール・百貨店 */
-    --cat-8: #e34948; /* ネットショッピング */
+    --cat-2: #eb6834; /* 住居費 */
+    --cat-3: #1baf7a; /* 交通費 */
+    --cat-4: #eda100; /* 通信費・サブスク */
+    --cat-5: #e87ba4; /* 外食・カフェ */
+    --cat-6: #008300; /* 保険 */
+    --cat-7: #4a3aa7; /* 食費（スーパー・コンビニ） */
+    --cat-8: #e34948; /* ショッピングモール・百貨店 */
     --cat-other: #9a9d94; /* その他 */
 
     --good: #0ca30c;
@@ -83,6 +84,7 @@
       --card-sumitomo: #3987e5;
       --card-paypay: #d95926;
       --card-rakuten: #199e70;
+      --card-bank: #c98500;
 
       --cat-1: #3987e5;
       --cat-2: #d95926;
@@ -120,6 +122,7 @@
     --card-sumitomo: #3987e5;
     --card-paypay: #d95926;
     --card-rakuten: #199e70;
+    --card-bank: #c98500;
     --cat-1: #3987e5;
     --cat-2: #d95926;
     --cat-3: #199e70;
@@ -327,13 +330,15 @@
 
   /* ---------------- hero ---------------- */
   .hero {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 16px;
     margin: 28px 0;
   }
-  @media (max-width: 880px) {
-    .hero { grid-template-columns: 1fr 1fr; }
+  .hero-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
   }
   .stat-tile {
     background: var(--bg-surface);
@@ -698,8 +703,8 @@
         </div>
       </div>
       <div class="filter-group">
-        <span class="filter-label">カード</span>
-        <div class="chip-row" id="cardChips" role="group" aria-label="カード"></div>
+        <span class="filter-label" title="カード引落は含めず、家賃や現金などカードに含まれない支出のみを集計しています">支払い元</span>
+        <div class="chip-row" id="cardChips" role="group" aria-label="支払い元（カード・銀行引落）"></div>
       </div>
     </div>
   </div>
@@ -740,7 +745,7 @@
       <div class="panel-head">
         <div>
           <div class="panel-title">固定費一覧</div>
-          <div class="panel-note">サブスク・保険・水道光熱費・積立投資など、毎月発生している支払いを店舗ごとに自動抽出しています。上のお支払月フィルタに関わらず直近7ヶ月分をすべて集計します（カードの絞り込みのみ反映されます）</div>
+          <div class="panel-note">家賃・サブスク・保険・水道光熱費・積立投資など、毎月発生している支払いを自動抽出しています。上のお支払月フィルタに関わらず直近7ヶ月分をすべて集計します（支払い元の絞り込みのみ反映されます）</div>
         </div>
       </div>
       <div class="fixed-list fixed-list-grid" id="fixedList"></div>
@@ -792,18 +797,21 @@
 </div>
 
 <footer>
-  三井住友カード・PayPayカード・楽天カードの明細から作成。新しい月のPDF/CSVをアップロードすると、このダッシュボードのデータが更新されます。最終更新: __GENERATED_AT__
+  三井住友カード・PayPayカード・楽天カードの明細と、住信SBIネット銀行（代表口座）の入出金明細から作成。カード引落と重複する銀行取引は除外済みです。新しい月のPDF/CSVをアップロードすると、このダッシュボードのデータが更新されます。最終更新: __GENERATED_AT__
 </footer>
 
 <div class="tooltip" id="tooltip"></div>
 
 <script>
 const TRANSACTIONS = __DATA_JSON__;
-const CARD_ORDER = ['三井住友カード', 'PayPayカード', '楽天カード'];
+// 三井住友=夫婦共通の家計カード、PayPay・楽天=佐野様個人、銀行引落=住信SBI代表口座からの
+// 家賃・現金など(カード決済に含まれない支出のみ。カード引落分は重複除去済み)
+const CARD_ORDER = ['三井住友カード', 'PayPayカード', '楽天カード', '銀行引落'];
 const CARD_COLOR_VAR = {
   '三井住友カード': '--card-sumitomo',
   'PayPayカード': '--card-paypay',
   '楽天カード': '--card-rakuten',
+  '銀行引落': '--card-bank',
 };
 // Month list is derived from the data (not hardcoded), so new statement months
 // just show up automatically the next time site/build.py runs.
@@ -815,16 +823,16 @@ function monthShortLabel(key) { return monthNum(key) + '月'; }
 function monthFullLabel(key) {
   return MONTH_YEARS.length > 1 ? `${monthYear(key)}年${monthShortLabel(key)}` : monthShortLabel(key);
 }
-const TOP_CATEGORIES = ['旅行・宿泊','交通費','通信費・サブスク','外食・カフェ','保険','食費（スーパー・コンビニ）','ショッピングモール・百貨店','ネットショッピング'];
+const TOP_CATEGORIES = ['旅行・宿泊','住居費','交通費','通信費・サブスク','外食・カフェ','保険','食費（スーパー・コンビニ）','ショッピングモール・百貨店'];
 const CAT_COLOR_VAR = {
   '旅行・宿泊': '--cat-1',
-  '交通費': '--cat-2',
-  '通信費・サブスク': '--cat-3',
-  '外食・カフェ': '--cat-4',
-  '保険': '--cat-5',
-  '食費（スーパー・コンビニ）': '--cat-6',
-  'ショッピングモール・百貨店': '--cat-7',
-  'ネットショッピング': '--cat-8',
+  '住居費': '--cat-2',
+  '交通費': '--cat-3',
+  '通信費・サブスク': '--cat-4',
+  '外食・カフェ': '--cat-5',
+  '保険': '--cat-6',
+  '食費（スーパー・コンビニ）': '--cat-7',
+  'ショッピングモール・百貨店': '--cat-8',
 };
 const OTHER_COLOR_VAR = '--cat-other';
 
@@ -1030,6 +1038,8 @@ function renderHero() {
   `;
   hero.appendChild(heroTile);
 
+  const cardsWrap = document.createElement('div');
+  cardsWrap.className = 'hero-cards';
   CARD_ORDER.forEach(c => {
     const tile = document.createElement('div');
     tile.className = 'stat-tile';
@@ -1042,8 +1052,9 @@ function renderHero() {
       <div class="stat-value tabular" style="font-size:22px;">${yen(byCard[c])}</div>
       <div class="stat-foot">全体の ${pct.toFixed(1)}%</div>
     `;
-    hero.appendChild(tile);
+    cardsWrap.appendChild(tile);
   });
+  hero.appendChild(cardsWrap);
 }
 
 // ---------------- trend chart (stacked bars) ----------------
@@ -1183,7 +1194,7 @@ function renderDonut() {
 
 // ---------------- fixed costs ----------------
 function renderFixed() {
-  const FIXED_CATS = new Set(['保険','通信費・サブスク','水道光熱費','投資・貯蓄']);
+  const FIXED_CATS = new Set(['保険','通信費・サブスク','水道光熱費','投資・貯蓄','住居費']);
   const rows = TRANSACTIONS.filter(t => FIXED_CATS.has(t.category) && state.cards.has(t.card));
   const groups = {};
   rows.forEach(t => {
