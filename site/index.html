@@ -547,13 +547,39 @@
 
   /* ---------------- fixed costs ---------------- */
   .fixed-list { display: flex; flex-direction: column; }
-  .fixed-list-grid {
+  .fixed-cat-group { margin-bottom: 24px; }
+  .fixed-cat-group:last-child { margin-bottom: 0; }
+  .fixed-cat-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    padding-bottom: 8px;
+    margin-bottom: 4px;
+    border-bottom: 2px solid var(--line-strong);
+  }
+  .fixed-cat-title {
+    font-weight: 800;
+    font-size: 13.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .fixed-cat-title .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+  .fixed-cat-figures {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--ink-muted);
+    font-family: 'Plex Mono';
+    white-space: nowrap;
+  }
+  .fixed-cat-rows {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 32px;
   }
   @media (max-width: 760px) {
-    .fixed-list-grid { grid-template-columns: 1fr; }
+    .fixed-cat-rows { grid-template-columns: 1fr; }
   }
   .fixed-row {
     display: flex;
@@ -563,7 +589,6 @@
     padding: 12px 0;
     border-bottom: 1px solid var(--line);
   }
-  .fixed-list:not(.fixed-list-grid) .fixed-row:last-child { border-bottom: none; }
   .fixed-left { min-width: 0; }
   .fixed-name {
     font-weight: 700; font-size: 13px;
@@ -794,7 +819,7 @@
           <div class="panel-note">家賃・サブスク・保険・水道光熱費・積立投資など、毎月発生している支払いを自動抽出しています。上のお支払月フィルタに関わらず直近7ヶ月分をすべて集計します（支払い元の絞り込みのみ反映されます）</div>
         </div>
       </div>
-      <div class="fixed-list fixed-list-grid" id="fixedList"></div>
+      <div class="fixed-list" id="fixedList"></div>
     </section>
   </div>
 
@@ -1365,24 +1390,46 @@ function renderDonut() {
 }
 
 // ---------------- fixed costs ----------------
+const FIXED_CATS = new Set(['保険','通信費・サブスク','水道光熱費','投資・貯蓄','住居費']);
+// These show up in a "fixed" category (通信費・サブスク) but aren't actually
+// committed monthly costs — occasional rentals/rides/top-ups, not subscriptions.
+// Treated as 変動費 (variable spend): excluded from the fixed-cost list, still
+// counted normally everywhere else (category trend, donut, budget).
+const FIXED_EXCLUDE_NAMES = new Set([
+  'Ｒｅｎｔｉｏ',
+  'ＣＯＮＥ',
+  'ＧＯアプリ（プレミアム）',
+  'ＧＯ（タクシーアプリ）＊アプリ配⾞',
+  'ｐｏｖｏご利用料金',
+]);
+function isFixedCost(t) {
+  return FIXED_CATS.has(t.category) && !FIXED_EXCLUDE_NAMES.has(t.name);
+}
+
 function renderFixed() {
-  const FIXED_CATS = new Set(['保険','通信費・サブスク','水道光熱費','投資・貯蓄','住居費']);
-  const rows = TRANSACTIONS.filter(t => FIXED_CATS.has(t.category) && state.cards.has(t.card));
+  const rows = TRANSACTIONS.filter(t => isFixedCost(t) && state.cards.has(t.card));
   const groups = {};
   rows.forEach(t => {
     const key = t.card + '||' + t.name;
     if (!groups[key]) groups[key] = { name: t.name, card: t.card, category: t.category, byMonth: {} };
     groups[key].byMonth[t.pay_month] = (groups[key].byMonth[t.pay_month] || 0) + t.amount;
   });
-  const list = Object.values(groups).map(g => {
+  const items = Object.values(groups).map(g => {
     const vals = MONTH_KEYS.map(m => g.byMonth[m] || 0);
     const total = vals.reduce((a,b) => a+b, 0);
     const count = vals.filter(v => v > 0).length;
     return { ...g, vals, total, avg: total / Math.max(count,1) };
-  }).sort((a,b) => b.total - a.total);
+  });
 
   const wrap = document.getElementById('fixedList');
-  if (list.length === 0) { wrap.innerHTML = '<div class="panel-note">該当する固定費はありません</div>'; return; }
+  if (items.length === 0) { wrap.innerHTML = '<div class="panel-note">該当する固定費はありません</div>'; return; }
+
+  // Group by category, categories ordered by their combined total (desc);
+  // items inside a category ordered the same way.
+  const byCat = {};
+  items.forEach(g => { (byCat[g.category] = byCat[g.category] || []).push(g); });
+  const catOrder = Object.keys(byCat).sort((a, b) =>
+    byCat[b].reduce((s,g)=>s+g.total,0) - byCat[a].reduce((s,g)=>s+g.total,0));
 
   const rowHtml = (g) => {
     const max = Math.max(...g.vals, 1);
@@ -1397,7 +1444,7 @@ function renderFixed() {
       <div class="fixed-row">
         <div class="fixed-left">
           <div class="fixed-name" title="${g.name}">${g.name}</div>
-          <div class="fixed-meta"><span class="fixed-cat-pill">${g.category}</span>${g.card.replace('カード','')} ・ 7ヶ月合計 ${yen(g.total)}</div>
+          <div class="fixed-meta">${g.card.replace('カード','')} ・ 7ヶ月合計 ${yen(g.total)}</div>
         </div>
         <div class="fixed-right">
           <svg width="48" height="20" viewBox="0 0 48 20" aria-hidden="true">
@@ -1410,7 +1457,20 @@ function renderFixed() {
     `;
   };
 
-  wrap.innerHTML = list.map(rowHtml).join('');
+  wrap.innerHTML = catOrder.map(cat => {
+    const catItems = byCat[cat].slice().sort((a,b) => b.total - a.total);
+    const catTotal = catItems.reduce((s,g) => s+g.total, 0);
+    const colorVar = CAT_COLOR_VAR[cat] || OTHER_COLOR_VAR;
+    return `
+      <div class="fixed-cat-group">
+        <div class="fixed-cat-header">
+          <div class="fixed-cat-title"><span class="dot" style="background:${cssVar(colorVar)}"></span>${cat}</div>
+          <div class="fixed-cat-figures tabular">7ヶ月合計 ${yen(catTotal)}</div>
+        </div>
+        <div class="fixed-cat-rows">${catItems.map(rowHtml).join('')}</div>
+      </div>
+    `;
+  }).join('');
 }
 
 // ---------------- budget ----------------
