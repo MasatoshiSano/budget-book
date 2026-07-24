@@ -803,6 +803,20 @@
   }
   .note-box b { color: var(--ink-primary); }
 
+  .basis-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; margin-top: 14px; }
+  @media (max-width: 760px) { .basis-grid { grid-template-columns: 1fr; row-gap: 20px; } }
+  .basis-subhead { font-size: 12px; font-weight: 800; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 8px; }
+  table.mini-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  table.mini-table td { padding: 6px 2px; border-bottom: 1px solid var(--line); color: var(--ink-secondary); }
+  table.mini-table td:last-child { text-align: right; font-family: 'Plex Mono'; font-weight: 700; color: var(--ink-primary); white-space: nowrap; }
+  table.mini-table tfoot td { border-bottom: none; border-top: 2px solid var(--line-strong); font-weight: 800; color: var(--ink-primary); padding-top: 8px; }
+  .basis-row { padding: 6px 0; }
+  .basis-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 12px; margin-bottom: 5px; }
+  .basis-name { display: flex; align-items: center; gap: 7px; font-weight: 600; color: var(--ink-secondary); }
+  .basis-amt { font-family: 'Plex Mono'; font-weight: 700; color: var(--ink-primary); white-space: nowrap; }
+  .basis-track { height: 7px; border-radius: 4px; background: var(--bg-inset); overflow: hidden; }
+  .basis-fill { height: 100%; border-radius: 4px; }
+
   .source-list { list-style: none; margin: 0 0 14px; padding: 0; }
   .source-list li { padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 12.5px; }
   .source-list li:last-child { border-bottom: none; }
@@ -1097,8 +1111,83 @@
         </table>
       </div>
       <div class="trend-svg-wrap"><div id="livingCostChart"></div></div>
+
+      <div class="basis-grid">
+        <div>
+          <div class="basis-subhead">三井住友カード 月次実績（旅行関連支出を除く・2026年1〜6月）</div>
+          <table class="mini-table">
+            <tbody>
+              <tr><td>1月</td><td>238,314円</td></tr>
+              <tr><td>2月</td><td>110,839円</td></tr>
+              <tr><td>3月</td><td>70,479円</td></tr>
+              <tr><td>4月</td><td>179,064円</td></tr>
+              <tr><td>5月</td><td>159,905円</td></tr>
+              <tr><td>6月</td><td>110,195円</td></tr>
+            </tbody>
+            <tfoot><tr><td>6ヶ月平均</td><td>144,799円</td></tr></tfoot>
+          </table>
+          <div class="panel-note" style="margin-top:10px;">7月は月の途中（7/24時点）のため平均から除外。1月・4月は旅行費用を除いてもふるさと納税や季節家電などで高め。</div>
+        </div>
+        <div>
+          <div class="basis-subhead">内訳（月平均・カテゴリ別）</div>
+
+          <div class="basis-row">
+            <div class="basis-top">
+              <span class="basis-name"><span class="card-dot" style="background:var(--cat-6)"></span>保険</span>
+              <span class="basis-amt">27,710円 <span style="color:var(--ink-muted); font-weight:600;">(19.1%)</span></span>
+            </div>
+            <div class="basis-track"><div class="basis-fill" style="width:19.1%; background:var(--cat-6);"></div></div>
+          </div>
+          <div class="basis-row">
+            <div class="basis-top">
+              <span class="basis-name"><span class="card-dot" style="background:var(--cat-5)"></span>外食・カフェ</span>
+              <span class="basis-amt">25,826円 <span style="color:var(--ink-muted); font-weight:600;">(17.8%)</span></span>
+            </div>
+            <div class="basis-track"><div class="basis-fill" style="width:17.8%; background:var(--cat-5);"></div></div>
+          </div>
+          <div class="basis-row">
+            <div class="basis-top">
+              <span class="basis-name"><span class="card-dot" style="background:var(--cat-4)"></span>ネットショッピング</span>
+              <span class="basis-amt">22,215円 <span style="color:var(--ink-muted); font-weight:600;">(15.3%)</span></span>
+            </div>
+            <div class="basis-track"><div class="basis-fill" style="width:15.3%; background:var(--cat-4);"></div></div>
+          </div>
+          <div class="basis-row">
+            <div class="basis-top">
+              <span class="basis-name"><span class="card-dot" style="background:var(--cat-2)"></span>水道光熱費</span>
+              <span class="basis-amt">16,036円 <span style="color:var(--ink-muted); font-weight:600;">(11.1%)</span></span>
+            </div>
+            <div class="basis-track"><div class="basis-fill" style="width:11.1%; background:var(--cat-2);"></div></div>
+          </div>
+          <div class="basis-row">
+            <div class="basis-top">
+              <span class="basis-name"><span class="card-dot" style="background:var(--cat-3)"></span>ふるさと納税</span>
+              <span class="basis-amt">14,167円 <span style="color:var(--ink-muted); font-weight:600;">(9.8%)</span></span>
+            </div>
+            <div class="basis-track"><div class="basis-fill" style="width:9.8%; background:var(--cat-3);"></div></div>
+          </div>
+          <div class="basis-row">
+            <div class="basis-top">
+              <span class="basis-name"><span class="card-dot" style="background:var(--cat-7)"></span>食費（スーパー・コンビニ）</span>
+              <span class="basis-amt">12,897円 <span style="color:var(--ink-muted); font-weight:600;">(8.9%)</span></span>
+            </div>
+            <div class="basis-track"><div class="basis-fill" style="width:8.9%; background:var(--cat-7);"></div></div>
+          </div>
+          <div class="basis-row">
+            <div class="basis-top">
+              <span class="basis-name"><span class="card-dot" style="background:var(--cat-other)"></span>その他（諸費用）</span>
+              <span class="basis-amt">25,948円 <span style="color:var(--ink-muted); font-weight:600;">(17.9%)</span></span>
+            </div>
+            <div class="basis-track"><div class="basis-fill" style="width:17.9%; background:var(--cat-other);"></div></div>
+          </div>
+        </div>
+      </div>
+
       <div class="note-box">
-        三井住友カードの旅行関連支出を除いた6ヶ月平均は<b>144,799円/月</b>。これにATM現金（月平均7,143円）を足した<b>約152,000円/月</b>が実質的な生活費ベースライン。少し余裕を持たせて目標合計を<b>160,000円/月</b>とし、額面年収比（900万：550万 ≈ 62：38）で按分すると佐野様100,000円・奥様60,000円になる。<br>
+        <b>① カード実績ベースライン：</b>三井住友カード（夫婦共有）の旅行関連支出を除いた6ヶ月平均は<b>144,799円/月</b>（上表）。<br>
+        <b>② 現金分を加算：</b>住信SBI口座から引き出したATM現金は2〜7月の7ヶ月で合計50,000円（月平均<b>7,143円</b>）。①＋②で<b>約152,000円/月</b>が実質的な生活費ベースライン。<br>
+        <b>③ 目標額に余裕を持たせる：</b>変動費の月ブレを吸収できるよう約8,000円のバッファを乗せ、目標合計を<b>160,000円/月</b>に設定。<br>
+        <b>④ 夫婦で按分：</b>額面年収（佐野様900万円・奥様550万円、合計1,450万円）の比率で按分すると佐野様62.1%・奥様37.9%。160,000円に掛けると佐野様99,310円・奥様60,690円となり、キリの良い数字に丸めて<b>佐野様100,000円・奥様60,000円</b>（合計160,000円は維持）。<br>
         現状の310,000円より<b>約150,000円少なくて済む</b>のは、5/23の引っ越しで旧居の家賃（192,902円/月）がこの口座を通らなくなったため。旅行費用はこの口座とは別に、専用の積立で用意するのがおすすめ。
       </div>
     </section>
