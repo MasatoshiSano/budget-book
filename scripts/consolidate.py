@@ -41,34 +41,40 @@ RAKUTEN_MAP = {
     'その他': 'その他',
 }
 
-FIXED_CATEGORIES = {'保険', '通信費・サブスク', '水道光熱費', '投資・貯蓄'}
-FIXED_NAME_HINTS = ['プライム会費', 'フェリカポケット', 'ＧＯアプリ', 'モバイル', 'ｍｏｂｉｌｅ',
-                     'ＮＥＴＦＬＩＸ', 'ﾈｯﾄﾌﾘｯｸｽ', 'ＧＯＯＧＬＥ', 'ＣＬＡＵＤＥ', 'ＡＮＴＨＲＯＰＩＣ',
-                     'ｃｈｏｃｏＺＡＰ', 'レンタルサーバー', '楽天キャッシュ']
+# pay_month is stored as a sortable "YYYY-MM" key (not a bare "N月" label) so the
+# site can derive however many month chips/groups it needs straight from the data,
+# instead of a hardcoded month list that has to be hand-edited every statement cycle.
+# Sumitomo/PayPay rows carry an exact pay_date already; Rakuten doesn't, so it's
+# reconstructed here from the known 2026 statement dates (see scripts/parse_rakuten.py).
+RAKUTEN_PAY_DATES = {
+    '1月': '2026-01-27', '2月': '2026-02-27', '3月': '2026-03-27', '4月': '2026-04-27',
+    '5月': '2026-05-27', '6月': '2026-06-29', '7月': '2026-07-27',
+}
+
+def pay_month_key(pay_date_str):
+    # accepts 'YYYY-MM-DD' or 'YYYY/M/D' (PayPay's dates aren't zero-padded)
+    y, m, _ = pay_date_str.replace('/', '-').split('-')
+    return f'{y}-{int(m):02d}'
 
 unified = []
 for r in sumitomo:
     unified.append({
         'date': r['use_date'], 'name': r['name'], 'amount': r['amount'],
-        'card': '三井住友カード', 'pay_month': r['pay_month_label'],
+        'card': '三井住友カード', 'pay_month': pay_month_key(r['pay_date']),
         'category': SUMITOMO_MAP.get(r['category'], 'その他'),
     })
 for r in paypay:
     unified.append({
         'date': r['use_date'].replace('/', '-'), 'name': r['name'], 'amount': r['amount'],
-        'card': 'PayPayカード', 'pay_month': r['pay_month_label'],
+        'card': 'PayPayカード', 'pay_month': pay_month_key(r['pay_date']),
         'category': PAYPAY_MAP.get(r['category'], 'その他'),
     })
 for r in rakuten:
     unified.append({
         'date': r['use_date'].replace('/', '-'), 'name': r['name'], 'amount': r['amount'],
-        'card': '楽天カード', 'pay_month': r['pay_month_label'],
+        'card': '楽天カード', 'pay_month': pay_month_key(RAKUTEN_PAY_DATES[r['pay_month_label']]),
         'category': RAKUTEN_MAP.get(r['category'], 'その他'),
     })
-
-for t in unified:
-    is_fixed = t['category'] in FIXED_CATEGORIES
-    t['is_fixed'] = is_fixed
 
 # sanity checks
 from collections import Counter, defaultdict

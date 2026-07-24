@@ -277,6 +277,54 @@
     vertical-align: middle;
   }
 
+  /* ---------------- period control ---------------- */
+  .period-control { position: relative; }
+  .period-trigger {
+    appearance: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    background: var(--bg-inset);
+    color: var(--ink-primary);
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 12.5px;
+    padding: 9px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .period-trigger svg { color: var(--ink-muted); flex: none; }
+  .period-trigger[aria-expanded="true"] {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+  .period-trigger[aria-expanded="true"] svg { color: var(--accent-ink); transform: rotate(180deg); }
+  .period-popover {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 30;
+    background: var(--bg-surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    padding: 14px;
+    width: max-content;
+    max-width: min(360px, 88vw);
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  .period-presets { margin-bottom: 10px; }
+  .period-year-group + .period-year-group { margin-top: 10px; }
+  .period-year-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--ink-muted);
+    margin: 0 2px 6px;
+  }
+
   /* ---------------- hero ---------------- */
   .hero {
     display: grid;
@@ -638,7 +686,16 @@
     <div class="topbar-controls">
       <div class="filter-group" id="monthFilterGroup">
         <span class="filter-label" title="カード会社の請求日が属する月。例えば「1月」は1月に引き落とされた分で、11〜12月の利用分を含みます。">お支払月</span>
-        <div class="chip-row" id="monthChips" role="group" aria-label="お支払月（請求月）"></div>
+        <div class="period-control">
+          <button class="period-trigger" id="periodTrigger" type="button" aria-haspopup="true" aria-expanded="false">
+            <span id="periodTriggerLabel">全期間</span>
+            <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="period-popover" id="periodPopover" role="group" aria-label="お支払月（請求月）の絞り込み" hidden>
+            <div class="period-presets chip-row" id="periodPresets"></div>
+            <div id="periodYears"></div>
+          </div>
+        </div>
       </div>
       <div class="filter-group">
         <span class="filter-label">カード</span>
@@ -748,7 +805,16 @@ const CARD_COLOR_VAR = {
   'PayPayカード': '--card-paypay',
   '楽天カード': '--card-rakuten',
 };
-const MONTH_ORDER = ['1月','2月','3月','4月','5月','6月','7月'];
+// Month list is derived from the data (not hardcoded), so new statement months
+// just show up automatically the next time site/build.py runs.
+const MONTH_KEYS = [...new Set(TRANSACTIONS.map(t => t.pay_month))].sort();
+const MONTH_YEARS = [...new Set(MONTH_KEYS.map(k => k.slice(0, 4)))].sort();
+function monthYear(key) { return key.slice(0, 4); }
+function monthNum(key) { return parseInt(key.slice(5, 7), 10); }
+function monthShortLabel(key) { return monthNum(key) + '月'; }
+function monthFullLabel(key) {
+  return MONTH_YEARS.length > 1 ? `${monthYear(key)}年${monthShortLabel(key)}` : monthShortLabel(key);
+}
 const TOP_CATEGORIES = ['旅行・宿泊','交通費','通信費・サブスク','外食・カフェ','保険','食費（スーパー・コンビニ）','ショッピングモール・百貨店','ネットショッピング'];
 const CAT_COLOR_VAR = {
   '旅行・宿泊': '--cat-1',
@@ -772,7 +838,7 @@ function yenShort(n) {
 
 // ---------------- state ----------------
 const state = {
-  months: new Set(MONTH_ORDER),
+  months: new Set(MONTH_KEYS),
   cards: new Set(CARD_ORDER),
   search: '',
   category: '__ALL__',
@@ -800,34 +866,98 @@ function filtered() {
   return TRANSACTIONS.filter(t => state.months.has(t.pay_month) && state.cards.has(t.card));
 }
 
-// ---------------- chips ----------------
-function buildChips() {
-  const monthWrap = document.getElementById('monthChips');
-  const allBtn = document.createElement('button');
-  allBtn.className = 'chip';
-  allBtn.textContent = '全期間';
-  allBtn.setAttribute('aria-pressed', 'true');
-  allBtn.onclick = () => {
-    state.months = new Set(MONTH_ORDER);
+// ---------------- period control (popover; scales past a handful of months) ----------------
+function periodTriggerText() {
+  if (state.months.size === MONTH_KEYS.length) return '全期間';
+  if (state.months.size === 1) return monthFullLabel([...state.months][0]);
+  const sorted = [...state.months].sort();
+  return `${monthFullLabel(sorted[0])}〜${monthFullLabel(sorted[sorted.length - 1])}（${sorted.length}ヶ月）`;
+}
+
+function buildPeriodControl() {
+  const trigger = document.getElementById('periodTrigger');
+  const triggerLabel = document.getElementById('periodTriggerLabel');
+  const popover = document.getElementById('periodPopover');
+  const presetsWrap = document.getElementById('periodPresets');
+  const yearsWrap = document.getElementById('periodYears');
+
+  const closePopover = () => {
+    popover.hidden = true;
+    trigger.setAttribute('aria-expanded', 'false');
+  };
+  const setMonths = (keys) => {
+    state.months = new Set(keys);
     render();
   };
-  monthWrap.appendChild(allBtn);
-  MONTH_ORDER.forEach(m => {
+
+  const presets = [
+    ['全期間', () => MONTH_KEYS],
+    ['直近3ヶ月', () => MONTH_KEYS.slice(-3)],
+    ['直近6ヶ月', () => MONTH_KEYS.slice(-6)],
+  ].filter(([, keys]) => keys().length > 0 && keys().length <= MONTH_KEYS.length);
+
+  presets.forEach(([label, keys]) => {
+    if (keys().length === MONTH_KEYS.length && label !== '全期間') return; // hide no-op presets while history is short
     const b = document.createElement('button');
     b.className = 'chip';
-    b.textContent = m;
-    b.setAttribute('aria-pressed', 'true');
-    b.onclick = () => {
-      if (state.months.has(m) && state.months.size === 1) {
-        state.months = new Set(MONTH_ORDER);
-      } else {
-        state.months = new Set([m]);
-      }
-      render();
-    };
-    monthWrap.appendChild(b);
+    b.dataset.preset = label;
+    b.textContent = label;
+    b.onclick = () => { setMonths(keys()); closePopover(); };
+    presetsWrap.appendChild(b);
   });
 
+  MONTH_YEARS.forEach(y => {
+    const group = document.createElement('div');
+    group.className = 'period-year-group';
+    const label = document.createElement('div');
+    label.className = 'period-year-label';
+    label.textContent = y + '年';
+    const row = document.createElement('div');
+    row.className = 'chip-row';
+    MONTH_KEYS.filter(k => monthYear(k) === y).forEach(k => {
+      const b = document.createElement('button');
+      b.className = 'chip';
+      b.dataset.key = k;
+      b.textContent = monthShortLabel(k);
+      b.onclick = () => {
+        if (state.months.has(k) && state.months.size === 1) setMonths(MONTH_KEYS);
+        else setMonths([k]);
+      };
+      row.appendChild(b);
+    });
+    group.appendChild(label);
+    group.appendChild(row);
+    yearsWrap.appendChild(group);
+  });
+
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const willOpen = popover.hidden;
+    popover.hidden = !willOpen;
+    trigger.setAttribute('aria-expanded', String(willOpen));
+  });
+  popover.addEventListener('click', (e) => e.stopPropagation());
+  document.addEventListener('click', () => { if (!popover.hidden) closePopover(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePopover(); });
+
+  syncPeriodControl();
+}
+
+function syncPeriodControl() {
+  document.getElementById('periodTriggerLabel').textContent = periodTriggerText();
+  document.querySelectorAll('#periodPresets .chip').forEach(b => {
+    const preset = b.dataset.preset;
+    const keys = preset === '全期間' ? MONTH_KEYS : preset === '直近3ヶ月' ? MONTH_KEYS.slice(-3) : MONTH_KEYS.slice(-6);
+    const match = keys.length === state.months.size && keys.every(k => state.months.has(k));
+    b.setAttribute('aria-pressed', String(match));
+  });
+  document.querySelectorAll('#periodYears .chip').forEach(b => {
+    b.setAttribute('aria-pressed', String(state.months.has(b.dataset.key)));
+  });
+}
+
+// ---------------- chips ----------------
+function buildChips() {
   const cardWrap = document.getElementById('cardChips');
   CARD_ORDER.forEach(c => {
     const b = document.createElement('button');
@@ -851,13 +981,7 @@ function buildChips() {
   });
 }
 function syncChips() {
-  document.querySelectorAll('#monthChips .chip').forEach(b => {
-    if (b.textContent === '全期間') {
-      b.setAttribute('aria-pressed', state.months.size === MONTH_ORDER.length ? 'true' : 'false');
-    } else {
-      b.setAttribute('aria-pressed', state.months.has(b.textContent) ? 'true' : 'false');
-    }
-  });
+  syncPeriodControl();
   document.querySelectorAll('#cardChips .chip').forEach(b => {
     b.setAttribute('aria-pressed', state.cards.has(b._card) ? 'true' : 'false');
   });
@@ -867,16 +991,18 @@ function syncChips() {
 function renderHero() {
   const rows = filtered();
   const total = rows.reduce((s, t) => s + t.amount, 0);
-  const monthsSelected = MONTH_ORDER.filter(m => state.months.has(m));
-  const label = monthsSelected.length === MONTH_ORDER.length
-    ? '2026年1月〜7月 合計'
-    : monthsSelected.map(m => m).join('・') + ' 支払分';
+  const monthsSelected = MONTH_KEYS.filter(m => state.months.has(m));
+  const label = monthsSelected.length === MONTH_KEYS.length
+    ? `${monthYear(MONTH_KEYS[0])}年${monthShortLabel(MONTH_KEYS[0])}〜${monthFullLabel(MONTH_KEYS[MONTH_KEYS.length - 1])} 合計`
+    : monthsSelected.length === 1
+      ? monthFullLabel(monthsSelected[0]) + ' 支払分'
+      : `${monthFullLabel(monthsSelected[0])}〜${monthFullLabel(monthsSelected[monthsSelected.length - 1])} 合計`;
 
   let deltaHtml = '';
   if (monthsSelected.length === 1) {
-    const idx = MONTH_ORDER.indexOf(monthsSelected[0]);
+    const idx = MONTH_KEYS.indexOf(monthsSelected[0]);
     if (idx > 0) {
-      const prevMonth = MONTH_ORDER[idx - 1];
+      const prevMonth = MONTH_KEYS[idx - 1];
       const prevTotal = TRANSACTIONS.filter(t => t.pay_month === prevMonth && state.cards.has(t.card))
         .reduce((s, t) => s + t.amount, 0);
       if (prevTotal > 0) {
@@ -924,16 +1050,16 @@ function renderHero() {
 function renderTrend() {
   const rows = TRANSACTIONS.filter(t => state.cards.has(t.card));
   const byMonth = {};
-  MONTH_ORDER.forEach(m => byMonth[m] = {});
+  MONTH_KEYS.forEach(m => byMonth[m] = {});
   rows.forEach(t => {
     byMonth[t.pay_month][t.card] = (byMonth[t.pay_month][t.card] || 0) + t.amount;
   });
-  const totals = MONTH_ORDER.map(m => CARD_ORDER.reduce((s, c) => s + (byMonth[m][c] || 0), 0));
+  const totals = MONTH_KEYS.map(m => CARD_ORDER.reduce((s, c) => s + (byMonth[m][c] || 0), 0));
   const maxTotal = Math.max(...totals, 1);
 
   const W = 900, H = 260, padL = 54, padR = 16, padT = 20, padB = 34;
   const plotW = W - padL - padR, plotH = H - padT - padB;
-  const bw = plotW / MONTH_ORDER.length;
+  const bw = plotW / MONTH_KEYS.length;
   const barW = Math.min(bw * 0.52, 64);
 
   const gridLines = 4;
@@ -946,7 +1072,7 @@ function renderTrend() {
   }
 
   let bars = '';
-  MONTH_ORDER.forEach((m, i) => {
+  MONTH_KEYS.forEach((m, i) => {
     const cx = padL + bw * i + bw / 2;
     let yCursor = padT + plotH;
     const isSelected = state.months.has(m);
@@ -965,7 +1091,7 @@ function renderTrend() {
     });
     const total = totals[i];
     bars += `<rect data-month="${m}" class="hit" x="${cx - bw/2}" y="${padT}" width="${bw}" height="${plotH}" fill="transparent" style="cursor:pointer"/>`;
-    bars += `<text x="${cx}" y="${H-padB+18}" text-anchor="middle" font-size="11.5" font-weight="700" fill="${isSelected ? 'var(--ink-secondary)' : 'var(--ink-muted)'}">${m}</text>`;
+    bars += `<text x="${cx}" y="${H-padB+18}" text-anchor="middle" font-size="11.5" font-weight="700" fill="${isSelected ? 'var(--ink-secondary)' : 'var(--ink-muted)'}">${monthShortLabel(m)}</text>`;
   });
 
   const svg = `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="月別支出推移の積み上げ棒グラフ">
@@ -981,7 +1107,7 @@ function renderTrend() {
       const m = hit.dataset.month;
       const parts = CARD_ORDER.filter(c => (byMonth[m][c] || 0) > 0)
         .map(c => `<div class="t-row"><span>${c.replace('カード','')}</span><span class="mono">${yen(byMonth[m][c])}</span></div>`).join('');
-      tooltip.innerHTML = `<div class="t-title">${m}支払 ・ 合計 ${yen(totals[MONTH_ORDER.indexOf(m)])}</div>${parts}`;
+      tooltip.innerHTML = `<div class="t-title">${monthFullLabel(m)}支払 ・ 合計 ${yen(totals[MONTH_KEYS.indexOf(m)])}</div>${parts}`;
       tooltip.style.left = e.clientX + 'px';
       tooltip.style.top = e.clientY + 'px';
       tooltip.classList.add('show');
@@ -989,7 +1115,7 @@ function renderTrend() {
     hit.addEventListener('mouseleave', () => tooltip.classList.remove('show'));
     hit.addEventListener('click', () => {
       const m = hit.dataset.month;
-      if (state.months.has(m) && state.months.size === 1) state.months = new Set(MONTH_ORDER);
+      if (state.months.has(m) && state.months.size === 1) state.months = new Set(MONTH_KEYS);
       else state.months = new Set([m]);
       render();
     });
@@ -1066,7 +1192,7 @@ function renderFixed() {
     groups[key].byMonth[t.pay_month] = (groups[key].byMonth[t.pay_month] || 0) + t.amount;
   });
   const list = Object.values(groups).map(g => {
-    const vals = MONTH_ORDER.map(m => g.byMonth[m] || 0);
+    const vals = MONTH_KEYS.map(m => g.byMonth[m] || 0);
     const total = vals.reduce((a,b) => a+b, 0);
     const count = vals.filter(v => v > 0).length;
     return { ...g, vals, total, avg: total / Math.max(count,1) };
@@ -1078,12 +1204,12 @@ function renderFixed() {
   const rowHtml = (g) => {
     const max = Math.max(...g.vals, 1);
     const pts = g.vals.map((v,i) => {
-      const x = 2 + i * (44/(MONTH_ORDER.length-1));
+      const x = 2 + i * (44/(MONTH_KEYS.length-1));
       const y = 18 - (v/max)*14;
       return `${x},${y}`;
     }).join(' ');
     const lastIdx = g.vals.length - 1;
-    const lastPt = { x: 2 + lastIdx * (44/(MONTH_ORDER.length-1)), y: 18 - (g.vals[lastIdx]/max)*14 };
+    const lastPt = { x: 2 + lastIdx * (44/(MONTH_KEYS.length-1)), y: 18 - (g.vals[lastIdx]/max)*14 };
     return `
       <div class="fixed-row">
         <div class="fixed-left">
@@ -1108,14 +1234,14 @@ function renderFixed() {
 const ALL_CATS_FOR_BUDGET = [...TOP_CATEGORIES];
 
 function defaultBudget(cat) {
-  const vals = MONTH_ORDER.map(m => TRANSACTIONS.filter(t => t.category === cat && t.pay_month === m).reduce((s,t)=>s+t.amount,0));
+  const vals = MONTH_KEYS.map(m => TRANSACTIONS.filter(t => t.category === cat && t.pay_month === m).reduce((s,t)=>s+t.amount,0));
   const nonZero = vals.filter(v => v > 0);
   const avg = nonZero.length ? nonZero.reduce((a,b)=>a+b,0)/nonZero.length : 0;
   return Math.ceil(avg / 1000) * 1000 || 10000;
 }
 
 function renderBudget() {
-  const monthsSelected = MONTH_ORDER.filter(m => state.months.has(m));
+  const monthsSelected = MONTH_KEYS.filter(m => state.months.has(m));
   const nMonths = Math.max(monthsSelected.length, 1);
   const rows = filtered();
   const totalsByCat = {};
@@ -1256,6 +1382,7 @@ function bindNav() {
   window.addEventListener('hashchange', () => showPage(location.hash.slice(1), { skipHash: true }));
 }
 
+buildPeriodControl();
 buildChips();
 buildCategoryFilterOptions();
 bindTableControls();
