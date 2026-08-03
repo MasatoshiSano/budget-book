@@ -19,6 +19,13 @@ bank_path = os.path.join(DATA, 'bank_transactions.json')
 bank = json.load(open(bank_path, encoding='utf-8')) if os.path.exists(bank_path) else []
 yucho_path = os.path.join(DATA, 'yucho_transactions.json')
 yucho = json.load(open(yucho_path, encoding='utf-8')) if os.path.exists(yucho_path) else []
+aeon_path = os.path.join(DATA, 'aeon_transactions.json')
+aeon = json.load(open(aeon_path, encoding='utf-8')) if os.path.exists(aeon_path) else []
+
+# Once an AEON card statement has been itemized (scripts/parse_aeon.py), the matching
+# lump-sum "イオンフィナンシャルサービス" bank-debit guess for that pay_month is redundant
+# and would double-count the same spend. Drop those months from the bank feed.
+AEON_ITEMIZED_MONTHS = {r['pay_month'] for r in aeon}
 
 # unify category taxonomy across the three cards
 SUMITOMO_MAP = {
@@ -81,7 +88,12 @@ for r in rakuten:
     })
 # Bank items already de-duplicated against the 3 cards in scripts/parse_bank.py
 # (card-payment debits, income, and interpersonal transfers are excluded there).
+# イオンフィナンシャルサービス debits for months now itemized via the AEON card
+# statement itself (see AEON_ITEMIZED_MONTHS above) are skipped here to avoid
+# double-counting the same spend twice.
 for r in bank:
+    if 'イオンフィナンシャルサービス' in r['name'] and r['pay_month'] in AEON_ITEMIZED_MONTHS:
+        continue
     unified.append({
         'date': r['date'], 'name': r['name'], 'amount': r['amount'],
         'card': '銀行引落', 'pay_month': r['pay_month'],
@@ -93,6 +105,14 @@ for r in yucho:
     unified.append({
         'date': r['date'], 'name': r['name'], 'amount': r['amount'],
         'card': 'ゆうちょ引落', 'pay_month': r['pay_month'],
+        'category': r['category'],
+    })
+# AEON card items are itemized directly by scripts/parse_aeon.py (already in the
+# final unified category taxonomy), so no per-source category map is needed here.
+for r in aeon:
+    unified.append({
+        'date': r['date'], 'name': r['name'], 'amount': r['amount'],
+        'card': 'イオンカード', 'pay_month': r['pay_month'],
         'category': r['category'],
     })
 

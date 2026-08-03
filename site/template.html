@@ -46,6 +46,7 @@
     --card-rakuten: #1baf7a;
     --card-bank: #eda100;
     --card-yucho: #e87ba4;
+    --card-aeon: #008300;
 
     --cat-1: #2a78d6; /* 旅行・宿泊 */
     --cat-2: #eb6834; /* 住居費 */
@@ -87,6 +88,7 @@
       --card-rakuten: #199e70;
       --card-bank: #c98500;
       --card-yucho: #d55181;
+      --card-aeon: #1fae1f;
 
       --cat-1: #3987e5;
       --cat-2: #d95926;
@@ -126,6 +128,7 @@
     --card-rakuten: #199e70;
     --card-bank: #c98500;
     --card-yucho: #d55181;
+    --card-aeon: #1fae1f;
     --cat-1: #3987e5;
     --cat-2: #d95926;
     --cat-3: #199e70;
@@ -1224,7 +1227,7 @@
 </div>
 
 <footer>
-  三井住友カード・PayPayカード・楽天カードの明細と、住信SBIネット銀行（代表口座）の入出金明細から作成。カード引落と重複する銀行取引は除外済みです。新しい月のPDF/CSVをアップロードすると、このダッシュボードのデータが更新されます。最終更新: __GENERATED_AT__
+  三井住友カード・PayPayカード・楽天カード・イオンカードの明細と、住信SBIネット銀行（代表口座）・ゆうちょ銀行の入出金明細から作成。カード引落と重複する銀行取引は除外済みです。新しい月のPDF/CSVをアップロードすると、このダッシュボードのデータが更新されます。最終更新: __GENERATED_AT__
 </footer>
 
 <div class="tooltip" id="tooltip"></div>
@@ -1233,11 +1236,12 @@
 const TRANSACTIONS = __DATA_JSON__;
 // 三井住友=夫婦共通の家計カード、PayPay・楽天=佐野様個人、銀行引落/ゆうちょ引落=
 // 各口座からの家賃・現金・保険など(カード決済に含まれない支出のみ。カード引落分は重複除去済み)
-const CARD_ORDER = ['三井住友カード', 'PayPayカード', '楽天カード', '銀行引落', 'ゆうちょ引落'];
+const CARD_ORDER = ['三井住友カード', 'PayPayカード', '楽天カード', 'イオンカード', '銀行引落', 'ゆうちょ引落'];
 const CARD_COLOR_VAR = {
   '三井住友カード': '--card-sumitomo',
   'PayPayカード': '--card-paypay',
   '楽天カード': '--card-rakuten',
+  'イオンカード': '--card-aeon',
   '銀行引落': '--card-bank',
   'ゆうちょ引落': '--card-yucho',
 };
