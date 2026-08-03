@@ -346,6 +346,40 @@
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 16px;
   }
+  .account-tag {
+    font-weight: 700;
+    color: var(--ink-secondary);
+  }
+  .account-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .account-card {
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px 20px;
+  }
+  .account-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .account-card-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .account-card-cards .card-pill {
+    background: var(--bg-inset);
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 11.5px;
+  }
   .stat-tile {
     background: var(--bg-surface);
     border-radius: 20px;
@@ -812,6 +846,9 @@
   table.mini-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
   table.mini-table td { padding: 6px 2px; border-bottom: 1px solid var(--line); color: var(--ink-secondary); }
   table.mini-table td:last-child { text-align: right; font-family: 'Plex Mono'; font-weight: 700; color: var(--ink-primary); white-space: nowrap; }
+  table.mini-table thead td { font-weight: 800; color: var(--ink-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.02em; border-bottom: 1px solid var(--line-strong); }
+  table.mini-table thead td:not(:last-child) { text-align: right; }
+  table.mini-table tbody td:not(:first-child) { text-align: right; font-family: 'Plex Mono'; }
   table.mini-table tfoot td { border-bottom: none; border-top: 2px solid var(--line-strong); font-weight: 800; color: var(--ink-primary); padding-top: 8px; }
   .basis-row { padding: 6px 0; }
   .basis-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 12px; margin-bottom: 5px; }
@@ -893,6 +930,16 @@
 
   <div class="page" data-page="overview">
     <section class="hero" id="hero"></section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">引き落とし口座別</div>
+          <div class="panel-note">各カード・引落は最終的にどちらかの銀行口座から実際に引き落とされています</div>
+        </div>
+      </div>
+      <div class="account-summary" id="accountSummary"></div>
+    </section>
 
     <section class="panel">
       <div class="panel-head">
@@ -1109,7 +1156,7 @@
           <thead><tr><th></th><th>佐野様</th><th>奥様</th><th>合計</th></tr></thead>
           <tbody>
             <tr><td>現状（実績）</td><td class="tabular">180,000円</td><td class="tabular">130,000円</td><td class="tabular">310,000円</td></tr>
-            <tr><td>推奨（旅行除く）</td><td class="tabular hi">100,000円</td><td class="tabular hi">60,000円</td><td class="tabular hi">160,000円</td></tr>
+            <tr><td>推奨（旅行除く）</td><td class="tabular hi">130,000円</td><td class="tabular hi">80,000円</td><td class="tabular hi">210,000円</td></tr>
           </tbody>
         </table>
       </div>
@@ -1117,81 +1164,79 @@
 
       <div class="basis-grid">
         <div>
-          <div class="basis-subhead">三井住友カード 月次実績（旅行関連支出を除く・2026年1〜6月）</div>
+          <div class="basis-subhead">住信SBI口座からの実質生活費（三井住友＋イオン、旅行除く・2026年4〜6月）</div>
           <table class="mini-table">
+            <thead><tr><td>月</td><td>三井住友</td><td>イオン</td><td>合計</td></tr></thead>
             <tbody>
-              <tr><td>1月</td><td>238,314円</td></tr>
-              <tr><td>2月</td><td>110,839円</td></tr>
-              <tr><td>3月</td><td>70,479円</td></tr>
-              <tr><td>4月</td><td>179,064円</td></tr>
-              <tr><td>5月</td><td>159,905円</td></tr>
-              <tr><td>6月</td><td>110,195円</td></tr>
+              <tr><td>4月</td><td>179,064円</td><td>22,560円</td><td>201,624円</td></tr>
+              <tr><td>5月</td><td>159,905円</td><td>24,416円</td><td>184,321円</td></tr>
+              <tr><td>6月</td><td>110,195円</td><td>72,801円</td><td>182,996円</td></tr>
             </tbody>
-            <tfoot><tr><td>6ヶ月平均</td><td>144,799円</td></tr></tfoot>
+            <tfoot><tr><td>3ヶ月平均</td><td></td><td></td><td>189,647円</td></tr></tfoot>
           </table>
-          <div class="panel-note" style="margin-top:10px;">7月は月の途中（7/24時点）のため平均から除外。1月・4月は旅行費用を除いてもふるさと納税や季節家電などで高め。</div>
+          <div class="panel-note" style="margin-top:10px;">イオンカードは2026年4月契約開始のため、1〜3月は集計対象外（データが存在しない）。7月はTrip.com等の旅行決済が大きく、平常月として代表性が低いため除外。</div>
         </div>
         <div>
-          <div class="basis-subhead">内訳（月平均・カテゴリ別）</div>
+          <div class="basis-subhead">内訳（月平均・カテゴリ別、三井住友＋イオン合算）</div>
 
           <div class="basis-row">
             <div class="basis-top">
               <span class="basis-name"><span class="card-dot" style="background:var(--cat-6)"></span>保険</span>
-              <span class="basis-amt">27,710円 <span style="color:var(--ink-muted); font-weight:600;">(19.1%)</span></span>
+              <span class="basis-amt">55,420円 <span style="color:var(--ink-muted); font-weight:600;">(29.2%)</span></span>
             </div>
-            <div class="basis-track"><div class="basis-fill" style="width:19.1%; background:var(--cat-6);"></div></div>
-          </div>
-          <div class="basis-row">
-            <div class="basis-top">
-              <span class="basis-name"><span class="card-dot" style="background:var(--cat-5)"></span>外食・カフェ</span>
-              <span class="basis-amt">25,826円 <span style="color:var(--ink-muted); font-weight:600;">(17.8%)</span></span>
-            </div>
-            <div class="basis-track"><div class="basis-fill" style="width:17.8%; background:var(--cat-5);"></div></div>
-          </div>
-          <div class="basis-row">
-            <div class="basis-top">
-              <span class="basis-name"><span class="card-dot" style="background:var(--cat-4)"></span>ネットショッピング</span>
-              <span class="basis-amt">22,215円 <span style="color:var(--ink-muted); font-weight:600;">(15.3%)</span></span>
-            </div>
-            <div class="basis-track"><div class="basis-fill" style="width:15.3%; background:var(--cat-4);"></div></div>
-          </div>
-          <div class="basis-row">
-            <div class="basis-top">
-              <span class="basis-name"><span class="card-dot" style="background:var(--cat-2)"></span>水道光熱費</span>
-              <span class="basis-amt">16,036円 <span style="color:var(--ink-muted); font-weight:600;">(11.1%)</span></span>
-            </div>
-            <div class="basis-track"><div class="basis-fill" style="width:11.1%; background:var(--cat-2);"></div></div>
-          </div>
-          <div class="basis-row">
-            <div class="basis-top">
-              <span class="basis-name"><span class="card-dot" style="background:var(--cat-3)"></span>ふるさと納税</span>
-              <span class="basis-amt">14,167円 <span style="color:var(--ink-muted); font-weight:600;">(9.8%)</span></span>
-            </div>
-            <div class="basis-track"><div class="basis-fill" style="width:9.8%; background:var(--cat-3);"></div></div>
+            <div class="basis-track"><div class="basis-fill" style="width:29.2%; background:var(--cat-6);"></div></div>
           </div>
           <div class="basis-row">
             <div class="basis-top">
               <span class="basis-name"><span class="card-dot" style="background:var(--cat-7)"></span>食費（スーパー・コンビニ）</span>
-              <span class="basis-amt">12,897円 <span style="color:var(--ink-muted); font-weight:600;">(8.9%)</span></span>
+              <span class="basis-amt">33,613円 <span style="color:var(--ink-muted); font-weight:600;">(17.7%)</span></span>
             </div>
-            <div class="basis-track"><div class="basis-fill" style="width:8.9%; background:var(--cat-7);"></div></div>
+            <div class="basis-track"><div class="basis-fill" style="width:17.7%; background:var(--cat-7);"></div></div>
           </div>
           <div class="basis-row">
             <div class="basis-top">
-              <span class="basis-name"><span class="card-dot" style="background:var(--cat-other)"></span>その他（諸費用）</span>
-              <span class="basis-amt">25,948円 <span style="color:var(--ink-muted); font-weight:600;">(17.9%)</span></span>
+              <span class="basis-name"><span class="card-dot" style="background:var(--cat-5)"></span>外食・カフェ</span>
+              <span class="basis-amt">33,319円 <span style="color:var(--ink-muted); font-weight:600;">(17.6%)</span></span>
             </div>
-            <div class="basis-track"><div class="basis-fill" style="width:17.9%; background:var(--cat-other);"></div></div>
+            <div class="basis-track"><div class="basis-fill" style="width:17.6%; background:var(--cat-5);"></div></div>
+          </div>
+          <div class="basis-row">
+            <div class="basis-top">
+              <span class="basis-name"><span class="card-dot" style="background:var(--cat-8)"></span>ショッピングモール・百貨店</span>
+              <span class="basis-amt">18,203円 <span style="color:var(--ink-muted); font-weight:600;">(9.6%)</span></span>
+            </div>
+            <div class="basis-track"><div class="basis-fill" style="width:9.6%; background:var(--cat-8);"></div></div>
+          </div>
+          <div class="basis-row">
+            <div class="basis-top">
+              <span class="basis-name"><span class="card-dot" style="background:var(--cat-2)"></span>水道光熱費</span>
+              <span class="basis-amt">15,205円 <span style="color:var(--ink-muted); font-weight:600;">(8.0%)</span></span>
+            </div>
+            <div class="basis-track"><div class="basis-fill" style="width:8.0%; background:var(--cat-2);"></div></div>
+          </div>
+          <div class="basis-row">
+            <div class="basis-top">
+              <span class="basis-name"><span class="card-dot" style="background:var(--cat-4)"></span>ネットショッピング</span>
+              <span class="basis-amt">11,236円 <span style="color:var(--ink-muted); font-weight:600;">(5.9%)</span></span>
+            </div>
+            <div class="basis-track"><div class="basis-fill" style="width:5.9%; background:var(--cat-4);"></div></div>
+          </div>
+          <div class="basis-row">
+            <div class="basis-top">
+              <span class="basis-name"><span class="card-dot" style="background:var(--cat-other)"></span>その他（日用品・ファッション・交通費など）</span>
+              <span class="basis-amt">22,653円 <span style="color:var(--ink-muted); font-weight:600;">(11.9%)</span></span>
+            </div>
+            <div class="basis-track"><div class="basis-fill" style="width:11.9%; background:var(--cat-other);"></div></div>
           </div>
         </div>
       </div>
 
       <div class="note-box">
-        <b>① カード実績ベースライン：</b>三井住友カード（夫婦共有）の旅行関連支出を除いた6ヶ月平均は<b>144,799円/月</b>（上表）。<br>
-        <b>② 現金分を加算：</b>住信SBI口座から引き出したATM現金は2〜7月の7ヶ月で合計50,000円（月平均<b>7,143円</b>）。①＋②で<b>約152,000円/月</b>が実質的な生活費ベースライン。<br>
-        <b>③ 目標額に余裕を持たせる：</b>変動費の月ブレを吸収できるよう約8,000円のバッファを乗せ、目標合計を<b>160,000円/月</b>に設定。<br>
-        <b>④ 夫婦で按分：</b>額面年収の比率（佐野様62.1%・奥様37.9%）で按分すると佐野様99,310円・奥様60,690円となり、キリの良い数字に丸めて<b>佐野様100,000円・奥様60,000円</b>（合計160,000円は維持）。<br>
-        現状の310,000円より<b>約150,000円少なくて済む</b>のは、5/23の引っ越しで旧居の家賃（192,902円/月）がこの口座を通らなくなったため。旅行費用はこの口座とは別に、専用の積立で用意するのがおすすめ。
+        <b>① カード実績ベースライン：</b>住信SBI口座から引き落とされる三井住友カード＋イオンカードの、旅行関連支出を除いた3ヶ月（4〜6月）平均は<b>189,647円/月</b>（上表）。イオンカードは4月契約開始のため、それ以前は集計対象外。<br>
+        <b>② 現金分を加算：</b>住信SBI口座から引き出したATM現金は2〜7月の7ヶ月で合計50,000円（月平均<b>7,143円</b>）。①＋②で<b>約196,790円/月</b>が実質的な生活費ベースライン。<br>
+        <b>③ 目標額に余裕を持たせる：</b>変動費の月ブレを吸収できるよう約13,000円のバッファを乗せ、目標合計を<b>210,000円/月</b>に設定。<br>
+        <b>④ 夫婦で按分：</b>額面年収の比率（佐野様62.1%・奥様37.9%）で按分すると佐野様130,410円・奥様79,590円となり、キリの良い数字に丸めて<b>佐野様130,000円・奥様80,000円</b>（合計210,000円は維持）。<br>
+        現状の310,000円より<b>約100,000円少なくて済む</b>のは、5/23の引っ越しで旧居の家賃（192,902円/月）がこの口座を通らなくなったため。以前の推奨額（160,000円）は三井住友カードの支出しか見ておらず、同じ口座から引き落とされるイオンカード分（月平均約4万円弱）を見落としていたため、今回上方修正しました。旅行費用はこの口座とは別に、専用の積立で用意するのがおすすめ。
       </div>
     </section>
 
@@ -1245,6 +1290,20 @@ const CARD_COLOR_VAR = {
   '銀行引落': '--card-bank',
   'ゆうちょ引落': '--card-yucho',
 };
+// どのカードがどの銀行口座から実際に引き落とされているか。三井住友カード・イオンカード・
+// 銀行引落（家賃/ATM）は住信SBIネット銀行の同一口座から、PayPayカード・楽天カード・
+// ゆうちょ引落（保険等）はゆうちょ銀行の同一口座から引き落とされていることが、明細の
+// 記載金融機関名と、ゆうちょ明細内の「自払 PAYPAYカード／ラクテンカードサービス」の
+// 突合により確認できている。
+const ACCOUNT_MAP = {
+  '三井住友カード': '住信SBIネット銀行',
+  'イオンカード': '住信SBIネット銀行',
+  '銀行引落': '住信SBIネット銀行',
+  'PayPayカード': 'ゆうちょ銀行',
+  '楽天カード': 'ゆうちょ銀行',
+  'ゆうちょ引落': 'ゆうちょ銀行',
+};
+const ACCOUNT_ORDER = ['住信SBIネット銀行', 'ゆうちょ銀行'];
 // Month list is derived from the data (not hardcoded), so new statement months
 // just show up automatically the next time site/build.py runs.
 const MONTH_KEYS = [...new Set(TRANSACTIONS.map(t => t.pay_month))].sort();
@@ -1484,11 +1543,38 @@ function renderHero() {
         <span class="stat-label">${c}</span>
       </div>
       <div class="stat-value tabular" style="font-size:22px;">${yen(byCard[c])}</div>
-      <div class="stat-foot">全体の ${pct.toFixed(1)}%</div>
+      <div class="stat-foot">全体の ${pct.toFixed(1)}% ・ <span class="account-tag">${ACCOUNT_MAP[c]}</span></div>
     `;
     cardsWrap.appendChild(tile);
   });
   hero.appendChild(cardsWrap);
+}
+
+// ---------------- account rollup (which cards settle from which bank account) ----------------
+function renderAccountSummary() {
+  const rows = filtered();
+  const byAccount = {};
+  ACCOUNT_ORDER.forEach(a => byAccount[a] = 0);
+  rows.forEach(t => { byAccount[ACCOUNT_MAP[t.card]] += t.amount; });
+  const grand = ACCOUNT_ORDER.reduce((s, a) => s + byAccount[a], 0);
+
+  const wrap = document.getElementById('accountSummary');
+  wrap.innerHTML = ACCOUNT_ORDER.map(a => {
+    const cardsHere = CARD_ORDER.filter(c => ACCOUNT_MAP[c] === a);
+    const pct = grand > 0 ? (byAccount[a] / grand * 100) : 0;
+    return `
+      <div class="account-card">
+        <div class="account-card-head">
+          <span class="stat-label">${a}</span>
+          <span class="stat-value tabular" style="font-size:20px;">${yen(byAccount[a])}</span>
+        </div>
+        <div class="basis-track"><div class="basis-fill" style="width:${pct.toFixed(1)}%; background:var(--accent);"></div></div>
+        <div class="account-card-cards">
+          ${cardsHere.map(c => `<span class="card-pill"><span class="card-dot" style="background:${cssVar(CARD_COLOR_VAR[c])}"></span>${c}</span>`).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
 }
 
 // ---------------- trend chart (stacked bars) ----------------
@@ -1954,6 +2040,7 @@ function bindTableControls() {
 function render() {
   syncChips();
   renderHero();
+  renderAccountSummary();
   renderTrend();
   renderCatTrend();
   renderDonut();
@@ -2151,8 +2238,8 @@ function renderLivingCostChart() {
       { who: '奥様', amt: 130000, colorVar: '--cat-5' },
     ]},
     { label: '推奨（旅行除く）', parts: [
-      { who: '佐野様', amt: 100000, colorVar: '--cat-1' },
-      { who: '奥様', amt: 60000, colorVar: '--cat-5' },
+      { who: '佐野様', amt: 130000, colorVar: '--cat-1' },
+      { who: '奥様', amt: 80000, colorVar: '--cat-5' },
     ]},
   ];
   const W = 900, H = 220, padL = 40, padR = 20, padT = 20, padB = 40;
