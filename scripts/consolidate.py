@@ -67,12 +67,28 @@ def pay_month_key(pay_date_str):
     y, m, _ = pay_date_str.replace('/', '-').split('-')
     return f'{y}-{int(m):02d}'
 
+# 三井住友カードのMCCベースの自動分類は、海外の飲食店・交通・レジャー店舗を
+# 「外食・カフェ」「交通費」「レジャー・娯楽」などにMCC通りに割り振ってしまい、
+# 旅行として扱われない（2026年6月28〜30日のイタリア旅行で発覚：Rome/Napoli/Capri/
+# Anacapriの現地決済31件、計127,336円が旅行・宿泊カテゴリから漏れていた）。
+# 海外通貨建て（メモにEURなど）・「海外」を含む手数料・海外現地店舗名（英字＋
+# 括弧書きの都市名）のいずれかに該当する行は、MCC上のカテゴリに関わらず旅行・宿泊
+# として扱う。
+import re
+OVERSEAS_NAME_RE = re.compile(r"^[A-Z0-9'\.\*\- ]+\([A-Za-z\.\-/ ]+\)$")
+def is_overseas_spend(memo, name):
+    memo = memo or ''
+    return ('EUR' in memo) or ('海外' in name) or ('海外' in memo) or bool(OVERSEAS_NAME_RE.match(name.strip()))
+
 unified = []
 for r in sumitomo:
+    category = SUMITOMO_MAP.get(r['category'], 'その他')
+    if is_overseas_spend(r.get('memo', ''), r['name']):
+        category = '旅行・宿泊'
     unified.append({
         'date': r['use_date'], 'name': r['name'], 'amount': r['amount'],
         'card': '三井住友カード', 'pay_month': pay_month_key(r['pay_date']),
-        'category': SUMITOMO_MAP.get(r['category'], 'その他'),
+        'category': category,
     })
 for r in paypay:
     unified.append({
