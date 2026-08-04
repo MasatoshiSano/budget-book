@@ -56,6 +56,8 @@
     --cat-6: #008300; /* 保険 */
     --cat-7: #4a3aa7; /* 食費（スーパー・コンビニ） */
     --cat-8: #e34948; /* ショッピングモール・百貨店 */
+    --cat-9: #0c8599; /* 水道光熱費 */
+    --cat-10: #a15c2c; /* 投資・貯蓄 */
     --cat-other: #9a9d94; /* その他 */
 
     --good: #0ca30c;
@@ -98,6 +100,8 @@
       --cat-6: #1fae1f;
       --cat-7: #9085e9;
       --cat-8: #e66767;
+      --cat-9: #2fb8cf;
+      --cat-10: #c97a3f;
       --cat-other: #83867c;
 
       --good: #0ca30c;
@@ -137,6 +141,8 @@
     --cat-6: #1fae1f;
     --cat-7: #9085e9;
     --cat-8: #e66767;
+    --cat-9: #2fb8cf;
+    --cat-10: #c97a3f;
     --cat-other: #83867c;
     --good: #0ca30c;
     --warning: #fab219;
@@ -1368,7 +1374,11 @@ function monthShortLabel(key) { return monthNum(key) + '月'; }
 function monthFullLabel(key) {
   return MONTH_YEARS.length > 1 ? `${monthYear(key)}年${monthShortLabel(key)}` : monthShortLabel(key);
 }
-const TOP_CATEGORIES = ['旅行・宿泊','住居費','交通費','通信費・サブスク','外食・カフェ','保険','食費（スーパー・コンビニ）','ショッピングモール・百貨店'];
+// 概要（ドーナツ・カテゴリ別推移）・予算・固定費のすべてで同じカテゴリ名が
+// 「その他」に埋もれず必ず名前つきで出てくるように、金額上位8つに加えて
+// 固定費タブが個別に使う「水道光熱費」「投資・貯蓄」も常に含める
+// （固定費タブのFIXED_CATSはこのリストの部分集合になっている）。
+const TOP_CATEGORIES = ['旅行・宿泊','住居費','交通費','通信費・サブスク','外食・カフェ','保険','食費（スーパー・コンビニ）','ショッピングモール・百貨店','水道光熱費','投資・貯蓄'];
 const CAT_COLOR_VAR = {
   '旅行・宿泊': '--cat-1',
   '住居費': '--cat-2',
@@ -1378,6 +1388,8 @@ const CAT_COLOR_VAR = {
   '保険': '--cat-6',
   '食費（スーパー・コンビニ）': '--cat-7',
   'ショッピングモール・百貨店': '--cat-8',
+  '水道光熱費': '--cat-9',
+  '投資・貯蓄': '--cat-10',
 };
 const OTHER_COLOR_VAR = '--cat-other';
 
