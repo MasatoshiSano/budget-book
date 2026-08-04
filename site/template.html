@@ -539,6 +539,60 @@
   .cat-trend-legend button.is-off { opacity: 0.45; }
   .cat-trend-legend button.is-off .sw { background: var(--ink-muted) !important; }
 
+  .cat-trend-toggles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .cat-trend-toggles label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    border: 1px solid var(--line);
+    background: var(--bg-surface-alt);
+    border-radius: 20px;
+    padding: 6px 14px 6px 10px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink-secondary);
+    cursor: pointer;
+  }
+  .cat-trend-toggles input { accent-color: var(--accent); width: 15px; height: 15px; }
+  .cat-trend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .cat-trend-cell {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px 16px 8px;
+    min-width: 0;
+  }
+  .cat-trend-cell-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .cat-trend-cell-name {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink-primary);
+  }
+  .cat-trend-cell-total {
+    font-family: 'Plex Mono';
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink-secondary);
+    white-space: nowrap;
+  }
+
   .tooltip {
     position: fixed;
     pointer-events: none;
@@ -956,11 +1010,11 @@
       <div class="panel-head">
         <div>
           <div class="panel-title">カテゴリ別推移</div>
-          <div class="panel-note">下の凡例をクリックして表示するカテゴリを選べます。線をホバーすると各月の金額が見られます。</div>
+          <div class="panel-note">カテゴリごとに個別のグラフで表示。線をホバーすると各月の金額が見られます。</div>
         </div>
       </div>
-      <div class="trend-svg-wrap"><div id="catTrendChart"></div></div>
-      <div class="cat-trend-legend" id="catTrendLegend"></div>
+      <div class="cat-trend-toggles" id="catTrendToggles"></div>
+      <div class="cat-trend-grid" id="catTrendGrid"></div>
     </section>
 
     <section class="panel">
@@ -1663,19 +1717,20 @@ function roundedTopRect(x, y, w, h, r) {
   return `M${x},${y+r} a${r},${r} 0 0 1 ${r},${-r} h${w-2*r} a${r},${r} 0 0 1 ${r},${r} v${h-r} h${-w} Z`;
 }
 
-// ---------------- category trend (multi-line) ----------------
+// ---------------- category trend (small multiples) ----------------
 const CAT_TREND_CATS = [...TOP_CATEGORIES, 'その他'];
-// Start with the 5 largest shown and the rest opt-in, so the first paint reads
-// cleanly instead of 9 overlapping lines; the legend toggles the rest on.
-if (!state.hiddenTrendCats) {
-  state.hiddenTrendCats = new Set(CAT_TREND_CATS.slice(5));
-}
+// 旅行・宿泊/住居費はカテゴリごとタイルの表示・非表示を切り替え、定期券
+// （会社が負担し給与に加算される）は交通費タイルの値から名前一致で差し引く。
+if (state.trendIncludeTravel === undefined) state.trendIncludeTravel = true;
+if (state.trendIncludeHousing === undefined) state.trendIncludeHousing = true;
+if (state.trendIncludeTeiki === undefined) state.trendIncludeTeiki = true;
 
 function catTrendSeries() {
   const rows = TRANSACTIONS.filter(t => state.cards.has(t.card));
   const byCatMonth = {};
   CAT_TREND_CATS.forEach(cat => { byCatMonth[cat] = {}; MONTH_KEYS.forEach(m => byCatMonth[cat][m] = 0); });
   rows.forEach(t => {
+    if (!state.trendIncludeTeiki && t.category === '交通費' && t.name.includes('定期券')) return;
     const cat = TOP_CATEGORIES.includes(t.category) ? t.category : 'その他';
     byCatMonth[cat][t.pay_month] = (byCatMonth[cat][t.pay_month] || 0) + t.amount;
   });
@@ -1684,83 +1739,85 @@ function catTrendSeries() {
 
 function renderCatTrend() {
   const byCatMonth = catTrendSeries();
-  const visibleCats = CAT_TREND_CATS.filter(c => !state.hiddenTrendCats.has(c));
   const colorOf = (cat) => cat === 'その他' ? cssVar(OTHER_COLOR_VAR) : cssVar(CAT_COLOR_VAR[cat]);
-
-  const W = 900, H = 260;
-  const el = document.getElementById('catTrendChart');
-
-  const PAD_L = 54, PAD_R = 16, PAD_T = 20, PAD_B = 34;
-  const plotW = W - PAD_L - PAD_R, plotH = H - PAD_T - PAD_B;
-  const maxVal = Math.max(1, ...visibleCats.map(c => Math.max(...MONTH_KEYS.map(m => byCatMonth[c][m] || 0))));
-  const xOf = (i) => PAD_L + (MONTH_KEYS.length > 1 ? (plotW * i / (MONTH_KEYS.length - 1)) : plotW / 2);
-  const yOf = (v) => PAD_T + plotH - (v / maxVal) * plotH;
-
-  let gridSvg = '';
-  const gridLines = 4;
-  for (let i = 0; i <= gridLines; i++) {
-    const v = maxVal * i / gridLines;
-    const y = PAD_T + plotH - (v / maxVal) * plotH;
-    gridSvg += `<line x1="${PAD_L}" y1="${y}" x2="${W-PAD_R}" y2="${y}" stroke="var(--line)" stroke-width="1"/>`;
-    gridSvg += `<text x="${PAD_L-10}" y="${y+4}" text-anchor="end" font-size="10.5" fill="var(--ink-muted)" font-family="Plex Mono" class="tabular">${yenShort(v)}</text>`;
-  }
-  MONTH_KEYS.forEach((m, i) => {
-    gridSvg += `<text x="${xOf(i)}" y="${H-PAD_B+18}" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink-secondary)">${monthShortLabel(m)}</text>`;
+  const visibleCats = CAT_TREND_CATS.filter(cat => {
+    if (cat === '旅行・宿泊' && !state.trendIncludeTravel) return false;
+    if (cat === '住居費' && !state.trendIncludeHousing) return false;
+    return true;
   });
 
-  let lines = '';
-  let hitCols = '';
-  visibleCats.forEach(cat => {
-    const pts = MONTH_KEYS.map((m, i) => `${xOf(i)},${yOf(byCatMonth[cat][m] || 0)}`).join(' ');
-    const color = colorOf(cat);
-    lines += `<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
-    MONTH_KEYS.forEach((m, i) => {
-      const v = byCatMonth[cat][m] || 0;
-      if (v <= 0) return;
-      lines += `<circle cx="${xOf(i)}" cy="${yOf(v)}" r="3" fill="${color}" stroke="var(--bg-surface)" stroke-width="1.5"/>`;
-    });
-  });
-  MONTH_KEYS.forEach((m, i) => {
-    hitCols += `<rect class="hit" data-idx="${i}" x="${xOf(i) - plotW/(MONTH_KEYS.length*2)}" y="${PAD_T}" width="${plotW/MONTH_KEYS.length}" height="${plotH}" fill="transparent" style="cursor:crosshair"/>`;
-  });
+  const toggles = document.getElementById('catTrendToggles');
+  toggles.innerHTML = `
+    <label><input type="checkbox" id="toggleTrendTravel" ${state.trendIncludeTravel ? 'checked' : ''}>旅行・宿泊を含む</label>
+    <label><input type="checkbox" id="toggleTrendHousing" ${state.trendIncludeHousing ? 'checked' : ''}>住居費を含む</label>
+    <label><input type="checkbox" id="toggleTrendTeiki" ${state.trendIncludeTeiki ? 'checked' : ''}>定期券（会社負担分）を含む</label>
+  `;
+  document.getElementById('toggleTrendTravel').addEventListener('change', (e) => { state.trendIncludeTravel = e.target.checked; renderCatTrend(); });
+  document.getElementById('toggleTrendHousing').addEventListener('change', (e) => { state.trendIncludeHousing = e.target.checked; renderCatTrend(); });
+  document.getElementById('toggleTrendTeiki').addEventListener('change', (e) => { state.trendIncludeTeiki = e.target.checked; renderCatTrend(); });
 
-  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="カテゴリ別支出推移の折れ線グラフ">
-    ${gridSvg}
-    ${lines}
-    ${hitCols}
-  </svg>`;
-
+  const grid = document.getElementById('catTrendGrid');
+  grid.innerHTML = '';
   const tooltip = document.getElementById('tooltip');
-  el.querySelectorAll('.hit').forEach(hit => {
-    hit.addEventListener('mousemove', (e) => {
-      const i = parseInt(hit.dataset.idx, 10);
-      const m = MONTH_KEYS[i];
-      const parts = visibleCats
-        .map(c => ({ c, v: byCatMonth[c][m] || 0 }))
-        .filter(x => x.v > 0)
-        .sort((a, b) => b.v - a.v)
-        .map(x => `<div class="t-row"><span>${x.c}</span><span class="mono">${yen(x.v)}</span></div>`).join('');
-      tooltip.innerHTML = `<div class="t-title">${monthFullLabel(m)}支払</div>${parts || '<div class="t-row"><span>データなし</span></div>'}`;
-      tooltip.style.left = e.clientX + 'px';
-      tooltip.style.top = e.clientY + 'px';
-      tooltip.classList.add('show');
-    });
-    hit.addEventListener('mouseleave', () => tooltip.classList.remove('show'));
-  });
 
-  const legend = document.getElementById('catTrendLegend');
-  legend.innerHTML = CAT_TREND_CATS.map(cat => {
-    const off = state.hiddenTrendCats.has(cat);
-    return `<button type="button" class="${off ? 'is-off' : ''}" data-cat="${cat}" aria-pressed="${!off}">
-      <span class="sw" style="background:${colorOf(cat)}"></span>${cat}
-    </button>`;
-  }).join('');
-  legend.querySelectorAll('button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const cat = btn.dataset.cat;
-      if (state.hiddenTrendCats.has(cat)) state.hiddenTrendCats.delete(cat);
-      else state.hiddenTrendCats.add(cat);
-      renderCatTrend();
+  const W = 400, H = 130, PAD_L = 46, PAD_R = 10, PAD_T = 12, PAD_B = 22;
+  const plotW = W - PAD_L - PAD_R, plotH = H - PAD_T - PAD_B;
+  const xOf = (i) => PAD_L + (MONTH_KEYS.length > 1 ? (plotW * i / (MONTH_KEYS.length - 1)) : plotW / 2);
+
+  visibleCats.forEach(cat => {
+    const color = colorOf(cat);
+    const values = MONTH_KEYS.map(m => byCatMonth[cat][m] || 0);
+    const total = values.reduce((s, v) => s + v, 0);
+    const maxVal = Math.max(1, ...values);
+    const yOf = (v) => PAD_T + plotH - (v / maxVal) * plotH;
+
+    let gridSvg = '';
+    for (let i = 0; i <= 2; i++) {
+      const v = maxVal * i / 2;
+      const y = PAD_T + plotH - (v / maxVal) * plotH;
+      gridSvg += `<line x1="${PAD_L}" y1="${y}" x2="${W-PAD_R}" y2="${y}" stroke="var(--line)" stroke-width="1"/>`;
+      gridSvg += `<text x="${PAD_L-8}" y="${y+3}" text-anchor="end" font-size="9.5" fill="var(--ink-muted)" font-family="Plex Mono">${yenShort(v)}</text>`;
+    }
+    MONTH_KEYS.forEach((m, i) => {
+      if (MONTH_KEYS.length <= 8 || i % 2 === 0 || i === MONTH_KEYS.length - 1) {
+        gridSvg += `<text x="${xOf(i)}" y="${H-PAD_B+14}" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--ink-secondary)">${monthShortLabel(m)}</text>`;
+      }
+    });
+
+    const pts = values.map((v, i) => `${xOf(i)},${yOf(v)}`).join(' ');
+    let lines = `<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
+    values.forEach((v, i) => {
+      if (v <= 0) return;
+      lines += `<circle cx="${xOf(i)}" cy="${yOf(v)}" r="2.5" fill="${color}" stroke="var(--bg-surface)" stroke-width="1.2"/>`;
+    });
+
+    let hitCols = '';
+    MONTH_KEYS.forEach((m, i) => {
+      hitCols += `<rect class="hit" data-idx="${i}" x="${xOf(i) - plotW/(MONTH_KEYS.length*2)}" y="${PAD_T}" width="${plotW/MONTH_KEYS.length}" height="${plotH}" fill="transparent" style="cursor:crosshair"/>`;
+    });
+
+    const cell = document.createElement('div');
+    cell.className = 'cat-trend-cell';
+    cell.innerHTML = `
+      <div class="cat-trend-cell-head">
+        <span class="cat-trend-cell-name"><span class="card-dot" style="background:${color}"></span>${cat}</span>
+        <span class="cat-trend-cell-total">合計 ${yenShort(total)}</span>
+      </div>
+      <svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="${cat}の月別推移">${gridSvg}${lines}${hitCols}</svg>
+    `;
+    grid.appendChild(cell);
+
+    cell.querySelectorAll('.hit').forEach(hit => {
+      hit.addEventListener('mousemove', (e) => {
+        const i = parseInt(hit.dataset.idx, 10);
+        const m = MONTH_KEYS[i];
+        const v = byCatMonth[cat][m] || 0;
+        tooltip.innerHTML = `<div class="t-title">${monthFullLabel(m)}支払</div><div class="t-row"><span>${cat}</span><span class="mono">${yen(v)}</span></div>`;
+        tooltip.style.left = e.clientX + 'px';
+        tooltip.style.top = e.clientY + 'px';
+        tooltip.classList.add('show');
+      });
+      hit.addEventListener('mouseleave', () => tooltip.classList.remove('show'));
     });
   });
 }
