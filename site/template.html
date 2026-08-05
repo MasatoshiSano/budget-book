@@ -298,6 +298,38 @@
     vertical-align: middle;
   }
 
+  .checkbox-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .checkbox-row label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    border: 1px solid var(--line);
+    background: var(--bg-inset);
+    border-radius: 10px;
+    padding: 7px 12px 7px 10px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink-secondary);
+    cursor: pointer;
+  }
+  .checkbox-row label.is-checked {
+    border-color: var(--line-strong);
+    color: var(--ink-primary);
+    background: var(--bg-surface);
+    box-shadow: var(--shadow-sm);
+  }
+  .checkbox-row input { accent-color: var(--accent); width: 15px; height: 15px; flex: none; }
+  .checkbox-row .swatch {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex: none;
+  }
+
   /* ---------------- period control ---------------- */
   .period-control { position: relative; }
   .period-trigger {
@@ -793,7 +825,7 @@
     white-space: nowrap;
   }
   table.txn-table td {
-    padding: 9px 14px;
+    padding: 15px 14px;
     border-bottom: 1px solid var(--line);
     color: var(--ink-secondary);
     white-space: nowrap;
@@ -970,7 +1002,7 @@
       </div>
       <div class="filter-group">
         <span class="filter-label" title="会社が別途負担する（家賃は給与天引き、交通費・定期券は給与に加算）支出を、集計から含める/除外するかを切り替えます。すべてのページに反映されます。">含める項目</span>
-        <div class="chip-row" id="contentChips" role="group" aria-label="旅行・住居・交通費の含む/含まない"></div>
+        <div class="checkbox-row" id="contentChips" role="group" aria-label="旅行・住居・交通費の含む/含まない"></div>
       </div>
     </div>
   </div>
@@ -1559,17 +1591,20 @@ function buildChips() {
   ];
   const contentWrap = document.getElementById('contentChips');
   CONTENT_TOGGLES.forEach(({ key, label, colorVar }) => {
-    const b = document.createElement('button');
-    b.className = 'chip';
-    b.setAttribute('aria-pressed', 'true');
+    const lab = document.createElement('label');
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.checked = true;
+    cb.addEventListener('change', () => { state[key] = cb.checked; render(); });
     const sw = document.createElement('span');
     sw.className = 'swatch';
     sw.style.background = cssVar(colorVar);
-    b.appendChild(sw);
-    b.appendChild(document.createTextNode(label));
-    b.onclick = () => { state[key] = !state[key]; render(); };
-    b._stateKey = key;
-    contentWrap.appendChild(b);
+    lab.appendChild(cb);
+    lab.appendChild(sw);
+    lab.appendChild(document.createTextNode(label));
+    lab._input = cb;
+    lab._stateKey = key;
+    contentWrap.appendChild(lab);
   });
 }
 function syncChips() {
@@ -1577,8 +1612,10 @@ function syncChips() {
   document.querySelectorAll('#cardChips .chip').forEach(b => {
     b.setAttribute('aria-pressed', state.cards.has(b._card) ? 'true' : 'false');
   });
-  document.querySelectorAll('#contentChips .chip').forEach(b => {
-    b.setAttribute('aria-pressed', state[b._stateKey] ? 'true' : 'false');
+  document.querySelectorAll('#contentChips label').forEach(lab => {
+    const on = state[lab._stateKey];
+    lab._input.checked = on;
+    lab.classList.toggle('is-checked', on);
   });
 }
 
