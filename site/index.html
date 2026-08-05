@@ -1461,9 +1461,10 @@ const state = {
   // 旅行・宿泊/住居費/交通費（定期券含む）はどれも会社が別途負担する・した
   // 支出で実質の生活費ではないため、ページ上部のフィルターとして全体に
   // 適用できるようにしている（概要・固定費・予算・明細すべてに反映）。
-  includeTravel: true,
-  includeHousing: true,
-  includeTransport: true,
+  // デフォルトは除外（オフ）＝実質の生活費だけが最初から見える状態にする。
+  includeTravel: false,
+  includeHousing: false,
+  includeTransport: false,
 };
 
 function passesContentFilter(t) {
@@ -1618,7 +1619,7 @@ function buildChips() {
     const lab = document.createElement('label');
     const cb = document.createElement('input');
     cb.type = 'checkbox';
-    cb.checked = true;
+    cb.checked = state[key];
     cb.addEventListener('change', () => { state[key] = cb.checked; render(); });
     const sw = document.createElement('span');
     sw.className = 'swatch';
