@@ -58,6 +58,8 @@
     --cat-8: #e34948; /* ショッピングモール・百貨店 */
     --cat-9: #0c8599; /* 水道光熱費 */
     --cat-10: #a15c2c; /* 投資・貯蓄 */
+    --cat-11: #b23fb0; /* ネットショッピング */
+    --cat-12: #7a8c1e; /* 日用品・インテリア */
     --cat-other: #9a9d94; /* その他 */
 
     --good: #0ca30c;
@@ -102,6 +104,8 @@
       --cat-8: #e66767;
       --cat-9: #2fb8cf;
       --cat-10: #c97a3f;
+      --cat-11: #d15ecf;
+      --cat-12: #a3b830;
       --cat-other: #83867c;
 
       --good: #0ca30c;
@@ -143,6 +147,8 @@
     --cat-8: #e66767;
     --cat-9: #2fb8cf;
     --cat-10: #c97a3f;
+    --cat-11: #d15ecf;
+    --cat-12: #a3b830;
     --cat-other: #83867c;
     --good: #0ca30c;
     --warning: #fab219;
@@ -545,26 +551,6 @@
   .cat-trend-legend button.is-off { opacity: 0.45; }
   .cat-trend-legend button.is-off .sw { background: var(--ink-muted) !important; }
 
-  .cat-trend-toggles {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 18px;
-  }
-  .cat-trend-toggles label {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    border: 1px solid var(--line);
-    background: var(--bg-surface-alt);
-    border-radius: 20px;
-    padding: 6px 14px 6px 10px;
-    font-size: 12.5px;
-    font-weight: 700;
-    color: var(--ink-secondary);
-    cursor: pointer;
-  }
-  .cat-trend-toggles input { accent-color: var(--accent); width: 15px; height: 15px; }
   .cat-trend-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -982,6 +968,10 @@
         <span class="filter-label" title="カード引落は含めず、家賃や現金などカードに含まれない支出のみを集計しています">支払い元</span>
         <div class="chip-row" id="cardChips" role="group" aria-label="支払い元（カード・銀行引落）"></div>
       </div>
+      <div class="filter-group">
+        <span class="filter-label" title="会社が別途負担する（家賃は給与天引き、交通費・定期券は給与に加算）支出を、集計から含める/除外するかを切り替えます。すべてのページに反映されます。">含める項目</span>
+        <div class="chip-row" id="contentChips" role="group" aria-label="旅行・住居・交通費の含む/含まない"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -1016,10 +1006,9 @@
       <div class="panel-head">
         <div>
           <div class="panel-title">カテゴリ別推移</div>
-          <div class="panel-note">カテゴリごとに個別のグラフで表示。線をホバーすると各月の金額が見られます。</div>
+          <div class="panel-note">カテゴリごとに個別のグラフで表示。線をホバーすると各月の金額が見られます。旅行・住居費・交通費の含む/含まないはページ上部の「含める項目」で切り替えられます。</div>
         </div>
       </div>
-      <div class="cat-trend-toggles" id="catTrendToggles"></div>
       <div class="cat-trend-grid" id="catTrendGrid"></div>
     </section>
 
@@ -1332,7 +1321,7 @@
 </div>
 
 <footer>
-  三井住友カード・PayPayカード・楽天カード・イオンカードの明細と、住信SBIネット銀行（代表口座）・ゆうちょ銀行の入出金明細から作成。カード引落と重複する銀行取引は除外済みです。新しい月のPDF/CSVをアップロードすると、このダッシュボードのデータが更新されます。最終更新: 2026年08月04日
+  三井住友カード・PayPayカード・楽天カード・イオンカードの明細と、住信SBIネット銀行（代表口座）・ゆうちょ銀行の入出金明細から作成。カード引落と重複する銀行取引は除外済みです。新しい月のPDF/CSVをアップロードすると、このダッシュボードのデータが更新されます。最終更新: 2026年08月05日
 </footer>
 
 <div class="tooltip" id="tooltip"></div>
@@ -1376,9 +1365,10 @@ function monthFullLabel(key) {
 }
 // 概要（ドーナツ・カテゴリ別推移）・予算・固定費のすべてで同じカテゴリ名が
 // 「その他」に埋もれず必ず名前つきで出てくるように、金額上位8つに加えて
-// 固定費タブが個別に使う「水道光熱費」「投資・貯蓄」も常に含める
-// （固定費タブのFIXED_CATSはこのリストの部分集合になっている）。
-const TOP_CATEGORIES = ['旅行・宿泊','住居費','交通費','通信費・サブスク','外食・カフェ','保険','食費（スーパー・コンビニ）','ショッピングモール・百貨店','水道光熱費','投資・貯蓄'];
+// 固定費タブが個別に使う「水道光熱費」「投資・貯蓄」、および「その他」の
+// 内訳で金額・件数とも大きかった「ネットショッピング」「日用品・インテリア」
+// も常に含める（固定費タブのFIXED_CATSはこのリストの部分集合になっている）。
+const TOP_CATEGORIES = ['旅行・宿泊','住居費','交通費','通信費・サブスク','外食・カフェ','保険','食費（スーパー・コンビニ）','ショッピングモール・百貨店','水道光熱費','投資・貯蓄','ネットショッピング','日用品・インテリア'];
 const CAT_COLOR_VAR = {
   '旅行・宿泊': '--cat-1',
   '住居費': '--cat-2',
@@ -1390,6 +1380,8 @@ const CAT_COLOR_VAR = {
   'ショッピングモール・百貨店': '--cat-8',
   '水道光熱費': '--cat-9',
   '投資・貯蓄': '--cat-10',
+  'ネットショッピング': '--cat-11',
+  '日用品・インテリア': '--cat-12',
 };
 const OTHER_COLOR_VAR = '--cat-other';
 
@@ -1410,7 +1402,20 @@ const state = {
   sortKey: 'date',
   sortDir: -1,
   hiddenCats: new Set(), // categories toggled off in the カテゴリ別内訳 donut
+  // 旅行・宿泊/住居費/交通費（定期券含む）はどれも会社が別途負担する・した
+  // 支出で実質の生活費ではないため、ページ上部のフィルターとして全体に
+  // 適用できるようにしている（概要・固定費・予算・明細すべてに反映）。
+  includeTravel: true,
+  includeHousing: true,
+  includeTransport: true,
 };
+
+function passesContentFilter(t) {
+  if (!state.includeTravel && t.category === '旅行・宿泊') return false;
+  if (!state.includeHousing && t.category === '住居費') return false;
+  if (!state.includeTransport && t.category === '交通費') return false;
+  return true;
+}
 
 function loadBudgets() {
   try {
@@ -1429,7 +1434,7 @@ let budgets = loadBudgets();
 
 // ---------------- filtering ----------------
 function filtered() {
-  return TRANSACTIONS.filter(t => state.months.has(t.pay_month) && state.cards.has(t.card));
+  return TRANSACTIONS.filter(t => state.months.has(t.pay_month) && state.cards.has(t.card) && passesContentFilter(t));
 }
 
 // ---------------- period control (popover; scales past a handful of months) ----------------
@@ -1546,11 +1551,34 @@ function buildChips() {
     b._card = c;
     cardWrap.appendChild(b);
   });
+
+  const CONTENT_TOGGLES = [
+    { key: 'includeTravel', label: '旅行・宿泊', colorVar: '--cat-1' },
+    { key: 'includeHousing', label: '住居費', colorVar: '--cat-2' },
+    { key: 'includeTransport', label: '交通費（定期券含む）', colorVar: '--cat-3' },
+  ];
+  const contentWrap = document.getElementById('contentChips');
+  CONTENT_TOGGLES.forEach(({ key, label, colorVar }) => {
+    const b = document.createElement('button');
+    b.className = 'chip';
+    b.setAttribute('aria-pressed', 'true');
+    const sw = document.createElement('span');
+    sw.className = 'swatch';
+    sw.style.background = cssVar(colorVar);
+    b.appendChild(sw);
+    b.appendChild(document.createTextNode(label));
+    b.onclick = () => { state[key] = !state[key]; render(); };
+    b._stateKey = key;
+    contentWrap.appendChild(b);
+  });
 }
 function syncChips() {
   syncPeriodControl();
   document.querySelectorAll('#cardChips .chip').forEach(b => {
     b.setAttribute('aria-pressed', state.cards.has(b._card) ? 'true' : 'false');
+  });
+  document.querySelectorAll('#contentChips .chip').forEach(b => {
+    b.setAttribute('aria-pressed', state[b._stateKey] ? 'true' : 'false');
   });
 }
 
@@ -1731,18 +1759,15 @@ function roundedTopRect(x, y, w, h, r) {
 
 // ---------------- category trend (small multiples) ----------------
 const CAT_TREND_CATS = [...TOP_CATEGORIES, 'その他'];
-// 旅行・宿泊/住居費はカテゴリごとタイルの表示・非表示を切り替え、定期券
-// （会社が負担し給与に加算される）は交通費タイルの値から名前一致で差し引く。
-if (state.trendIncludeTravel === undefined) state.trendIncludeTravel = true;
-if (state.trendIncludeHousing === undefined) state.trendIncludeHousing = true;
-if (state.trendIncludeTeiki === undefined) state.trendIncludeTeiki = true;
+// 旅行・宿泊/住居費/交通費(定期券含む)の含む・含まないは、ページ上部の
+// 「含める項目」フィルター(state.includeTravel/includeHousing/includeTransport)
+// で全ページ共通に切り替える。ここではそのカテゴリのタイルごと表示・非表示にする。
 
 function catTrendSeries() {
-  const rows = TRANSACTIONS.filter(t => state.cards.has(t.card));
+  const rows = TRANSACTIONS.filter(t => state.cards.has(t.card) && passesContentFilter(t));
   const byCatMonth = {};
   CAT_TREND_CATS.forEach(cat => { byCatMonth[cat] = {}; MONTH_KEYS.forEach(m => byCatMonth[cat][m] = 0); });
   rows.forEach(t => {
-    if (!state.trendIncludeTeiki && t.category === '交通費' && t.name.includes('定期券')) return;
     const cat = TOP_CATEGORIES.includes(t.category) ? t.category : 'その他';
     byCatMonth[cat][t.pay_month] = (byCatMonth[cat][t.pay_month] || 0) + t.amount;
   });
@@ -1753,20 +1778,11 @@ function renderCatTrend() {
   const byCatMonth = catTrendSeries();
   const colorOf = (cat) => cat === 'その他' ? cssVar(OTHER_COLOR_VAR) : cssVar(CAT_COLOR_VAR[cat]);
   const visibleCats = CAT_TREND_CATS.filter(cat => {
-    if (cat === '旅行・宿泊' && !state.trendIncludeTravel) return false;
-    if (cat === '住居費' && !state.trendIncludeHousing) return false;
+    if (cat === '旅行・宿泊' && !state.includeTravel) return false;
+    if (cat === '住居費' && !state.includeHousing) return false;
+    if (cat === '交通費' && !state.includeTransport) return false;
     return true;
   });
-
-  const toggles = document.getElementById('catTrendToggles');
-  toggles.innerHTML = `
-    <label><input type="checkbox" id="toggleTrendTravel" ${state.trendIncludeTravel ? 'checked' : ''}>旅行・宿泊を含む</label>
-    <label><input type="checkbox" id="toggleTrendHousing" ${state.trendIncludeHousing ? 'checked' : ''}>住居費を含む</label>
-    <label><input type="checkbox" id="toggleTrendTeiki" ${state.trendIncludeTeiki ? 'checked' : ''}>定期券（会社負担分）を含む</label>
-  `;
-  document.getElementById('toggleTrendTravel').addEventListener('change', (e) => { state.trendIncludeTravel = e.target.checked; renderCatTrend(); });
-  document.getElementById('toggleTrendHousing').addEventListener('change', (e) => { state.trendIncludeHousing = e.target.checked; renderCatTrend(); });
-  document.getElementById('toggleTrendTeiki').addEventListener('change', (e) => { state.trendIncludeTeiki = e.target.checked; renderCatTrend(); });
 
   const grid = document.getElementById('catTrendGrid');
   grid.innerHTML = '';
@@ -1922,7 +1938,7 @@ function isFixedCost(t) {
 }
 
 function renderFixed() {
-  const rows = TRANSACTIONS.filter(t => isFixedCost(t) && state.cards.has(t.card));
+  const rows = TRANSACTIONS.filter(t => isFixedCost(t) && state.cards.has(t.card) && passesContentFilter(t));
   const groups = {};
   rows.forEach(t => {
     const key = t.card + '||' + t.name;
