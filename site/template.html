@@ -1237,7 +1237,7 @@
           <thead><tr><th></th><th>佐野様</th><th>奥様</th><th>合計</th></tr></thead>
           <tbody>
             <tr><td>現状（実績）</td><td class="tabular">180,000円</td><td class="tabular">130,000円</td><td class="tabular">310,000円</td></tr>
-            <tr><td>推奨（旅行・交通費除く）</td><td class="tabular hi">125,000円</td><td class="tabular hi">75,000円</td><td class="tabular hi">200,000円</td></tr>
+            <tr><td>推奨（旅行・交通費除く）</td><td class="tabular hi">145,000円</td><td class="tabular hi">55,000円</td><td class="tabular hi">200,000円</td></tr>
           </tbody>
         </table>
       </div>
@@ -1262,8 +1262,8 @@
 
           <div class="basis-row">
             <div class="basis-top">
-              <span class="basis-name"><span class="card-dot" style="background:var(--cat-6)"></span>保険</span>
-              <span class="basis-amt">55,420円 <span style="color:var(--ink-muted); font-weight:600;">(27.7%)</span></span>
+              <span class="basis-name"><span class="card-dot" style="background:var(--cat-6)"></span>保険<span title="佐野様個人の保険のため、按分せず佐野様が100%負担" style="cursor:help;">※</span></span>
+              <span class="basis-amt">55,420円 <span style="color:var(--ink-muted); font-weight:600;">(27.7%・佐野様100%)</span></span>
             </div>
             <div class="basis-track"><div class="basis-fill" style="width:27.7%; background:var(--cat-6);"></div></div>
           </div>
@@ -1340,7 +1340,7 @@
         <b>① カード実績ベースライン：</b>住信SBI口座から引き落とされる三井住友カード＋イオンカードの、旅行・交通費（定期券含む）を除いた3ヶ月（4〜6月）平均は<b>187,165円/月</b>（上表）。交通費を除いたのは、家賃と同様に会社が負担し給与に加算されるため。<br>
         <b>② 現金分を加算：</b>住信SBI口座から引き出したATM現金は2〜7月の7ヶ月で合計50,000円（月平均<b>7,143円</b>）。①＋②で<b>約194,300円/月</b>が実質的な生活費ベースライン。<br>
         <b>③ 目標額に余裕を持たせる：</b>変動費の月ブレを吸収できるよう約5,700円のバッファを乗せ、目標合計を<b>200,000円/月</b>に設定。<br>
-        <b>④ 夫婦で按分：</b>額面年収の比率（佐野様62.1%・奥様37.9%）で按分すると佐野様124,138円・奥様75,862円となり、キリの良い数字に丸めて<b>佐野様125,000円・奥様75,000円</b>（合計200,000円は維持）。<br>
+        <b>④ 保険は佐野様が100%負担：</b>保険（55,420円/月）は佐野様個人の保険のため、まず目標合計から丸ごと除く。残り<b>144,580円/月</b>を額面年収の比率（佐野様62.1%・奥様37.9%）で按分すると佐野様89,739円・奥様54,841円。保険分をそのまま佐野様に足し戻すと佐野様145,159円・奥様54,841円となり、キリの良い数字に丸めて<b>佐野様145,000円・奥様55,000円</b>（合計200,000円は維持）。<br>
         現状の310,000円より少なくて済む主な理由は、5/23の引っ越しで旧居の家賃（192,902円/月）がこの口座を通らなくなったこと、そして交通費が会社負担であることの2つです。ただし上記の通り水道光熱費はまだ暫定値なので、この目標額も今後の実績次第で見直しが必要です。旅行費用はこの口座とは別に、専用の積立で用意するのがおすすめ。
       </div>
     </section>
@@ -2384,8 +2384,8 @@ function renderLivingCostChart() {
       { who: '奥様', amt: 130000, colorVar: '--cat-5' },
     ]},
     { label: '推奨（旅行・交通費除く）', parts: [
-      { who: '佐野様', amt: 125000, colorVar: '--cat-1' },
-      { who: '奥様', amt: 75000, colorVar: '--cat-5' },
+      { who: '佐野様', amt: 145000, colorVar: '--cat-1' },
+      { who: '奥様', amt: 55000, colorVar: '--cat-5' },
     ]},
   ];
   const W = 900, H = 220, padL = 40, padR = 20, padT = 20, padB = 40;
