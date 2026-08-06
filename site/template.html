@@ -1467,10 +1467,18 @@ const state = {
   includeTransport: false,
 };
 
+// PayPayでのセブン-イレブン・ファミリーマート・ローソン利用は、ユーザーの
+// 判断で常に集計対象外（切り替えトグルは出さず、常時除外に固定）。
+const PAYPAY_CONBINI_NAMES = new Set(['セブンーイレブン', 'ファミリーマート', 'ローソン']);
+function isPaypayConbini(t) {
+  return t.card === 'PayPayカード' && PAYPAY_CONBINI_NAMES.has(t.name);
+}
+
 function passesContentFilter(t) {
   if (!state.includeTravel && t.category === '旅行・宿泊') return false;
   if (!state.includeHousing && t.category === '住居費') return false;
   if (!state.includeTransport && t.category === '交通費') return false;
+  if (isPaypayConbini(t)) return false;
   return true;
 }
 
