@@ -2151,6 +2151,13 @@ function renderTable() {
   rows = rows.slice().sort((a, b) => {
     let av = a[state.sortKey], bv = b[state.sortKey];
     if (state.sortKey === 'amount') return (av - bv) * state.sortDir;
+    if (state.sortKey === 'date') {
+      // dates aren't consistently zero-padded ("2026-6-9" vs "2026-06-08"),
+      // so a plain string compare sorts by character, not by actual date.
+      // Compare the y/m/d components as numbers instead.
+      const da = av.split('-').map(Number), db = bv.split('-').map(Number);
+      return (da[0]-db[0] || da[1]-db[1] || da[2]-db[2]) * state.sortDir;
+    }
     return String(av).localeCompare(String(bv)) * state.sortDir;
   });
 

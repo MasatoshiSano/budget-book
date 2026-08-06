@@ -1377,7 +1377,7 @@
 </div>
 
 <footer>
-  三井住友カード・PayPayカード・楽天カード・イオンカードの明細と、住信SBIネット銀行（代表口座）・ゆうちょ銀行の入出金明細から作成。カード引落と重複する銀行取引は除外済みです。新しい月のPDF/CSVをアップロードすると、このダッシュボードのデータが更新されます。最終更新: 2026年08月05日
+  三井住友カード・PayPayカード・楽天カード・イオンカードの明細と、住信SBIネット銀行（代表口座）・ゆうちょ銀行の入出金明細から作成。カード引落と重複する銀行取引は除外済みです。新しい月のPDF/CSVをアップロードすると、このダッシュボードのデータが更新されます。最終更新: 2026年08月06日
 </footer>
 
 <div class="tooltip" id="tooltip"></div>
@@ -2151,6 +2151,13 @@ function renderTable() {
   rows = rows.slice().sort((a, b) => {
     let av = a[state.sortKey], bv = b[state.sortKey];
     if (state.sortKey === 'amount') return (av - bv) * state.sortDir;
+    if (state.sortKey === 'date') {
+      // dates aren't consistently zero-padded ("2026-6-9" vs "2026-06-08"),
+      // so a plain string compare sorts by character, not by actual date.
+      // Compare the y/m/d components as numbers instead.
+      const da = av.split('-').map(Number), db = bv.split('-').map(Number);
+      return (da[0]-db[0] || da[1]-db[1] || da[2]-db[2]) * state.sortDir;
+    }
     return String(av).localeCompare(String(bv)) * state.sortDir;
   });
 
