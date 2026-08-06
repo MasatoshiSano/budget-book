@@ -355,10 +355,8 @@
   }
   .period-trigger[aria-expanded="true"] svg { color: var(--accent-ink); transform: rotate(180deg); }
   .period-popover {
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
-    z-index: 30;
+    position: fixed;
+    z-index: 100;
     background: var(--bg-surface);
     border: 1px solid var(--line);
     border-radius: 16px;
@@ -1087,7 +1085,7 @@
       <div class="panel-head">
         <div>
           <div class="panel-title">取引明細</div>
-          <div class="panel-note">全カード横断で検索・絞り込みできます。上部の「お支払月」フィルターは実際の引き落とし月で絞り込むため、利用日が前月にまたがる行が含まれることがあります（「お支払月」列で確認できます）。</div>
+          <div class="panel-note">全カード横断で検索・絞り込みできます。このページだけ上部の月フィルターは「利用日」で絞り込みます（他のページは「お支払月」で絞り込むため、月ごとの金額が一致しないことがあります。参考として「お支払月」列も表示しています）。「全期間」を選んだ場合はお支払月の集計範囲より前の利用分（2025年分の一部など）も含めて全件表示します。</div>
         </div>
       </div>
       <div class="table-controls">
@@ -1504,6 +1502,23 @@ function filtered() {
   return TRANSACTIONS.filter(t => state.months.has(t.pay_month) && state.cards.has(t.card) && passesContentFilter(t));
 }
 
+// t.date isn't consistently zero-padded ("2026-6-9" vs "2026-06-08"), so normalize
+// before deriving a "YYYY-MM" key from it.
+function useMonthOf(t) {
+  const [y, m] = t.date.split('-');
+  return `${y}-${String(Number(m)).padStart(2, '0')}`;
+}
+
+// 明細 (transactions table) filters by 利用日 (use date) instead of お支払月 (pay
+// month), unlike every other panel on the site. A handful of rows have a use-date
+// month (2025-11, 2025-12) that predates the card statements' pay-month range
+// entirely, so when "全期間" is selected (all of MONTH_KEYS) the month filter is
+// skipped altogether rather than silently hiding those rows.
+function filteredByUseDate() {
+  const allMonths = state.months.size === MONTH_KEYS.length;
+  return TRANSACTIONS.filter(t => (allMonths || state.months.has(useMonthOf(t))) && state.cards.has(t.card) && passesContentFilter(t));
+}
+
 // ---------------- period control (popover; scales past a handful of months) ----------------
 function periodTriggerText() {
   if (state.months.size === MONTH_KEYS.length) return '全期間';
@@ -1516,6 +1531,15 @@ function buildPeriodControl() {
   const trigger = document.getElementById('periodTrigger');
   const triggerLabel = document.getElementById('periodTriggerLabel');
   const popover = document.getElementById('periodPopover');
+  // Moved to <body> (position:fixed, positioned from the trigger's own rect)
+  // instead of living inside the sticky/backdrop-filtered topbar, which was
+  // causing the popover to render blended with page content behind it.
+  document.body.appendChild(popover);
+  const positionPopover = () => {
+    const r = trigger.getBoundingClientRect();
+    popover.style.top = (r.bottom + 8) + 'px';
+    popover.style.left = r.left + 'px';
+  };
   const presetsWrap = document.getElementById('periodPresets');
   const yearsWrap = document.getElementById('periodYears');
 
@@ -1572,12 +1596,15 @@ function buildPeriodControl() {
   trigger.addEventListener('click', (e) => {
     e.stopPropagation();
     const willOpen = popover.hidden;
+    if (willOpen) positionPopover();
     popover.hidden = !willOpen;
     trigger.setAttribute('aria-expanded', String(willOpen));
   });
   popover.addEventListener('click', (e) => e.stopPropagation());
   document.addEventListener('click', () => { if (!popover.hidden) closePopover(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePopover(); });
+  window.addEventListener('resize', () => { if (!popover.hidden) positionPopover(); });
+  window.addEventListener('scroll', () => { if (!popover.hidden) positionPopover(); }, true);
 
   syncPeriodControl();
 }
@@ -2163,7 +2190,7 @@ function buildCategoryFilterOptions() {
 }
 
 function renderTable() {
-  let rows = filtered();
+  let rows = filteredByUseDate();
   if (state.category !== '__ALL__') rows = rows.filter(t => t.category === state.category);
   if (state.search) {
     const q = state.search.toLowerCase();
