@@ -1038,7 +1038,7 @@
       <div class="panel-head">
         <div>
           <div class="panel-title">カテゴリ別推移</div>
-          <div class="panel-note">カテゴリごとに個別のグラフで表示。線をホバーすると各月の金額が見られます。旅行・住居費・交通費の含む/含まないはページ上部の「含める項目」で切り替えられます。</div>
+          <div class="panel-note">カテゴリごとに個別のグラフで表示（グラフは常に全期間）。線をホバーすると各月の金額が見られます。右上の「合計」は上のお支払月フィルターに連動します。旅行・住居費・交通費の含む/含まないはページ上部の「含める項目」で切り替えられます。</div>
         </div>
       </div>
       <div class="cat-trend-grid" id="catTrendGrid"></div>
@@ -1063,7 +1063,7 @@
       <div class="panel-head">
         <div>
           <div class="panel-title">固定費一覧</div>
-          <div class="panel-note">家賃・サブスク・保険・水道光熱費・積立投資など、毎月発生している支払いを自動抽出しています。上のお支払月フィルタに関わらず直近7ヶ月分をすべて集計します（支払い元の絞り込みのみ反映されます）</div>
+          <div class="panel-note">家賃・サブスク・保険・水道光熱費・積立投資など、毎月発生している支払いを自動抽出しています。上のお支払月フィルターで選んだ期間で集計し、月平均もその期間の平均です。</div>
         </div>
       </div>
       <div class="fixed-list" id="fixedList"></div>
@@ -1087,7 +1087,7 @@
       <div class="panel-head">
         <div>
           <div class="panel-title">取引明細</div>
-          <div class="panel-note">全カード横断で検索・絞り込みできます</div>
+          <div class="panel-note">全カード横断で検索・絞り込みできます。上部の「お支払月」フィルターは実際の引き落とし月で絞り込むため、利用日が前月にまたがる行が含まれることがあります（「お支払月」列で確認できます）。</div>
         </div>
       </div>
       <div class="table-controls">
@@ -1099,6 +1099,7 @@
           <thead>
             <tr>
               <th data-sort="date">利用日</th>
+              <th data-sort="pay_month">お支払月</th>
               <th data-sort="name">店名</th>
               <th data-sort="card">カード</th>
               <th data-sort="category">カテゴリ</th>
@@ -1237,7 +1238,7 @@
           <thead><tr><th></th><th>佐野様</th><th>奥様</th><th>合計</th></tr></thead>
           <tbody>
             <tr><td>現状（実績）</td><td class="tabular">180,000円</td><td class="tabular">130,000円</td><td class="tabular">310,000円</td></tr>
-            <tr><td>推奨（旅行・交通費除く）</td><td class="tabular hi">145,000円</td><td class="tabular hi">55,000円</td><td class="tabular hi">200,000円</td></tr>
+            <tr><td>推奨（旅行・交通費除く）</td><td class="tabular hi">145,000円</td><td class="tabular hi">105,000円</td><td class="tabular hi">250,000円</td></tr>
           </tbody>
         </table>
       </div>
@@ -1258,75 +1259,75 @@
           <div class="panel-note" style="margin-top:10px;">イオンカードは2026年4月契約開始のため、1〜3月は集計対象外。7月はイタリア旅行の決済が大きく代表性が低いため除外。定期券・ICOCAチャージなど交通費は家賃と同様に会社負担で給与に加算されるため、ここから除いています。</div>
         </div>
         <div>
-          <div class="basis-subhead">目標額200,000円/月の内訳</div>
+          <div class="basis-subhead">目標額250,000円/月の内訳</div>
 
           <div class="basis-row">
             <div class="basis-top">
-              <span class="basis-name"><span class="card-dot" style="background:var(--cat-6)"></span>保険<span title="佐野様個人の保険のため、按分せず佐野様が100%負担" style="cursor:help;">※</span></span>
-              <span class="basis-amt">55,420円 <span style="color:var(--ink-muted); font-weight:600;">(27.7%・佐野様100%)</span></span>
+              <span class="basis-name"><span class="card-dot" style="background:var(--card-bank)"></span>家賃（妻負担分）<span title="家賃12万円/月は佐野様の給料から天引き。そのうち5万円を奥様負担分としてここに追加。" style="cursor:help;">※</span></span>
+              <span class="basis-amt">50,000円 <span style="color:var(--ink-muted); font-weight:600;">(20.0%・奥様100%)</span></span>
             </div>
-            <div class="basis-track"><div class="basis-fill" style="width:27.7%; background:var(--cat-6);"></div></div>
+            <div class="basis-track"><div class="basis-fill" style="width:20.0%; background:var(--card-bank);"></div></div>
+          </div>
+          <div class="basis-row">
+            <div class="basis-top">
+              <span class="basis-name"><span class="card-dot" style="background:var(--cat-6)"></span>保険<span title="佐野様個人の保険のため、按分せず佐野様が100%負担" style="cursor:help;">※</span></span>
+              <span class="basis-amt">55,420円 <span style="color:var(--ink-muted); font-weight:600;">(22.2%・佐野様100%)</span></span>
+            </div>
+            <div class="basis-track"><div class="basis-fill" style="width:22.2%; background:var(--cat-6);"></div></div>
           </div>
           <div class="basis-row">
             <div class="basis-top">
               <span class="basis-name"><span class="card-dot" style="background:var(--cat-7)"></span>食費（スーパー・コンビニ）</span>
-              <span class="basis-amt">33,613円 <span style="color:var(--ink-muted); font-weight:600;">(16.8%)</span></span>
+              <span class="basis-amt">33,613円 <span style="color:var(--ink-muted); font-weight:600;">(13.4%)</span></span>
             </div>
-            <div class="basis-track"><div class="basis-fill" style="width:16.8%; background:var(--cat-7);"></div></div>
+            <div class="basis-track"><div class="basis-fill" style="width:13.4%; background:var(--cat-7);"></div></div>
           </div>
           <div class="basis-row">
             <div class="basis-top">
               <span class="basis-name"><span class="card-dot" style="background:var(--cat-5)"></span>外食・カフェ</span>
-              <span class="basis-amt">33,319円 <span style="color:var(--ink-muted); font-weight:600;">(16.7%)</span></span>
+              <span class="basis-amt">33,319円 <span style="color:var(--ink-muted); font-weight:600;">(13.3%)</span></span>
             </div>
-            <div class="basis-track"><div class="basis-fill" style="width:16.7%; background:var(--cat-5);"></div></div>
+            <div class="basis-track"><div class="basis-fill" style="width:13.3%; background:var(--cat-5);"></div></div>
           </div>
           <div class="basis-row">
             <div class="basis-top">
               <span class="basis-name"><span class="card-dot" style="background:var(--cat-8)"></span>ショッピングモール・百貨店</span>
-              <span class="basis-amt">18,203円 <span style="color:var(--ink-muted); font-weight:600;">(9.1%)</span></span>
+              <span class="basis-amt">18,203円 <span style="color:var(--ink-muted); font-weight:600;">(7.3%)</span></span>
             </div>
-            <div class="basis-track"><div class="basis-fill" style="width:9.1%; background:var(--cat-8);"></div></div>
+            <div class="basis-track"><div class="basis-fill" style="width:7.3%; background:var(--cat-8);"></div></div>
+          </div>
+          <div class="basis-row">
+            <div class="basis-top">
+              <span class="basis-name"><span class="card-dot" style="background:var(--cat-other)"></span>その他（日用品・ネット通販・ファッションなど）</span>
+              <span class="basis-amt">31,407円 <span style="color:var(--ink-muted); font-weight:600;">(12.6%)</span></span>
+            </div>
+            <div class="basis-track"><div class="basis-fill" style="width:12.6%; background:var(--cat-other);"></div></div>
           </div>
           <div class="basis-row">
             <div class="basis-top">
               <span class="basis-name"><span class="card-dot" style="background:var(--cat-9)"></span>水道光熱費<span title="旧居（〜5/23）のデータが中心。要注意、下の注記参照。" style="cursor:help;">※</span></span>
-              <span class="basis-amt">15,205円 <span style="color:var(--ink-muted); font-weight:600;">(7.6%)</span></span>
+              <span class="basis-amt">15,205円 <span style="color:var(--ink-muted); font-weight:600;">(6.1%)</span></span>
             </div>
-            <div class="basis-track"><div class="basis-fill" style="width:7.6%; background:var(--cat-9);"></div></div>
-          </div>
-          <div class="basis-row">
-            <div class="basis-top">
-              <span class="basis-name"><span class="card-dot" style="background:var(--cat-11)"></span>ネットショッピング</span>
-              <span class="basis-amt">11,236円 <span style="color:var(--ink-muted); font-weight:600;">(5.6%)</span></span>
-            </div>
-            <div class="basis-track"><div class="basis-fill" style="width:5.6%; background:var(--cat-11);"></div></div>
-          </div>
-          <div class="basis-row">
-            <div class="basis-top">
-              <span class="basis-name"><span class="card-dot" style="background:var(--cat-other)"></span>その他（日用品・ファッションなど）</span>
-              <span class="basis-amt">20,171円 <span style="color:var(--ink-muted); font-weight:600;">(10.1%)</span></span>
-            </div>
-            <div class="basis-track"><div class="basis-fill" style="width:10.1%; background:var(--cat-other);"></div></div>
+            <div class="basis-track"><div class="basis-fill" style="width:6.1%; background:var(--cat-9);"></div></div>
           </div>
           <div class="basis-row">
             <div class="basis-top">
               <span class="basis-name"><span class="card-dot" style="background:var(--ink-muted)"></span>現金（ATM引き出し）</span>
-              <span class="basis-amt">7,143円 <span style="color:var(--ink-muted); font-weight:600;">(3.6%)</span></span>
+              <span class="basis-amt">7,143円 <span style="color:var(--ink-muted); font-weight:600;">(2.9%)</span></span>
             </div>
-            <div class="basis-track"><div class="basis-fill" style="width:3.6%; background:var(--ink-muted);"></div></div>
+            <div class="basis-track"><div class="basis-fill" style="width:2.9%; background:var(--ink-muted);"></div></div>
           </div>
           <div class="basis-row">
             <div class="basis-top">
               <span class="basis-name"><span class="card-dot" style="background:var(--good)"></span>バッファ（変動費の余裕分）</span>
-              <span class="basis-amt">5,690円 <span style="color:var(--ink-muted); font-weight:600;">(2.8%)</span></span>
+              <span class="basis-amt">5,690円 <span style="color:var(--ink-muted); font-weight:600;">(2.3%)</span></span>
             </div>
-            <div class="basis-track"><div class="basis-fill" style="width:2.8%; background:var(--good);"></div></div>
+            <div class="basis-track"><div class="basis-fill" style="width:2.3%; background:var(--good);"></div></div>
           </div>
           <div class="basis-row" style="border-top:1px solid var(--line); padding-top:10px; margin-top:4px;">
             <div class="basis-top">
               <span class="basis-name" style="font-weight:800;">合計</span>
-              <span class="basis-amt" style="font-weight:800; color:var(--ink-primary);">200,000円 <span style="color:var(--ink-muted); font-weight:600;">(100%)</span></span>
+              <span class="basis-amt" style="font-weight:800; color:var(--ink-primary);">250,000円 <span style="color:var(--ink-muted); font-weight:600;">(100%)</span></span>
             </div>
           </div>
         </div>
@@ -1340,8 +1341,9 @@
         <b>① カード実績ベースライン：</b>住信SBI口座から引き落とされる三井住友カード＋イオンカードの、旅行・交通費（定期券含む）を除いた3ヶ月（4〜6月）平均は<b>187,165円/月</b>（上表）。交通費を除いたのは、家賃と同様に会社が負担し給与に加算されるため。<br>
         <b>② 現金分を加算：</b>住信SBI口座から引き出したATM現金は2〜7月の7ヶ月で合計50,000円（月平均<b>7,143円</b>）。①＋②で<b>約194,300円/月</b>が実質的な生活費ベースライン。<br>
         <b>③ 目標額に余裕を持たせる：</b>変動費の月ブレを吸収できるよう約5,700円のバッファを乗せ、目標合計を<b>200,000円/月</b>に設定。<br>
-        <b>④ 保険は佐野様が100%負担：</b>保険（55,420円/月）は佐野様個人の保険のため、まず目標合計から丸ごと除く。残り<b>144,580円/月</b>を額面年収の比率（佐野様62.1%・奥様37.9%）で按分すると佐野様89,739円・奥様54,841円。保険分をそのまま佐野様に足し戻すと佐野様145,159円・奥様54,841円となり、キリの良い数字に丸めて<b>佐野様145,000円・奥様55,000円</b>（合計200,000円は維持）。<br>
-        現状の310,000円より少なくて済む主な理由は、5/23の引っ越しで旧居の家賃（192,902円/月）がこの口座を通らなくなったこと、そして交通費が会社負担であることの2つです。ただし上記の通り水道光熱費はまだ暫定値なので、この目標額も今後の実績次第で見直しが必要です。旅行費用はこの口座とは別に、専用の積立で用意するのがおすすめ。
+        <b>④ 保険は佐野様が100%負担：</b>保険（55,420円/月）は佐野様個人の保険のため、まず目標合計から丸ごと除く。残り<b>144,580円/月</b>を額面年収の比率（佐野様62.1%・奥様37.9%）で按分すると佐野様89,739円・奥様54,841円。保険分をそのまま佐野様に足し戻すと佐野様145,159円・奥様54,841円となり、キリの良い数字に丸めて<b>佐野様145,000円・奥様55,000円</b>（小計200,000円）。<br>
+        <b>⑤ 家賃の妻負担分を追加：</b>新居の家賃12万円/月は佐野様の給料から天引きされ、この口座を通らないためここまでの計算には含まれていない。そのうち5万円を奥様に負担してもらう分として奥様の額にそのまま追加。<b>奥様55,000円→105,000円</b>（合計は200,000円→<b>250,000円</b>）。<br>
+        最終的な推奨額は<b>佐野様145,000円・奥様105,000円（合計250,000円）</b>。現状310,000円との差は、5/23の引っ越しで旧居の家賃（192,902円/月）がこの口座を通らなくなったこと、交通費が会社負担であること、家賃を含めても実際の生活費水準に収まることの3つが理由です。ただし水道光熱費はまだ暫定値なので、この目標額も今後の実績次第で見直しが必要です。旅行費用はこの口座とは別に、専用の積立で用意するのがおすすめ。
       </div>
     </section>
 
@@ -1828,31 +1830,39 @@ function roundedTopRect(x, y, w, h, r) {
 }
 
 // ---------------- category trend (small multiples) ----------------
-const CAT_TREND_CATS = [...TOP_CATEGORIES, 'その他'];
-// 旅行・宿泊/住居費/交通費(定期券含む)の含む・含まないは、ページ上部の
-// 「含める項目」フィルター(state.includeTravel/includeHousing/includeTransport)
-// で全ページ共通に切り替える。ここではそのカテゴリのタイルごと表示・非表示にする。
+// 食費・外食・ショッピングモールと、ネットショッピング・日用品はそれぞれ
+// 1タイルにまとめて表示する（他のタブ・ドーナツ・予算は個別カテゴリのまま）。
+const CAT_TREND_GROUPS = [
+  { label: '旅行・宿泊', cats: ['旅行・宿泊'], colorVar: '--cat-1', toggleKey: 'includeTravel' },
+  { label: '住居費', cats: ['住居費'], colorVar: '--cat-2', toggleKey: 'includeHousing' },
+  { label: '交通費（定期券含む）', cats: ['交通費'], colorVar: '--cat-3', toggleKey: 'includeTransport' },
+  { label: '通信費・サブスク', cats: ['通信費・サブスク'], colorVar: '--cat-4' },
+  { label: '食費・外食・ショッピング', cats: ['食費（スーパー・コンビニ）', '外食・カフェ', 'ショッピングモール・百貨店'], colorVar: '--cat-7' },
+  { label: '保険', cats: ['保険'], colorVar: '--cat-6' },
+  { label: '水道光熱費', cats: ['水道光熱費'], colorVar: '--cat-9' },
+  { label: '投資・貯蓄', cats: ['投資・貯蓄'], colorVar: '--cat-10' },
+  { label: 'ネットショッピング・日用品', cats: ['ネットショッピング', '日用品・インテリア'], colorVar: '--cat-11' },
+  { label: 'その他', cats: ['その他'], colorVar: OTHER_COLOR_VAR },
+];
+const CAT_TO_TREND_GROUP = {};
+CAT_TREND_GROUPS.forEach(g => g.cats.forEach(c => { CAT_TO_TREND_GROUP[c] = g.label; }));
 
 function catTrendSeries() {
   const rows = TRANSACTIONS.filter(t => state.cards.has(t.card) && passesContentFilter(t));
-  const byCatMonth = {};
-  CAT_TREND_CATS.forEach(cat => { byCatMonth[cat] = {}; MONTH_KEYS.forEach(m => byCatMonth[cat][m] = 0); });
+  const byGroupMonth = {};
+  CAT_TREND_GROUPS.forEach(g => { byGroupMonth[g.label] = {}; MONTH_KEYS.forEach(m => byGroupMonth[g.label][m] = 0); });
   rows.forEach(t => {
-    const cat = TOP_CATEGORIES.includes(t.category) ? t.category : 'その他';
-    byCatMonth[cat][t.pay_month] = (byCatMonth[cat][t.pay_month] || 0) + t.amount;
+    const groupLabel = TOP_CATEGORIES.includes(t.category) ? CAT_TO_TREND_GROUP[t.category] : 'その他';
+    byGroupMonth[groupLabel][t.pay_month] = (byGroupMonth[groupLabel][t.pay_month] || 0) + t.amount;
   });
-  return byCatMonth;
+  return byGroupMonth;
 }
 
 function renderCatTrend() {
-  const byCatMonth = catTrendSeries();
-  const colorOf = (cat) => cat === 'その他' ? cssVar(OTHER_COLOR_VAR) : cssVar(CAT_COLOR_VAR[cat]);
-  const visibleCats = CAT_TREND_CATS.filter(cat => {
-    if (cat === '旅行・宿泊' && !state.includeTravel) return false;
-    if (cat === '住居費' && !state.includeHousing) return false;
-    if (cat === '交通費' && !state.includeTransport) return false;
-    return true;
-  });
+  const byGroupMonth = catTrendSeries();
+  const visibleGroups = CAT_TREND_GROUPS.filter(g => !g.toggleKey || state[g.toggleKey]);
+  // 月フィルター中は、グラフは全期間のまま・タイル右上の「合計」だけ選択中の月に絞る。
+  const filteredMonths = MONTH_KEYS.filter(m => state.months.has(m));
 
   const grid = document.getElementById('catTrendGrid');
   grid.innerHTML = '';
@@ -1862,10 +1872,11 @@ function renderCatTrend() {
   const plotW = W - PAD_L - PAD_R, plotH = H - PAD_T - PAD_B;
   const xOf = (i) => PAD_L + (MONTH_KEYS.length > 1 ? (plotW * i / (MONTH_KEYS.length - 1)) : plotW / 2);
 
-  visibleCats.forEach(cat => {
-    const color = colorOf(cat);
-    const values = MONTH_KEYS.map(m => byCatMonth[cat][m] || 0);
-    const total = values.reduce((s, v) => s + v, 0);
+  visibleGroups.forEach(g => {
+    const color = cssVar(g.colorVar);
+    const byMonth = byGroupMonth[g.label];
+    const values = MONTH_KEYS.map(m => byMonth[m] || 0);
+    const total = filteredMonths.reduce((s, m) => s + (byMonth[m] || 0), 0);
     const maxVal = Math.max(1, ...values);
     const yOf = (v) => PAD_T + plotH - (v / maxVal) * plotH;
 
@@ -1898,10 +1909,10 @@ function renderCatTrend() {
     cell.className = 'cat-trend-cell';
     cell.innerHTML = `
       <div class="cat-trend-cell-head">
-        <span class="cat-trend-cell-name"><span class="card-dot" style="background:${color}"></span>${cat}</span>
+        <span class="cat-trend-cell-name"><span class="card-dot" style="background:${color}"></span>${g.label}</span>
         <span class="cat-trend-cell-total">合計 ${yenShort(total)}</span>
       </div>
-      <svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="${cat}の月別推移">${gridSvg}${lines}${hitCols}</svg>
+      <svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="${g.label}の月別推移">${gridSvg}${lines}${hitCols}</svg>
     `;
     grid.appendChild(cell);
 
@@ -1909,8 +1920,8 @@ function renderCatTrend() {
       hit.addEventListener('mousemove', (e) => {
         const i = parseInt(hit.dataset.idx, 10);
         const m = MONTH_KEYS[i];
-        const v = byCatMonth[cat][m] || 0;
-        tooltip.innerHTML = `<div class="t-title">${monthFullLabel(m)}支払</div><div class="t-row"><span>${cat}</span><span class="mono">${yen(v)}</span></div>`;
+        const v = byMonth[m] || 0;
+        tooltip.innerHTML = `<div class="t-title">${monthFullLabel(m)}支払</div><div class="t-row"><span>${g.label}</span><span class="mono">${yen(v)}</span></div>`;
         tooltip.style.left = e.clientX + 'px';
         tooltip.style.top = e.clientY + 'px';
         tooltip.classList.add('show');
@@ -2008,7 +2019,8 @@ function isFixedCost(t) {
 }
 
 function renderFixed() {
-  const rows = TRANSACTIONS.filter(t => isFixedCost(t) && state.cards.has(t.card) && passesContentFilter(t));
+  const rows = TRANSACTIONS.filter(t => isFixedCost(t) && state.cards.has(t.card) && passesContentFilter(t) && state.months.has(t.pay_month));
+  const monthsSelected = MONTH_KEYS.filter(m => state.months.has(m));
   const groups = {};
   rows.forEach(t => {
     const key = t.card + '||' + t.name;
@@ -2016,7 +2028,7 @@ function renderFixed() {
     groups[key].byMonth[t.pay_month] = (groups[key].byMonth[t.pay_month] || 0) + t.amount;
   });
   const items = Object.values(groups).map(g => {
-    const vals = MONTH_KEYS.map(m => g.byMonth[m] || 0);
+    const vals = monthsSelected.map(m => g.byMonth[m] || 0);
     const total = vals.reduce((a,b) => a+b, 0);
     const count = vals.filter(v => v > 0).length;
     return { ...g, vals, total, avg: total / Math.max(count,1) };
@@ -2034,18 +2046,19 @@ function renderFixed() {
 
   const rowHtml = (g) => {
     const max = Math.max(...g.vals, 1);
+    const span = Math.max(g.vals.length - 1, 1);
     const pts = g.vals.map((v,i) => {
-      const x = 2 + i * (44/(MONTH_KEYS.length-1));
+      const x = 2 + i * (44/span);
       const y = 18 - (v/max)*14;
       return `${x},${y}`;
     }).join(' ');
     const lastIdx = g.vals.length - 1;
-    const lastPt = { x: 2 + lastIdx * (44/(MONTH_KEYS.length-1)), y: 18 - (g.vals[lastIdx]/max)*14 };
+    const lastPt = { x: 2 + lastIdx * (44/span), y: 18 - (g.vals[lastIdx]/max)*14 };
     return `
       <div class="fixed-row">
         <div class="fixed-left">
           <div class="fixed-name" title="${g.name}">${g.name}</div>
-          <div class="fixed-meta">${g.card.replace('カード','')} ・ 7ヶ月合計 ${yen(g.total)}</div>
+          <div class="fixed-meta">${g.card.replace('カード','')} ・ ${monthsSelected.length}ヶ月合計 ${yen(g.total)}</div>
         </div>
         <div class="fixed-right">
           <svg width="48" height="20" viewBox="0 0 48 20" aria-hidden="true">
@@ -2066,7 +2079,7 @@ function renderFixed() {
       <div class="fixed-cat-group">
         <div class="fixed-cat-header">
           <div class="fixed-cat-title"><span class="dot" style="background:${cssVar(colorVar)}"></span>${cat}</div>
-          <div class="fixed-cat-figures tabular">7ヶ月合計 ${yen(catTotal)}</div>
+          <div class="fixed-cat-figures tabular">${monthsSelected.length}ヶ月合計 ${yen(catTotal)}</div>
         </div>
         <div class="fixed-cat-rows">${catItems.map(rowHtml).join('')}</div>
       </div>
@@ -2175,6 +2188,7 @@ function renderTable() {
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td class="tabular">${t.date}</td>
+      <td class="tabular" style="color:var(--ink-muted);">${monthFullLabel(t.pay_month)}</td>
       <td class="name-cell">${t.name}</td>
       <td><span class="card-pill"><span class="card-dot" style="background:${cssVar(CARD_COLOR_VAR[t.card])}"></span>${t.card.replace('カード','')}</span></td>
       <td>${t.category}</td>
@@ -2401,7 +2415,7 @@ function renderLivingCostChart() {
     ]},
     { label: '推奨（旅行・交通費除く）', parts: [
       { who: '佐野様', amt: 145000, colorVar: '--cat-1' },
-      { who: '奥様', amt: 55000, colorVar: '--cat-5' },
+      { who: '奥様', amt: 105000, colorVar: '--cat-5' },
     ]},
   ];
   const W = 900, H = 220, padL = 40, padR = 20, padT = 20, padB = 40;
