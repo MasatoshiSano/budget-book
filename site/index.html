@@ -1001,7 +1001,7 @@
         <div class="chip-row" id="cardChips" role="group" aria-label="支払い元（カード・銀行引落）"></div>
       </div>
       <div class="filter-group">
-        <span class="filter-label" title="会社が別途負担する支出（家賃は給与天引き、交通費・定期券は給与に加算）や、生活費として見たくない支出を、集計から含める/除外するかを切り替えます。すべてのページに反映されます。">含める項目</span>
+        <span class="filter-label" title="会社が別途負担する（家賃は給与天引き、交通費・定期券は給与に加算）支出を、集計から含める/除外するかを切り替えます。すべてのページに反映されます。">含める項目</span>
         <div class="checkbox-row" id="contentChips" role="group" aria-label="旅行・住居・交通費の含む/含まない"></div>
       </div>
     </div>
@@ -1465,19 +1465,12 @@ const state = {
   includeTravel: false,
   includeHousing: false,
   includeTransport: false,
-  includePaypayConbini: false, // PayPayでのセブン/ファミマ/ローソン利用（デフォルト除外）
 };
-
-const PAYPAY_CONBINI_NAMES = new Set(['セブンーイレブン', 'ファミリーマート', 'ローソン']);
-function isPaypayConbini(t) {
-  return t.card === 'PayPayカード' && PAYPAY_CONBINI_NAMES.has(t.name);
-}
 
 function passesContentFilter(t) {
   if (!state.includeTravel && t.category === '旅行・宿泊') return false;
   if (!state.includeHousing && t.category === '住居費') return false;
   if (!state.includeTransport && t.category === '交通費') return false;
-  if (!state.includePaypayConbini && isPaypayConbini(t)) return false;
   return true;
 }
 
@@ -1620,7 +1613,6 @@ function buildChips() {
     { key: 'includeTravel', label: '旅行・宿泊', colorVar: '--cat-1' },
     { key: 'includeHousing', label: '住居費', colorVar: '--cat-2' },
     { key: 'includeTransport', label: '交通費（定期券含む）', colorVar: '--cat-3' },
-    { key: 'includePaypayConbini', label: 'PayPayのコンビニ', colorVar: '--card-paypay' },
   ];
   const contentWrap = document.getElementById('contentChips');
   CONTENT_TOGGLES.forEach(({ key, label, colorVar }) => {
