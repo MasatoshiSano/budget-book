@@ -160,8 +160,10 @@
   }
 
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; overflow-x: hidden; }
+  html { margin: 0; padding: 0; overflow-x: hidden; }
   body {
+    margin: 0;
+    padding: 0;
     background: var(--bg-page);
     color: var(--ink-primary);
     font-family: 'Manrope Var', -apple-system, BlinkMacSystemFont, "Hiragino Sans",
@@ -170,7 +172,6 @@
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     max-width: 100%;
-    overflow-x: hidden;
   }
   @media (prefers-reduced-motion: no-preference) {
     .panel, .stat-tile { transition: box-shadow .2s ease, transform .2s ease; }
