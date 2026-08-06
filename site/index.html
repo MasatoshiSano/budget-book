@@ -2570,11 +2570,27 @@ function bindNav() {
   window.addEventListener('hashchange', () => showPage(location.hash.slice(1), { skipHash: true }));
 }
 
+function bindTooltipDismiss() {
+  // Chart tooltips show/hide on mousemove/mouseleave, which touch screens never
+  // fire (a tap has no hover state to leave). Without this, tapping a chart on
+  // mobile leaves the tooltip stuck on screen — and since the tooltip itself has
+  // pointer-events:none, tapping directly on it just passes the tap through to
+  // whatever's underneath, not to the tooltip. So: any tap that doesn't land on
+  // a chart's hit-target closes whatever tooltip is currently showing.
+  const tooltip = document.getElementById('tooltip');
+  document.addEventListener('touchstart', (e) => {
+    if (tooltip.classList.contains('show') && !e.target.closest('.hit')) {
+      tooltip.classList.remove('show');
+    }
+  }, { passive: true });
+}
+
 buildPeriodControl();
 buildChips();
 buildCategoryFilterOptions();
 bindTableControls();
 bindNav();
+bindTooltipDismiss();
 render();
 renderStrategy();
 showPage(location.hash ? location.hash.slice(1) : 'overview', { skipHash: true, skipScroll: true });
