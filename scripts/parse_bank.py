@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
-# Parses the 住信SBIネット銀行 代表口座 statement PDFs into data/bank_transactions.json.
+# Parses 住信SBIネット銀行 代表口座 statement PDFs (data/raw/bank_sbi/*.pdf) into
+# data/bank_transactions.json. To add a new month: save the new statement PDF
+# into data/raw/bank_sbi/ (any filename) and re-run this script — pay_month is
+# read from each PDF's own transaction dates, not from the filename.
 # Only keeps rows that represent real household spending not already captured by
 # the 3 card statements (rent, the AEON payments, the ATM cash withdrawals).
 # Excluded on purpose:
@@ -14,9 +17,9 @@ import glob
 import os
 import pdfplumber
 
-DIR = '/root/.claude/uploads/02b55f01-b334-5b26-9fc8-6e95ce3af906'
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FILES = sorted(glob.glob(os.path.join(DIR, '*download_*.pdf')))
+DIR = os.path.join(ROOT, 'data', 'raw', 'bank_sbi')
+FILES = sorted(glob.glob(os.path.join(DIR, '*.pdf')))
 line_re = re.compile(r'^(\d{4})年(\d{2})月(\d{2})日\s+(.+?)\s+([\d,]+)\s+([\d,]+)\s+([\d,]+)$')
 
 # content substring -> (category, display name)

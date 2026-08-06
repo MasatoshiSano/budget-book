@@ -9,12 +9,18 @@
 
 | フォルダ | 内容 | 対応するパーススクリプト | 月ラベルの基準 |
 |---|---|---|---|
-| `sumitomo/` | 三井住友カード ご利用明細（1〜7月） | `scripts/parse_sumitomo.py` | お支払い日の月 |
-| `paypay/` | PayPayカード ご利用明細CSV（1〜7月） | `scripts/parse_categorize_paypay.py` | 明細ファイル名のYYYYMM |
-| `rakuten/` | 楽天カード ご請求明細書（1〜7月） | `scripts/parse_rakuten.py` | ご請求月 |
-| `bank_sbi/` | 住信SBIネット銀行 取引明細書（1〜7月） | `scripts/parse_bank.py` | 対象期間の開始月 |
-| `yucho/` | ゆうちょ銀行 入出金明細CSV（6〜7月分のみ） | `scripts/parse_yucho.py` | 明細の対象期間 |
-| `aeon/` | イオンカード ご利用明細書（4〜8月） | `scripts/parse_aeon.py` | お支払い日の月 |
+| `sumitomo/` | 三井住友カード ご利用明細（1〜7月） | `scripts/parse_sumitomo.py` | PDF内「お支払い日」ヘッダーの月（自動抽出） |
+| `paypay/` | PayPayカード ご利用明細CSV（1〜7月） | `scripts/parse_categorize_paypay.py` | 各行の「当月お支払日」列（自動抽出） |
+| `rakuten/` | 楽天カード ご請求明細書（1〜7月） | `scripts/parse_rakuten.py` | PDF内「お支払日」行（自動抽出） |
+| `bank_sbi/` | 住信SBIネット銀行 取引明細書（1〜7月） | `scripts/parse_bank.py` | 明細内の各取引日そのもの（自動抽出） |
+| `yucho/` | ゆうちょ銀行 入出金明細CSV（6〜7月分のみ） | `scripts/parse_yucho.py` | 各行の「取引日」列（自動抽出、取引IDで重複除去） |
+| `aeon/` | イオンカード ご利用明細書（4〜8月） | `scripts/parse_aeon.py` | 手動転記（PDFのテキスト抽出が崩れるため自動化不可） |
+
+2026-08-06以降、上記フォルダに置いたファイルは**ファイル名を問わずフォルダ内の
+全ファイルを毎回まとめて読み直す**ようにスクリプトを直したので、ファイル名は
+何でもよい（月の対応表をファイル名で手書きする必要はもうない。詳細は
+[`../../notes/pipeline-workflow.md`](../../notes/pipeline-workflow.md)）。
+唯一イオンカードだけは明細PDFの自動抽出が崩れるため、今も手動転記。
 
 ## 欠けているもの
 
@@ -23,5 +29,6 @@
 - アメックス：明細自体が未取得（`../../notes/open-issues.md`参照）
 - ahamo：2026年7月契約開始（本人明言）だが明細は未取得
 
-新しい月の明細が届いたら、このフォルダに同じ命名規則（`YYYY-MM.拡張子`）で追加し、
-対応するパーススクリプトの`FILES`リストを更新してから`scripts/consolidate.py`を再実行する。
+新しい月の明細が届いたら、このフォルダに追加して対応するパーススクリプトを
+再実行するだけでよい。手順は
+[`../../notes/pipeline-workflow.md`](../../notes/pipeline-workflow.md)を参照。

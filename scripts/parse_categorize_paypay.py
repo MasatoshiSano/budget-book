@@ -1,16 +1,13 @@
 # -*- coding: utf-8 -*-
+# Parses PayPayカード statement CSVs (data/raw/paypay/*.csv) into
+# data/paypay_transactions.json. To add a new month: save the new statement
+# CSV into data/raw/paypay/ (any filename) and re-run this script — pay_month
+# is read from each row's own "当月お支払日" column, not from the filename.
 import csv, json, glob, os, unicodedata
 
-FILES = {
-    '4c3357d0-detail2026013979.csv': '1月',
-    'da5973f3-detail2026023979.csv': '2月',
-    '97652b33-detail2026033979.csv': '3月',
-    '7f76e1dd-detail2026043979.csv': '4月',
-    '6595d659-detail2026053979.csv': '5月',
-    '3cfde5dd-detail2026063979.csv': '6月',
-    '4c6a7192-detail2026073979.csv': '7月',
-}
-DIR = '/root/.claude/uploads/02b55f01-b334-5b26-9fc8-6e95ce3af906'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DIR = os.path.join(ROOT, 'data', 'raw', 'paypay')
+FILES = sorted(glob.glob(os.path.join(DIR, '*.csv')))
 
 RADICAL_FIX = {
     '⻄': '西', '⻑': '長', '⻲': '亀', '⼀': '一', '⼒': '力',
@@ -57,9 +54,12 @@ def categorize(name):
                 return cat
     return 'その他'
 
+def pay_month_label_of(pay_date):
+    # pay_date is 'YYYY/M/D' (not zero-padded)
+    return f'{int(pay_date.split("/")[1])}月'
+
 rows = []
-for fname, label in FILES.items():
-    path = os.path.join(DIR, fname)
+for path in FILES:
     with open(path, encoding='utf-8-sig', newline='') as f:
         reader = csv.DictReader(f)
         for r in reader:
@@ -77,12 +77,15 @@ for fname, label in FILES.items():
                 'payment_method': r['決済方法'].strip(),
                 'amount': amount,
                 'pay_date': pay_date,
-                'pay_month_label': label,
+                'pay_month_label': pay_month_label_of(pay_date),
                 'category': categorize(name),
             })
 
-# sort
-rows.sort(key=lambda r: (r['pay_month_label'], r['use_date']))
+# sort chronologically by pay_date (not the "N月" label, which doesn't sort right).
+# pay_date isn't zero-padded ("2026/7/27"), so compare the y/m/d parts as ints.
+def date_sort_key(s):
+    return tuple(int(p) for p in s.replace('/', '-').split('-'))
+rows.sort(key=lambda r: (date_sort_key(r['pay_date']), date_sort_key(r['use_date'])))
 
 from collections import Counter
 cat_counts = Counter(r['category'] for r in rows)
@@ -95,10 +98,9 @@ print('\n=== uncategorized (その他), n=', len(others), '===')
 for r in others:
     print(r['use_date'], r['name'], r['amount'])
 
-# cross check totals per statement month against sum of 当月支払金額 column (support separately)
-totals_by_month = {}
-for fname, label in FILES.items():
-    path = os.path.join(DIR, fname)
+# cross check totals per statement file against sum of 当月支払金額 column (support separately)
+totals_by_file = {}
+for path in FILES:
     with open(path, encoding='utf-8-sig', newline='') as f:
         reader = csv.DictReader(f)
         tot = 0
@@ -109,20 +111,20 @@ for fname, label in FILES.items():
             if v == '':
                 continue
             tot += int(v.replace(',', ''))
-        totals_by_month[label] = tot
+        totals_by_file[os.path.basename(path)] = tot
 
 print('\n=== monthly 当月支払金額 totals (from CSV column) ===')
-for label, tot in totals_by_month.items():
-    print(label, tot)
+for fname, tot in totals_by_file.items():
+    print(fname, tot)
 
 parsed_sum_by_month = Counter()
 for r in rows:
     parsed_sum_by_month[r['pay_month_label']] += r['amount']
 print('\n=== monthly parsed 利用金額 sums (cancellations netted) ===')
-for label in FILES.values():
-    print(label, parsed_sum_by_month[label])
+for label, tot in sorted(parsed_sum_by_month.items(), key=lambda kv: int(kv[0].rstrip('月'))):
+    print(label, tot)
 
 print('\nTOTAL rows:', len(rows), 'TOTAL amount (利用金額 net):', sum(r['amount'] for r in rows))
 
-with open('/tmp/claude-0/-home-user-budget-book/02b55f01-b334-5b26-9fc8-6e95ce3af906/scratchpad/paypay_rows.json', 'w', encoding='utf-8') as f:
+with open(os.path.join(ROOT, 'data', 'paypay_transactions.json'), 'w', encoding='utf-8') as f:
     json.dump(rows, f, ensure_ascii=False, indent=2)

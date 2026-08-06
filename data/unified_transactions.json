@@ -2416,6 +2416,118 @@
     "category": "食費（スーパー・コンビニ）"
   },
   {
+    "date": "2025-12-2",
+    "name": "ファミリーマート",
+    "amount": 194,
+    "card": "PayPayカード",
+    "pay_month": "2026-01",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2025-12-2",
+    "name": "ローソン",
+    "amount": 181,
+    "card": "PayPayカード",
+    "pay_month": "2026-01",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2025-12-3",
+    "name": "セブンーイレブン",
+    "amount": 368,
+    "card": "PayPayカード",
+    "pay_month": "2026-01",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2025-12-3",
+    "name": "ファミリーマート",
+    "amount": 150,
+    "card": "PayPayカード",
+    "pay_month": "2026-01",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2025-12-4",
+    "name": "ローソン",
+    "amount": 293,
+    "card": "PayPayカード",
+    "pay_month": "2026-01",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2025-12-5",
+    "name": "セブンーイレブン",
+    "amount": 322,
+    "card": "PayPayカード",
+    "pay_month": "2026-01",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2025-12-5",
+    "name": "ローソン",
+    "amount": 319,
+    "card": "PayPayカード",
+    "pay_month": "2026-01",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2025-12-5",
+    "name": "モバイルＩＣＯＣＡチャージ",
+    "amount": 5000,
+    "card": "PayPayカード",
+    "pay_month": "2026-01",
+    "category": "交通費"
+  },
+  {
+    "date": "2025-12-5",
+    "name": "GOOGLE MONEYFORWARDHM",
+    "amount": 590,
+    "card": "PayPayカード",
+    "pay_month": "2026-01",
+    "category": "通信費・サブスク"
+  },
+  {
+    "date": "2025-12-7",
+    "name": "ケーズ　ケベック",
+    "amount": 820,
+    "card": "PayPayカード",
+    "pay_month": "2026-01",
+    "category": "外食・カフェ"
+  },
+  {
+    "date": "2025-12-8",
+    "name": "ローソン",
+    "amount": 279,
+    "card": "PayPayカード",
+    "pay_month": "2026-01",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2025-12-8",
+    "name": "ローソン",
+    "amount": 184,
+    "card": "PayPayカード",
+    "pay_month": "2026-01",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2025-12-9",
+    "name": "ローソン",
+    "amount": 184,
+    "card": "PayPayカード",
+    "pay_month": "2026-01",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2025-12-9",
+    "name": "ローソン",
+    "amount": 171,
+    "card": "PayPayカード",
+    "pay_month": "2026-01",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
     "date": "2025-12-10",
     "name": "阪急阪神百貨店",
     "amount": 613,
@@ -2624,22 +2736,6 @@
     "category": "美容・健康"
   },
   {
-    "date": "2025-12-2",
-    "name": "ファミリーマート",
-    "amount": 194,
-    "card": "PayPayカード",
-    "pay_month": "2026-01",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2025-12-2",
-    "name": "ローソン",
-    "amount": 181,
-    "card": "PayPayカード",
-    "pay_month": "2026-01",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
     "date": "2025-12-22",
     "name": "ファミリーマート",
     "amount": 194,
@@ -2776,22 +2872,6 @@
     "category": "交通費"
   },
   {
-    "date": "2025-12-3",
-    "name": "セブンーイレブン",
-    "amount": 368,
-    "card": "PayPayカード",
-    "pay_month": "2026-01",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2025-12-3",
-    "name": "ファミリーマート",
-    "amount": 150,
-    "card": "PayPayカード",
-    "pay_month": "2026-01",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
     "date": "2025-12-30",
     "name": "ＪＲーＰＬＵＳ",
     "amount": 1296,
@@ -2806,86 +2886,6 @@
     "card": "PayPayカード",
     "pay_month": "2026-01",
     "category": "通信費・サブスク"
-  },
-  {
-    "date": "2025-12-4",
-    "name": "ローソン",
-    "amount": 293,
-    "card": "PayPayカード",
-    "pay_month": "2026-01",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2025-12-5",
-    "name": "セブンーイレブン",
-    "amount": 322,
-    "card": "PayPayカード",
-    "pay_month": "2026-01",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2025-12-5",
-    "name": "ローソン",
-    "amount": 319,
-    "card": "PayPayカード",
-    "pay_month": "2026-01",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2025-12-5",
-    "name": "モバイルＩＣＯＣＡチャージ",
-    "amount": 5000,
-    "card": "PayPayカード",
-    "pay_month": "2026-01",
-    "category": "交通費"
-  },
-  {
-    "date": "2025-12-5",
-    "name": "GOOGLE MONEYFORWARDHM",
-    "amount": 590,
-    "card": "PayPayカード",
-    "pay_month": "2026-01",
-    "category": "通信費・サブスク"
-  },
-  {
-    "date": "2025-12-7",
-    "name": "ケーズ　ケベック",
-    "amount": 820,
-    "card": "PayPayカード",
-    "pay_month": "2026-01",
-    "category": "外食・カフェ"
-  },
-  {
-    "date": "2025-12-8",
-    "name": "ローソン",
-    "amount": 279,
-    "card": "PayPayカード",
-    "pay_month": "2026-01",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2025-12-8",
-    "name": "ローソン",
-    "amount": 184,
-    "card": "PayPayカード",
-    "pay_month": "2026-01",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2025-12-9",
-    "name": "ローソン",
-    "amount": 184,
-    "card": "PayPayカード",
-    "pay_month": "2026-01",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2025-12-9",
-    "name": "ローソン",
-    "amount": 171,
-    "card": "PayPayカード",
-    "pay_month": "2026-01",
-    "category": "食費（スーパー・コンビニ）"
   },
   {
     "date": "2026-1-1",
@@ -2918,6 +2918,86 @@
     "card": "PayPayカード",
     "pay_month": "2026-02",
     "category": "交通費"
+  },
+  {
+    "date": "2026-1-2",
+    "name": "AMAZON WEB SERVICES JAPAN",
+    "amount": 140,
+    "card": "PayPayカード",
+    "pay_month": "2026-02",
+    "category": "通信費・サブスク"
+  },
+  {
+    "date": "2026-1-4",
+    "name": "ローソン",
+    "amount": 150,
+    "card": "PayPayカード",
+    "pay_month": "2026-02",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-1-4",
+    "name": "GOOGLE PLAY JAPAN",
+    "amount": 590,
+    "card": "PayPayカード",
+    "pay_month": "2026-02",
+    "category": "通信費・サブスク"
+  },
+  {
+    "date": "2026-1-5",
+    "name": "ローソン",
+    "amount": 184,
+    "card": "PayPayカード",
+    "pay_month": "2026-02",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-1-6",
+    "name": "セブンーイレブン",
+    "amount": 159,
+    "card": "PayPayカード",
+    "pay_month": "2026-02",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-1-7",
+    "name": "ローソン",
+    "amount": 149,
+    "card": "PayPayカード",
+    "pay_month": "2026-02",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-1-8",
+    "name": "ローソン",
+    "amount": 149,
+    "card": "PayPayカード",
+    "pay_month": "2026-02",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-1-9",
+    "name": "阪急阪神百貨店",
+    "amount": 432,
+    "card": "PayPayカード",
+    "pay_month": "2026-02",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "date": "2026-1-9",
+    "name": "阪急阪神百貨店",
+    "amount": 264,
+    "card": "PayPayカード",
+    "pay_month": "2026-02",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "date": "2026-1-9",
+    "name": "ローソン",
+    "amount": 149,
+    "card": "PayPayカード",
+    "pay_month": "2026-02",
+    "category": "食費（スーパー・コンビニ）"
   },
   {
     "date": "2026-1-10",
@@ -3048,14 +3128,6 @@
     "category": "交通費"
   },
   {
-    "date": "2026-1-2",
-    "name": "AMAZON WEB SERVICES JAPAN",
-    "amount": 140,
-    "card": "PayPayカード",
-    "pay_month": "2026-02",
-    "category": "通信費・サブスク"
-  },
-  {
     "date": "2026-1-23",
     "name": "モバイルＩＣＯＣＡチャージ",
     "amount": 3000,
@@ -3160,84 +3232,148 @@
     "category": "日用品・インテリア"
   },
   {
-    "date": "2026-1-4",
-    "name": "ローソン",
-    "amount": 150,
-    "card": "PayPayカード",
-    "pay_month": "2026-02",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-1-4",
-    "name": "GOOGLE PLAY JAPAN",
-    "amount": 590,
-    "card": "PayPayカード",
-    "pay_month": "2026-02",
-    "category": "通信費・サブスク"
-  },
-  {
-    "date": "2026-1-5",
-    "name": "ローソン",
-    "amount": 184,
-    "card": "PayPayカード",
-    "pay_month": "2026-02",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-1-6",
-    "name": "セブンーイレブン",
-    "amount": 159,
-    "card": "PayPayカード",
-    "pay_month": "2026-02",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-1-7",
-    "name": "ローソン",
-    "amount": 149,
-    "card": "PayPayカード",
-    "pay_month": "2026-02",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-1-8",
-    "name": "ローソン",
-    "amount": 149,
-    "card": "PayPayカード",
-    "pay_month": "2026-02",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-1-9",
-    "name": "阪急阪神百貨店",
-    "amount": 432,
-    "card": "PayPayカード",
-    "pay_month": "2026-02",
-    "category": "ショッピングモール・百貨店"
-  },
-  {
-    "date": "2026-1-9",
-    "name": "阪急阪神百貨店",
-    "amount": 264,
-    "card": "PayPayカード",
-    "pay_month": "2026-02",
-    "category": "ショッピングモール・百貨店"
-  },
-  {
-    "date": "2026-1-9",
-    "name": "ローソン",
-    "amount": 149,
-    "card": "PayPayカード",
-    "pay_month": "2026-02",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
     "date": "2026-2-1",
     "name": "AMAZON WEB SERVICES 利用国USA",
     "amount": 64,
     "card": "PayPayカード",
     "pay_month": "2026-03",
     "category": "通信費・サブスク"
+  },
+  {
+    "date": "2026-2-2",
+    "name": "ＡＭＡＺＯＮ　ＷＥＢ　ＳＥＲＶＩＣＥＳ",
+    "amount": 141,
+    "card": "PayPayカード",
+    "pay_month": "2026-03",
+    "category": "通信費・サブスク"
+  },
+  {
+    "date": "2026-2-2",
+    "name": "セブンーイレブン",
+    "amount": 190,
+    "card": "PayPayカード",
+    "pay_month": "2026-03",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-2-2",
+    "name": "セブンーイレブン",
+    "amount": 181,
+    "card": "PayPayカード",
+    "pay_month": "2026-03",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-2-2",
+    "name": "モバイルＩＣＯＣＡチャージ",
+    "amount": 5000,
+    "card": "PayPayカード",
+    "pay_month": "2026-03",
+    "category": "交通費"
+  },
+  {
+    "date": "2026-2-3",
+    "name": "ファミリーマート",
+    "amount": 228,
+    "card": "PayPayカード",
+    "pay_month": "2026-03",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-2-5",
+    "name": "GOOGLE MONEYFORWARDHM",
+    "amount": 590,
+    "card": "PayPayカード",
+    "pay_month": "2026-03",
+    "category": "通信費・サブスク"
+  },
+  {
+    "date": "2026-2-6",
+    "name": "ピオレ姫路",
+    "amount": 972,
+    "card": "PayPayカード",
+    "pay_month": "2026-03",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "date": "2026-2-6",
+    "name": "セブンーイレブン",
+    "amount": 151,
+    "card": "PayPayカード",
+    "pay_month": "2026-03",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-2-7",
+    "name": "コメダ珈琲店",
+    "amount": 1320,
+    "card": "PayPayカード",
+    "pay_month": "2026-03",
+    "category": "外食・カフェ"
+  },
+  {
+    "date": "2026-2-7",
+    "name": "コストコ　ホールセール　ジャパン",
+    "amount": 6459,
+    "card": "PayPayカード",
+    "pay_month": "2026-03",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-2-7",
+    "name": "コストコ　ホールセール　ジャパン",
+    "amount": 180,
+    "card": "PayPayカード",
+    "pay_month": "2026-03",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-2-8",
+    "name": "ユーケーホテルマネジメント",
+    "amount": 2800,
+    "card": "PayPayカード",
+    "pay_month": "2026-03",
+    "category": "旅行・宿泊"
+  },
+  {
+    "date": "2026-2-8",
+    "name": "ファミリーマート",
+    "amount": 587,
+    "card": "PayPayカード",
+    "pay_month": "2026-03",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-2-8",
+    "name": "ｼﾕﾊﾘ ﾄﾞｳｼﾞﾏﾃﾝ",
+    "amount": 4080,
+    "card": "PayPayカード",
+    "pay_month": "2026-03",
+    "category": "外食・カフェ"
+  },
+  {
+    "date": "2026-2-9",
+    "name": "チャージ",
+    "amount": 3000,
+    "card": "PayPayカード",
+    "pay_month": "2026-03",
+    "category": "その他"
+  },
+  {
+    "date": "2026-2-9",
+    "name": "ローソン",
+    "amount": 171,
+    "card": "PayPayカード",
+    "pay_month": "2026-03",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-2-9",
+    "name": "モバイルＩＣＯＣＡチャージ",
+    "amount": 5000,
+    "card": "PayPayカード",
+    "pay_month": "2026-03",
+    "category": "交通費"
   },
   {
     "date": "2026-2-10",
@@ -3352,38 +3488,6 @@
     "category": "食費（スーパー・コンビニ）"
   },
   {
-    "date": "2026-2-2",
-    "name": "ＡＭＡＺＯＮ　ＷＥＢ　ＳＥＲＶＩＣＥＳ",
-    "amount": 141,
-    "card": "PayPayカード",
-    "pay_month": "2026-03",
-    "category": "通信費・サブスク"
-  },
-  {
-    "date": "2026-2-2",
-    "name": "セブンーイレブン",
-    "amount": 190,
-    "card": "PayPayカード",
-    "pay_month": "2026-03",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-2-2",
-    "name": "セブンーイレブン",
-    "amount": 181,
-    "card": "PayPayカード",
-    "pay_month": "2026-03",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-2-2",
-    "name": "モバイルＩＣＯＣＡチャージ",
-    "amount": 5000,
-    "card": "PayPayカード",
-    "pay_month": "2026-03",
-    "category": "交通費"
-  },
-  {
     "date": "2026-2-20",
     "name": "セブンーイレブン",
     "amount": 447,
@@ -3464,116 +3568,84 @@
     "category": "通信費・サブスク"
   },
   {
-    "date": "2026-2-3",
-    "name": "ファミリーマート",
-    "amount": 228,
-    "card": "PayPayカード",
-    "pay_month": "2026-03",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-2-5",
-    "name": "GOOGLE MONEYFORWARDHM",
-    "amount": 590,
-    "card": "PayPayカード",
-    "pay_month": "2026-03",
-    "category": "通信費・サブスク"
-  },
-  {
-    "date": "2026-2-6",
-    "name": "ピオレ姫路",
-    "amount": 972,
-    "card": "PayPayカード",
-    "pay_month": "2026-03",
-    "category": "ショッピングモール・百貨店"
-  },
-  {
-    "date": "2026-2-6",
-    "name": "セブンーイレブン",
-    "amount": 151,
-    "card": "PayPayカード",
-    "pay_month": "2026-03",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-2-7",
-    "name": "コメダ珈琲店",
-    "amount": 1320,
-    "card": "PayPayカード",
-    "pay_month": "2026-03",
-    "category": "外食・カフェ"
-  },
-  {
-    "date": "2026-2-7",
-    "name": "コストコ　ホールセール　ジャパン",
-    "amount": 6459,
-    "card": "PayPayカード",
-    "pay_month": "2026-03",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-2-7",
-    "name": "コストコ　ホールセール　ジャパン",
-    "amount": 180,
-    "card": "PayPayカード",
-    "pay_month": "2026-03",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-2-8",
-    "name": "ユーケーホテルマネジメント",
-    "amount": 2800,
-    "card": "PayPayカード",
-    "pay_month": "2026-03",
-    "category": "旅行・宿泊"
-  },
-  {
-    "date": "2026-2-8",
-    "name": "ファミリーマート",
-    "amount": 587,
-    "card": "PayPayカード",
-    "pay_month": "2026-03",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-2-8",
-    "name": "ｼﾕﾊﾘ ﾄﾞｳｼﾞﾏﾃﾝ",
-    "amount": 4080,
-    "card": "PayPayカード",
-    "pay_month": "2026-03",
-    "category": "外食・カフェ"
-  },
-  {
-    "date": "2026-2-9",
-    "name": "チャージ",
-    "amount": 3000,
-    "card": "PayPayカード",
-    "pay_month": "2026-03",
-    "category": "その他"
-  },
-  {
-    "date": "2026-2-9",
-    "name": "ローソン",
-    "amount": 171,
-    "card": "PayPayカード",
-    "pay_month": "2026-03",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-2-9",
-    "name": "モバイルＩＣＯＣＡチャージ",
-    "amount": 5000,
-    "card": "PayPayカード",
-    "pay_month": "2026-03",
-    "category": "交通費"
-  },
-  {
     "date": "2026-3-1",
     "name": "モバイルＩＣＯＣＡチャージ",
     "amount": 5000,
     "card": "PayPayカード",
     "pay_month": "2026-04",
     "category": "交通費"
+  },
+  {
+    "date": "2026-3-2",
+    "name": "AMAZON WEB SERVICES 利用国USA",
+    "amount": 109,
+    "card": "PayPayカード",
+    "pay_month": "2026-04",
+    "category": "通信費・サブスク"
+  },
+  {
+    "date": "2026-3-2",
+    "name": "ＡＭＡＺＯＮ　ＷＥＢ　ＳＥＲＶＩＣＥＳ",
+    "amount": 31,
+    "card": "PayPayカード",
+    "pay_month": "2026-04",
+    "category": "通信費・サブスク"
+  },
+  {
+    "date": "2026-3-4",
+    "name": "ローソン",
+    "amount": 181,
+    "card": "PayPayカード",
+    "pay_month": "2026-04",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-3-5",
+    "name": "ローソン",
+    "amount": 526,
+    "card": "PayPayカード",
+    "pay_month": "2026-04",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-3-5",
+    "name": "GOOGLE MONEYFORWARDHM",
+    "amount": 590,
+    "card": "PayPayカード",
+    "pay_month": "2026-04",
+    "category": "通信費・サブスク"
+  },
+  {
+    "date": "2026-3-6",
+    "name": "セブンーイレブン",
+    "amount": 190,
+    "card": "PayPayカード",
+    "pay_month": "2026-04",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-3-6",
+    "name": "ローソン",
+    "amount": 142,
+    "card": "PayPayカード",
+    "pay_month": "2026-04",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-3-7",
+    "name": "スギ薬局グループ",
+    "amount": 2126,
+    "card": "PayPayカード",
+    "pay_month": "2026-04",
+    "category": "ドラッグストア"
+  },
+  {
+    "date": "2026-3-9",
+    "name": "阪急阪神百貨店",
+    "amount": 1134,
+    "card": "PayPayカード",
+    "pay_month": "2026-04",
+    "category": "ショッピングモール・百貨店"
   },
   {
     "date": "2026-3-10",
@@ -3646,22 +3718,6 @@
     "card": "PayPayカード",
     "pay_month": "2026-04",
     "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-3-2",
-    "name": "AMAZON WEB SERVICES 利用国USA",
-    "amount": 109,
-    "card": "PayPayカード",
-    "pay_month": "2026-04",
-    "category": "通信費・サブスク"
-  },
-  {
-    "date": "2026-3-2",
-    "name": "ＡＭＡＺＯＮ　ＷＥＢ　ＳＥＲＶＩＣＥＳ",
-    "amount": 31,
-    "card": "PayPayカード",
-    "pay_month": "2026-04",
-    "category": "通信費・サブスク"
   },
   {
     "date": "2026-3-20",
@@ -3776,62 +3832,6 @@
     "category": "通信費・サブスク"
   },
   {
-    "date": "2026-3-4",
-    "name": "ローソン",
-    "amount": 181,
-    "card": "PayPayカード",
-    "pay_month": "2026-04",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-3-5",
-    "name": "ローソン",
-    "amount": 526,
-    "card": "PayPayカード",
-    "pay_month": "2026-04",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-3-5",
-    "name": "GOOGLE MONEYFORWARDHM",
-    "amount": 590,
-    "card": "PayPayカード",
-    "pay_month": "2026-04",
-    "category": "通信費・サブスク"
-  },
-  {
-    "date": "2026-3-6",
-    "name": "セブンーイレブン",
-    "amount": 190,
-    "card": "PayPayカード",
-    "pay_month": "2026-04",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-3-6",
-    "name": "ローソン",
-    "amount": 142,
-    "card": "PayPayカード",
-    "pay_month": "2026-04",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-3-7",
-    "name": "スギ薬局グループ",
-    "amount": 2126,
-    "card": "PayPayカード",
-    "pay_month": "2026-04",
-    "category": "ドラッグストア"
-  },
-  {
-    "date": "2026-3-9",
-    "name": "阪急阪神百貨店",
-    "amount": 1134,
-    "card": "PayPayカード",
-    "pay_month": "2026-04",
-    "category": "ショッピングモール・百貨店"
-  },
-  {
     "date": "2026-3-31",
     "name": "モバイルＩＣＯＣＡ　定期券（再計算）",
     "amount": 185570,
@@ -3841,6 +3841,102 @@
   },
   {
     "date": "2026-3-31",
+    "name": "モバイルＩＣＯＣＡチャージ",
+    "amount": 5000,
+    "card": "PayPayカード",
+    "pay_month": "2026-05",
+    "category": "交通費"
+  },
+  {
+    "date": "2026-4-2",
+    "name": "ＡＭＡＺＯＮ　ＷＥＢ　ＳＥＲＶＩＣＥＳ",
+    "amount": 62,
+    "card": "PayPayカード",
+    "pay_month": "2026-05",
+    "category": "通信費・サブスク"
+  },
+  {
+    "date": "2026-4-2",
+    "name": "AMAZON WEB SERVICES 利用国USA",
+    "amount": 74,
+    "card": "PayPayカード",
+    "pay_month": "2026-05",
+    "category": "通信費・サブスク"
+  },
+  {
+    "date": "2026-4-3",
+    "name": "ローソン",
+    "amount": 753,
+    "card": "PayPayカード",
+    "pay_month": "2026-05",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-4-3",
+    "name": "ローソン",
+    "amount": 558,
+    "card": "PayPayカード",
+    "pay_month": "2026-05",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-4-5",
+    "name": "GOOGLE MONEYFORWARDHM",
+    "amount": 590,
+    "card": "PayPayカード",
+    "pay_month": "2026-05",
+    "category": "通信費・サブスク"
+  },
+  {
+    "date": "2026-4-6",
+    "name": "ローソン",
+    "amount": 160,
+    "card": "PayPayカード",
+    "pay_month": "2026-05",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-4-7",
+    "name": "ローソン",
+    "amount": 171,
+    "card": "PayPayカード",
+    "pay_month": "2026-05",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-4-8",
+    "name": "阪急阪神百貨店",
+    "amount": 2051,
+    "card": "PayPayカード",
+    "pay_month": "2026-05",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "date": "2026-4-8",
+    "name": "セブンーイレブン",
+    "amount": 976,
+    "card": "PayPayカード",
+    "pay_month": "2026-05",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-4-8",
+    "name": "阪急阪神百貨店",
+    "amount": 486,
+    "card": "PayPayカード",
+    "pay_month": "2026-05",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "date": "2026-4-9",
+    "name": "ファミリーマート",
+    "amount": 257,
+    "card": "PayPayカード",
+    "pay_month": "2026-05",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-4-9",
     "name": "モバイルＩＣＯＣＡチャージ",
     "amount": 5000,
     "card": "PayPayカード",
@@ -3992,22 +4088,6 @@
     "category": "日用品・インテリア"
   },
   {
-    "date": "2026-4-2",
-    "name": "ＡＭＡＺＯＮ　ＷＥＢ　ＳＥＲＶＩＣＥＳ",
-    "amount": 62,
-    "card": "PayPayカード",
-    "pay_month": "2026-05",
-    "category": "通信費・サブスク"
-  },
-  {
-    "date": "2026-4-2",
-    "name": "AMAZON WEB SERVICES 利用国USA",
-    "amount": 74,
-    "card": "PayPayカード",
-    "pay_month": "2026-05",
-    "category": "通信費・サブスク"
-  },
-  {
     "date": "2026-4-22",
     "name": "セブンーイレブン",
     "amount": 482,
@@ -4056,22 +4136,6 @@
     "category": "外食・カフェ"
   },
   {
-    "date": "2026-4-3",
-    "name": "ローソン",
-    "amount": 753,
-    "card": "PayPayカード",
-    "pay_month": "2026-05",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-4-3",
-    "name": "ローソン",
-    "amount": 558,
-    "card": "PayPayカード",
-    "pay_month": "2026-05",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
     "date": "2026-4-30",
     "name": "スパ＆ケア　ヤスムラ",
     "amount": 7040,
@@ -4088,70 +4152,6 @@
     "category": "通信費・サブスク"
   },
   {
-    "date": "2026-4-5",
-    "name": "GOOGLE MONEYFORWARDHM",
-    "amount": 590,
-    "card": "PayPayカード",
-    "pay_month": "2026-05",
-    "category": "通信費・サブスク"
-  },
-  {
-    "date": "2026-4-6",
-    "name": "ローソン",
-    "amount": 160,
-    "card": "PayPayカード",
-    "pay_month": "2026-05",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-4-7",
-    "name": "ローソン",
-    "amount": 171,
-    "card": "PayPayカード",
-    "pay_month": "2026-05",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-4-8",
-    "name": "阪急阪神百貨店",
-    "amount": 2051,
-    "card": "PayPayカード",
-    "pay_month": "2026-05",
-    "category": "ショッピングモール・百貨店"
-  },
-  {
-    "date": "2026-4-8",
-    "name": "セブンーイレブン",
-    "amount": 976,
-    "card": "PayPayカード",
-    "pay_month": "2026-05",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-4-8",
-    "name": "阪急阪神百貨店",
-    "amount": 486,
-    "card": "PayPayカード",
-    "pay_month": "2026-05",
-    "category": "ショッピングモール・百貨店"
-  },
-  {
-    "date": "2026-4-9",
-    "name": "ファミリーマート",
-    "amount": 257,
-    "card": "PayPayカード",
-    "pay_month": "2026-05",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-4-9",
-    "name": "モバイルＩＣＯＣＡチャージ",
-    "amount": 5000,
-    "card": "PayPayカード",
-    "pay_month": "2026-05",
-    "category": "交通費"
-  },
-  {
     "date": "2026-5-1",
     "name": "ファミリーマート",
     "amount": 160,
@@ -4166,6 +4166,86 @@
     "card": "PayPayカード",
     "pay_month": "2026-06",
     "category": "通信費・サブスク"
+  },
+  {
+    "date": "2026-5-2",
+    "name": "ＡＭＡＺＯＮ　ＷＥＢ　ＳＥＲＶＩＣＥＳ",
+    "amount": 70,
+    "card": "PayPayカード",
+    "pay_month": "2026-06",
+    "category": "通信費・サブスク"
+  },
+  {
+    "date": "2026-5-2",
+    "name": "コーヒーハウスフィールド",
+    "amount": 1100,
+    "card": "PayPayカード",
+    "pay_month": "2026-06",
+    "category": "外食・カフェ"
+  },
+  {
+    "date": "2026-5-3",
+    "name": "タイムズパーキング",
+    "amount": 220,
+    "card": "PayPayカード",
+    "pay_month": "2026-06",
+    "category": "交通費"
+  },
+  {
+    "date": "2026-5-4",
+    "name": "ローソン",
+    "amount": 350,
+    "card": "PayPayカード",
+    "pay_month": "2026-06",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-5-5",
+    "name": "ファミリーマート",
+    "amount": 645,
+    "card": "PayPayカード",
+    "pay_month": "2026-06",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-5-5",
+    "name": "ローソン",
+    "amount": 580,
+    "card": "PayPayカード",
+    "pay_month": "2026-06",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-5-5",
+    "name": "GOOGLE MONEYFORWARDHM",
+    "amount": 590,
+    "card": "PayPayカード",
+    "pay_month": "2026-06",
+    "category": "通信費・サブスク"
+  },
+  {
+    "date": "2026-5-7",
+    "name": "セブンーイレブン",
+    "amount": 527,
+    "card": "PayPayカード",
+    "pay_month": "2026-06",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-5-7",
+    "name": "セブンーイレブン",
+    "amount": 138,
+    "card": "PayPayカード",
+    "pay_month": "2026-06",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-5-9",
+    "name": "ダイソー",
+    "amount": 991,
+    "card": "PayPayカード",
+    "pay_month": "2026-06",
+    "category": "日用品・インテリア"
   },
   {
     "date": "2026-5-10",
@@ -4288,22 +4368,6 @@
     "category": "食費（スーパー・コンビニ）"
   },
   {
-    "date": "2026-5-2",
-    "name": "ＡＭＡＺＯＮ　ＷＥＢ　ＳＥＲＶＩＣＥＳ",
-    "amount": 70,
-    "card": "PayPayカード",
-    "pay_month": "2026-06",
-    "category": "通信費・サブスク"
-  },
-  {
-    "date": "2026-5-2",
-    "name": "コーヒーハウスフィールド",
-    "amount": 1100,
-    "card": "PayPayカード",
-    "pay_month": "2026-06",
-    "category": "外食・カフェ"
-  },
-  {
     "date": "2026-5-20",
     "name": "ファミリーマート",
     "amount": 192,
@@ -4416,14 +4480,6 @@
     "category": "食費（スーパー・コンビニ）"
   },
   {
-    "date": "2026-5-3",
-    "name": "タイムズパーキング",
-    "amount": 220,
-    "card": "PayPayカード",
-    "pay_month": "2026-06",
-    "category": "交通費"
-  },
-  {
     "date": "2026-5-30",
     "name": "ローソン",
     "amount": 585,
@@ -4440,68 +4496,204 @@
     "category": "食費（スーパー・コンビニ）"
   },
   {
-    "date": "2026-5-4",
-    "name": "ローソン",
-    "amount": 350,
-    "card": "PayPayカード",
-    "pay_month": "2026-06",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-5-5",
-    "name": "ファミリーマート",
-    "amount": 645,
-    "card": "PayPayカード",
-    "pay_month": "2026-06",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-5-5",
-    "name": "ローソン",
-    "amount": 580,
-    "card": "PayPayカード",
-    "pay_month": "2026-06",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-5-5",
-    "name": "GOOGLE MONEYFORWARDHM",
-    "amount": 590,
-    "card": "PayPayカード",
-    "pay_month": "2026-06",
-    "category": "通信費・サブスク"
-  },
-  {
-    "date": "2026-5-7",
-    "name": "セブンーイレブン",
-    "amount": 527,
-    "card": "PayPayカード",
-    "pay_month": "2026-06",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-5-7",
-    "name": "セブンーイレブン",
-    "amount": 138,
-    "card": "PayPayカード",
-    "pay_month": "2026-06",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-5-9",
-    "name": "ダイソー",
-    "amount": 991,
-    "card": "PayPayカード",
-    "pay_month": "2026-06",
-    "category": "日用品・インテリア"
-  },
-  {
     "date": "2026-6-1",
     "name": "セブンーイレブン",
     "amount": 538,
     "card": "PayPayカード",
     "pay_month": "2026-07",
     "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-6-2",
+    "name": "ローソン",
+    "amount": 737,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-6-2",
+    "name": "ファミリーマート",
+    "amount": 421,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-6-2",
+    "name": "ｐｏｖｏご利用料金",
+    "amount": 330,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "通信費・サブスク"
+  },
+  {
+    "date": "2026-6-3",
+    "name": "阪急阪神百貨店",
+    "amount": 624,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "date": "2026-6-3",
+    "name": "ローソン",
+    "amount": 411,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-6-3",
+    "name": "阪急阪神百貨店",
+    "amount": 406,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "date": "2026-6-3",
+    "name": "ダイソー",
+    "amount": 219,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "日用品・インテリア"
+  },
+  {
+    "date": "2026-6-3",
+    "name": "ｐｏｖｏご利用料金",
+    "amount": 330,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "通信費・サブスク"
+  },
+  {
+    "date": "2026-6-4",
+    "name": "セブンーイレブン",
+    "amount": 558,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-6-5",
+    "name": "阪急阪神百貨店",
+    "amount": 594,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "date": "2026-6-5",
+    "name": "セブンーイレブン",
+    "amount": 581,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-6-5",
+    "name": "阪急阪神百貨店",
+    "amount": 455,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "date": "2026-6-5",
+    "name": "ローソン",
+    "amount": 192,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-6-5",
+    "name": "GOOGLE MONEYFORWARDHM",
+    "amount": 590,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "通信費・サブスク"
+  },
+  {
+    "date": "2026-6-7",
+    "name": "ダイソー",
+    "amount": 663,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "日用品・インテリア"
+  },
+  {
+    "date": "2026-6-7",
+    "name": "ローソン",
+    "amount": 373,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-6-7",
+    "name": "スギ薬局グループ",
+    "amount": 327,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "ドラッグストア"
+  },
+  {
+    "date": "2026-6-7",
+    "name": "ファミリーマート",
+    "amount": 120,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-6-7",
+    "name": "ｐｏｖｏご利用料金",
+    "amount": 330,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "通信費・サブスク"
+  },
+  {
+    "date": "2026-6-8",
+    "name": "阪急阪神百貨店",
+    "amount": 771,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "date": "2026-6-8",
+    "name": "ファミリーマート",
+    "amount": 495,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-6-8",
+    "name": "阪急阪神百貨店",
+    "amount": 352,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "ショッピングモール・百貨店"
+  },
+  {
+    "date": "2026-6-8",
+    "name": "セブンーイレブン",
+    "amount": 184,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "食費（スーパー・コンビニ）"
+  },
+  {
+    "date": "2026-6-9",
+    "name": "モバイルＩＣＯＣＡチャージ",
+    "amount": 3000,
+    "card": "PayPayカード",
+    "pay_month": "2026-07",
+    "category": "交通費"
   },
   {
     "date": "2026-6-10",
@@ -4800,30 +4992,6 @@
     "category": "日用品・インテリア"
   },
   {
-    "date": "2026-6-2",
-    "name": "ローソン",
-    "amount": 737,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-6-2",
-    "name": "ファミリーマート",
-    "amount": 421,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-6-2",
-    "name": "ｐｏｖｏご利用料金",
-    "amount": 330,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "通信費・サブスク"
-  },
-  {
     "date": "2026-6-20",
     "name": "阪急阪神百貨店",
     "amount": 16940,
@@ -4998,174 +5166,6 @@
     "card": "PayPayカード",
     "pay_month": "2026-07",
     "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-6-3",
-    "name": "阪急阪神百貨店",
-    "amount": 624,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "ショッピングモール・百貨店"
-  },
-  {
-    "date": "2026-6-3",
-    "name": "ローソン",
-    "amount": 411,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-6-3",
-    "name": "阪急阪神百貨店",
-    "amount": 406,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "ショッピングモール・百貨店"
-  },
-  {
-    "date": "2026-6-3",
-    "name": "ダイソー",
-    "amount": 219,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "日用品・インテリア"
-  },
-  {
-    "date": "2026-6-3",
-    "name": "ｐｏｖｏご利用料金",
-    "amount": 330,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "通信費・サブスク"
-  },
-  {
-    "date": "2026-6-4",
-    "name": "セブンーイレブン",
-    "amount": 558,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-6-5",
-    "name": "阪急阪神百貨店",
-    "amount": 594,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "ショッピングモール・百貨店"
-  },
-  {
-    "date": "2026-6-5",
-    "name": "セブンーイレブン",
-    "amount": 581,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-6-5",
-    "name": "阪急阪神百貨店",
-    "amount": 455,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "ショッピングモール・百貨店"
-  },
-  {
-    "date": "2026-6-5",
-    "name": "ローソン",
-    "amount": 192,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-6-5",
-    "name": "GOOGLE MONEYFORWARDHM",
-    "amount": 590,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "通信費・サブスク"
-  },
-  {
-    "date": "2026-6-7",
-    "name": "ダイソー",
-    "amount": 663,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "日用品・インテリア"
-  },
-  {
-    "date": "2026-6-7",
-    "name": "ローソン",
-    "amount": 373,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-6-7",
-    "name": "スギ薬局グループ",
-    "amount": 327,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "ドラッグストア"
-  },
-  {
-    "date": "2026-6-7",
-    "name": "ファミリーマート",
-    "amount": 120,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-6-7",
-    "name": "ｐｏｖｏご利用料金",
-    "amount": 330,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "通信費・サブスク"
-  },
-  {
-    "date": "2026-6-8",
-    "name": "阪急阪神百貨店",
-    "amount": 771,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "ショッピングモール・百貨店"
-  },
-  {
-    "date": "2026-6-8",
-    "name": "ファミリーマート",
-    "amount": 495,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-6-8",
-    "name": "阪急阪神百貨店",
-    "amount": 352,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "ショッピングモール・百貨店"
-  },
-  {
-    "date": "2026-6-8",
-    "name": "セブンーイレブン",
-    "amount": 184,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "食費（スーパー・コンビニ）"
-  },
-  {
-    "date": "2026-6-9",
-    "name": "モバイルＩＣＯＣＡチャージ",
-    "amount": 3000,
-    "card": "PayPayカード",
-    "pay_month": "2026-07",
-    "category": "交通費"
   },
   {
     "date": "2026-7-16",

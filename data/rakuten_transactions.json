@@ -5,6 +5,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 3743,
+    "pay_date": "2026-01-27",
     "pay_month_label": "1月",
     "category": "通信費・サブスク"
   },
@@ -14,6 +15,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 1,
+    "pay_date": "2026-01-27",
     "pay_month_label": "1月",
     "category": "通信費・サブスク"
   },
@@ -23,6 +25,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 890,
+    "pay_date": "2026-01-27",
     "pay_month_label": "1月",
     "category": "通信費・サブスク"
   },
@@ -32,6 +35,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 484,
+    "pay_date": "2026-01-27",
     "pay_month_label": "1月",
     "category": "通信費・サブスク"
   },
@@ -41,6 +45,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 29559,
+    "pay_date": "2026-01-27",
     "pay_month_label": "1月",
     "category": "電子マネー・チャージ"
   },
@@ -50,6 +55,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 49994,
+    "pay_date": "2026-01-27",
     "pay_month_label": "1月",
     "category": "投資"
   },
@@ -59,6 +65,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 5960,
+    "pay_date": "2026-02-27",
     "pay_month_label": "2月",
     "category": "交通費"
   },
@@ -68,6 +75,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 3750,
+    "pay_date": "2026-02-27",
     "pay_month_label": "2月",
     "category": "通信費・サブスク"
   },
@@ -77,6 +85,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 2430,
+    "pay_date": "2026-02-27",
     "pay_month_label": "2月",
     "category": "交通費"
   },
@@ -86,6 +95,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 710,
+    "pay_date": "2026-02-27",
     "pay_month_label": "2月",
     "category": "交通費"
   },
@@ -95,6 +105,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 4180,
+    "pay_date": "2026-02-27",
     "pay_month_label": "2月",
     "category": "交通費"
   },
@@ -104,6 +115,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 940,
+    "pay_date": "2026-02-27",
     "pay_month_label": "2月",
     "category": "交通費"
   },
@@ -113,6 +125,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 1860,
+    "pay_date": "2026-02-27",
     "pay_month_label": "2月",
     "category": "交通費"
   },
@@ -122,6 +135,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 710,
+    "pay_date": "2026-02-27",
     "pay_month_label": "2月",
     "category": "交通費"
   },
@@ -131,6 +145,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 760,
+    "pay_date": "2026-02-27",
     "pay_month_label": "2月",
     "category": "交通費"
   },
@@ -140,6 +155,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 890,
+    "pay_date": "2026-02-27",
     "pay_month_label": "2月",
     "category": "通信費・サブスク"
   },
@@ -149,6 +165,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 484,
+    "pay_date": "2026-02-27",
     "pay_month_label": "2月",
     "category": "通信費・サブスク"
   },
@@ -158,6 +175,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 370,
+    "pay_date": "2026-02-27",
     "pay_month_label": "2月",
     "category": "交通費"
   },
@@ -167,6 +185,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 710,
+    "pay_date": "2026-03-27",
     "pay_month_label": "3月",
     "category": "交通費"
   },
@@ -176,6 +195,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 300,
+    "pay_date": "2026-03-27",
     "pay_month_label": "3月",
     "category": "交通費"
   },
@@ -185,6 +205,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 3742,
+    "pay_date": "2026-03-27",
     "pay_month_label": "3月",
     "category": "通信費・サブスク"
   },
@@ -194,6 +215,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 890,
+    "pay_date": "2026-03-27",
     "pay_month_label": "3月",
     "category": "通信費・サブスク"
   },
@@ -203,6 +225,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 484,
+    "pay_date": "2026-03-27",
     "pay_month_label": "3月",
     "category": "通信費・サブスク"
   },
@@ -212,6 +235,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 3745,
+    "pay_date": "2026-04-27",
     "pay_month_label": "4月",
     "category": "通信費・サブスク"
   },
@@ -221,6 +245,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 484,
+    "pay_date": "2026-04-27",
     "pay_month_label": "4月",
     "category": "通信費・サブスク"
   },
@@ -230,6 +255,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 890,
+    "pay_date": "2026-04-27",
     "pay_month_label": "4月",
     "category": "通信費・サブスク"
   },
@@ -239,6 +265,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 3744,
+    "pay_date": "2026-05-27",
     "pay_month_label": "5月",
     "category": "通信費・サブスク"
   },
@@ -248,6 +275,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 160,
+    "pay_date": "2026-05-27",
     "pay_month_label": "5月",
     "category": "交通費"
   },
@@ -257,6 +285,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 160,
+    "pay_date": "2026-05-27",
     "pay_month_label": "5月",
     "category": "交通費"
   },
@@ -266,6 +295,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 870,
+    "pay_date": "2026-05-27",
     "pay_month_label": "5月",
     "category": "交通費"
   },
@@ -275,6 +305,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 1020,
+    "pay_date": "2026-05-27",
     "pay_month_label": "5月",
     "category": "交通費"
   },
@@ -284,6 +315,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 1470,
+    "pay_date": "2026-05-27",
     "pay_month_label": "5月",
     "category": "交通費"
   },
@@ -293,6 +325,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 1060,
+    "pay_date": "2026-05-27",
     "pay_month_label": "5月",
     "category": "交通費"
   },
@@ -302,6 +335,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 890,
+    "pay_date": "2026-05-27",
     "pay_month_label": "5月",
     "category": "通信費・サブスク"
   },
@@ -311,6 +345,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 517,
+    "pay_date": "2026-05-27",
     "pay_month_label": "5月",
     "category": "スーパー・食料品"
   },
@@ -320,6 +355,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 5705,
+    "pay_date": "2026-05-27",
     "pay_month_label": "5月",
     "category": "交通費"
   },
@@ -329,6 +365,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 160,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "交通費"
   },
@@ -338,6 +375,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 870,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "交通費"
   },
@@ -347,6 +385,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 2570,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "交通費"
   },
@@ -356,6 +395,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 1990,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "交通費"
   },
@@ -365,6 +405,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 2280,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "交通費"
   },
@@ -374,6 +415,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 320,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "交通費"
   },
@@ -383,6 +425,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 1100,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "交通費"
   },
@@ -392,6 +435,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 810,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "交通費"
   },
@@ -401,6 +445,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 810,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "交通費"
   },
@@ -410,6 +455,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 810,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "交通費"
   },
@@ -419,6 +465,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 1390,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "交通費"
   },
@@ -428,6 +475,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 1390,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "交通費"
   },
@@ -437,6 +485,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 3739,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "通信費・サブスク"
   },
@@ -446,6 +495,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 452,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "スーパー・食料品"
   },
@@ -455,6 +505,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 12378,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "ネットショッピング"
   },
@@ -464,6 +515,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 530,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "交通費"
   },
@@ -473,6 +525,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 2170,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "交通費"
   },
@@ -482,6 +535,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 1860,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "交通費"
   },
@@ -491,6 +545,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 890,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "通信費・サブスク"
   },
@@ -500,6 +555,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 1530,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "交通費"
   },
@@ -509,6 +565,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 1530,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "交通費"
   },
@@ -518,6 +575,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 1860,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "交通費"
   },
@@ -527,6 +585,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 990,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "通信費・サブスク"
   },
@@ -536,6 +595,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 1000,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "電子マネー・チャージ"
   },
@@ -545,6 +605,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 31718,
+    "pay_date": "2026-06-29",
     "pay_month_label": "6月",
     "category": "通信費・サブスク"
   },
@@ -554,6 +615,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 120,
+    "pay_date": "2026-07-27",
     "pay_month_label": "7月",
     "category": "交通費"
   },
@@ -563,6 +625,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 2430,
+    "pay_date": "2026-07-27",
     "pay_month_label": "7月",
     "category": "交通費"
   },
@@ -572,6 +635,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 2060,
+    "pay_date": "2026-07-27",
     "pay_month_label": "7月",
     "category": "交通費"
   },
@@ -581,6 +645,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 620,
+    "pay_date": "2026-07-27",
     "pay_month_label": "7月",
     "category": "交通費"
   },
@@ -590,6 +655,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 1280,
+    "pay_date": "2026-07-27",
     "pay_month_label": "7月",
     "category": "交通費"
   },
@@ -599,6 +665,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 1860,
+    "pay_date": "2026-07-27",
     "pay_month_label": "7月",
     "category": "交通費"
   },
@@ -608,6 +675,7 @@
     "user": "ETC*",
     "method": "1回払い",
     "amount": 370,
+    "pay_date": "2026-07-27",
     "pay_month_label": "7月",
     "category": "交通費"
   },
@@ -617,6 +685,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 241,
+    "pay_date": "2026-07-27",
     "pay_month_label": "7月",
     "category": "通信費・サブスク"
   },
@@ -626,6 +695,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 890,
+    "pay_date": "2026-07-27",
     "pay_month_label": "7月",
     "category": "通信費・サブスク"
   },
@@ -635,6 +705,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 990,
+    "pay_date": "2026-07-27",
     "pay_month_label": "7月",
     "category": "通信費・サブスク"
   },
@@ -644,6 +715,7 @@
     "user": "本人*",
     "method": "1回払い",
     "amount": 2293,
+    "pay_date": "2026-07-27",
     "pay_month_label": "7月",
     "category": "電子マネー・チャージ"
   }

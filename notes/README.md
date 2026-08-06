@@ -8,6 +8,7 @@
 
 ## ファイル一覧
 
+- [`pipeline-workflow.md`](./pipeline-workflow.md) — **9月以降も明細を取り込み続けるための手順**。`data/raw/`に置くだけで動く形に2026-08-06にスクリプトを書き換え済み
 - [`household-context.md`](./household-context.md) — 家族構成、カードの利用者、住居・収入按分の前提
 - [`account-mapping.md`](./account-mapping.md) — どのカードがどの銀行口座から引き落とされているか
 - [`open-issues.md`](./open-issues.md) — 未解決・要確認事項の一覧

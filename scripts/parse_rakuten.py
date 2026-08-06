@@ -1,39 +1,54 @@
 # -*- coding: utf-8 -*-
-import re, json, glob, os
+# Parses 楽天カード statement PDFs (data/raw/rakuten/*.pdf) into
+# data/rakuten_transactions.json. To add a new month: save the new statement
+# PDF into data/raw/rakuten/ (any filename) and re-run this script — pay_month
+# is read from each PDF's own "お支払日" line, not from the filename.
+import re, json, glob, os, unicodedata
+
 import pdfplumber
 
-FILES = {
-    'd55d3237-statement_202601.pdf': '1月',
-    'fc345a1d-statement_202602.pdf': '2月',
-    '83a6f8b8-statement_202603.pdf': '3月',
-    '833cca2e-statement_202604.pdf': '4月',
-    '34ab9cea-statement_202605.pdf': '5月',
-    '5011ddf6-statement_202606.pdf': '6月',
-    '8a76ea80-statement_202607.pdf': '7月',
-}
-DIR = '/root/.claude/uploads/02b55f01-b334-5b26-9fc8-6e95ce3af906'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FILES = sorted(glob.glob(os.path.join(ROOT, 'data', 'raw', 'rakuten', '*.pdf')))
 
 line_re = re.compile(r'^(\d{4}/\d{2}/\d{2})\s+(.+?)\s+(本人\*|ETC\*|家族\*)\s+(\S+払い)\s+(.+)$')
 
-results = []
-for fname, label in FILES.items():
-    path = os.path.join(DIR, fname)
+def norm(s):
+    return unicodedata.normalize('NFKC', s)
+
+RULES = [
+    ('投資', ['楽天証券投信積立']),
+    ('電子マネー・チャージ', ['楽天キャッシュ チャージ']),
+    ('通信費・サブスク', ['ﾈｯﾄﾌﾘｯｸｽ', 'ＮＥＴＦＬＩＸ', 'お名前．ｃｏｍ', 'ｵﾅﾏｴﾄﾞﾂﾄｺﾑ', 'ＧＯＯＧＬＥ＊ＣＬＯＵＤ', 'ＵＱ ｍｏｂｉｌｅ',
+                      '楽天モバイル', 'ＣＵＲＳＯＲ']),
+    ('交通費', ['ＥＴＣカード売上', 'ｺｽﾓｾｷﾕﾏｰｹﾃｲﾝｸﾞ']),
+    ('ネットショッピング', ['ＡＭＡＺＯＮ．ＣＯ．ＪＰ', 'AMAZON.CO.JP']),
+    ('スーパー・食料品', ['ｶﾝｻｲｽ-ﾊﾟ-', 'ﾗｲﾌｼﾕｸｶﾞﾜﾃﾝ']),
+]
+
+def categorize(name):
+    hay = norm(name)
+    for cat, kws in RULES:
+        for kw in kws:
+            if norm(kw) in hay:
+                return cat
+    return 'その他'
+
+statements = []
+for path in FILES:
+    fname = os.path.basename(path)
     with pdfplumber.open(path) as pdf:
         text = ''
         for page in pdf.pages:
             text += (page.extract_text() or '') + '\n'
     lines = [l.strip() for l in text.split('\n') if l.strip()]
 
-    req_m = re.search(r'ご請求金額[^0-9]*\n?([\d,]+)円', text) or re.search(r'(\d{4})年(\d{2})月ご請求金額.*?\n([\d,]+)円', text, re.S)
-    header_m = re.search(r'(\d{4})年(\d{2})月ご請求金額', text)
-    amt_line = None
-    # header amount is the number immediately followed by 円 right after the "ご請求金額" line
     idx = next(i for i, l in enumerate(lines) if 'ご請求金額' in l and '年' in l)
     amt_line_text = lines[idx + 1]
     header_amt_m = re.match(r'([\d,]+)円', amt_line_text)
     header_total = int(header_amt_m.group(1).replace(',', '')) if header_amt_m else None
 
     pay_date_m = re.search(r'お支払日.*?\n(\d{4}/\d{2}/\d{2})', text)
+    pay_date = pay_date_m.group(1).replace('/', '-') if pay_date_m else None
 
     txns = []
     unmatched = []
@@ -58,21 +73,43 @@ for fname, label in FILES.items():
             unmatched.append(l)
 
     parsed_sum = sum(t['amount'] for t in txns)
-    results.append({
-        'file': fname,
-        'label': label,
-        'header_total': header_total,
-        'parsed_sum': parsed_sum,
-        'match': parsed_sum == header_total,
-        'n_txns': len(txns),
-        'unmatched': unmatched,
-        'txns': txns,
+    statements.append({
+        'file': fname, 'pay_date': pay_date, 'header_total': header_total,
+        'parsed_sum': parsed_sum, 'match': parsed_sum == header_total,
+        'n_txns': len(txns), 'unmatched': unmatched, 'txns': txns,
     })
 
-for r in results:
-    print(r['file'], r['label'], 'header_total=', r['header_total'], 'parsed_sum=', r['parsed_sum'], 'match=', r['match'], 'n=', r['n_txns'])
-    if r['unmatched']:
-        print('  unmatched (continuation lines, expected):', r['unmatched'])
+rows = []
+for s in statements:
+    pay_month_label = f'{int(s["pay_date"].split("-")[1])}月' if s['pay_date'] else None
+    for t in s['txns']:
+        rows.append({
+            'use_date': t['date'],
+            'name': t['name'],
+            'user': t['user'],
+            'method': t['method'],
+            'amount': t['amount'],
+            'pay_date': s['pay_date'],
+            'pay_month_label': pay_month_label,
+            'category': categorize(t['name']),
+        })
 
-with open('/tmp/claude-0/-home-user-budget-book/02b55f01-b334-5b26-9fc8-6e95ce3af906/scratchpad/rakuten_parsed.json', 'w', encoding='utf-8') as f:
-    json.dump(results, f, ensure_ascii=False, indent=2)
+rows.sort(key=lambda r: (r['pay_date'], r['use_date']))
+
+for s in statements:
+    print(s['file'], s['pay_date'], 'header_total=', s['header_total'], 'parsed_sum=', s['parsed_sum'],
+          'match=', s['match'], 'n=', s['n_txns'])
+    if s['unmatched']:
+        print('  unmatched (continuation lines, expected):', s['unmatched'])
+
+from collections import Counter
+cat_counts = Counter(r['category'] for r in rows)
+print('\n=== category counts ===')
+for c, n in cat_counts.most_common():
+    print(c, n)
+others = [r for r in rows if r['category'] == 'その他']
+print('その他 rows:', others)
+print('\nTOTAL rows:', len(rows), 'TOTAL amount:', sum(r['amount'] for r in rows))
+
+with open(os.path.join(ROOT, 'data', 'rakuten_transactions.json'), 'w', encoding='utf-8') as f:
+    json.dump(rows, f, ensure_ascii=False, indent=2)

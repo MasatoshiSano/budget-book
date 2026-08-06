@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
-# Parses ゆうちょ銀行 (Japan Post Bank) statement CSVs (data/yucho_raw/*.csv, cp932 encoded)
-# into data/yucho_transactions.json. This is the salary account, so most rows are
-# excluded on purpose:
+# Parses ゆうちょ銀行 (Japan Post Bank) statement CSVs (data/raw/yucho/*.csv, cp932
+# encoded) into data/yucho_transactions.json. To add a new month: save the new
+# statement CSV into data/raw/yucho/ (any filename) and re-run this script.
+# Rows are de-duplicated by 取引ID (transaction id) since ゆうちょ's exported CSVs
+# cover a rolling date window and can overlap between consecutive downloads.
+# This is the salary account, so most rows are excluded on purpose:
 #   - 給与/賞与: salary/bonus, income not spending
 #   - 自払 ｽﾐｼﾝＳＢＩネット: internal transfer funding the SBI household-bills account
 #     (already visible there as "定額自動入金"; counting it here too would double it)
@@ -15,20 +18,17 @@ import json
 import os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-RAW_DIR = '/root/.claude/uploads/02b55f01-b334-5b26-9fc8-6e95ce3af906'
-FILES = [
-    'df4a94f3-202607242732_01.csv',  # 2026/06/01-06/30
-    'aabd7d68-202607244626_01.csv',  # 2026/07/01-07/24
-]
+RAW_DIR = os.path.join(ROOT, 'data', 'raw', 'yucho')
+FILES = sorted(glob.glob(os.path.join(RAW_DIR, '*.csv')))
 
 # 詳細２ substring -> (category, display name)
 KEEP = [
     ('全労済', '保険', '全労済（ゆうちょ引落）'),
 ]
 
+seen_txn_ids = set()
 rows = []
-for fname in FILES:
-    path = os.path.join(RAW_DIR, fname)
+for path in FILES:
     with open(path, encoding='cp932', newline='') as f:
         lines = f.read().split('\n')
     header_idx = next(i for i, l in enumerate(lines) if l.startswith('取引日,'))
@@ -40,6 +40,8 @@ for fname in FILES:
         date, txn_id, in_amt, out_amt, detail1, detail2 = row[0], row[1], row[2], row[3], row[4], row[5]
         if not out_amt:
             continue  # only interested in outgoing (spending) rows
+        if txn_id in seen_txn_ids:
+            continue  # exported CSVs cover overlapping date windows; dedupe by 取引ID
         for needle, category, display_name in KEEP:
             if needle in detail2:
                 rows.append({
@@ -49,6 +51,7 @@ for fname in FILES:
                     'category': category,
                     'pay_month': f'{date[0:4]}-{date[4:6]}',
                 })
+                seen_txn_ids.add(txn_id)
                 break
 
 rows.sort(key=lambda r: r['date'])
