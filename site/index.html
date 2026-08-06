@@ -216,6 +216,7 @@
     justify-content: space-between;
     gap: 16px;
     flex-wrap: wrap;
+    transition: padding .15s ease;
   }
   .topbar-left {
     display: flex;
@@ -224,6 +225,13 @@
     flex-wrap: wrap;
     row-gap: 10px;
   }
+  /* Once scrolled away from the top, shrink the sticky bar down to just the
+     page tabs + pay-month filter so it doesn't cover most of the screen —
+     the brand title and the other filter rows (支払い元・含める項目) only
+     show at rest, at the very top of the page. */
+  .topbar.is-compact .topbar-inner { padding-top: 10px; padding-bottom: 10px; }
+  .topbar.is-compact .brand { display: none; }
+  .topbar.is-compact .topbar-controls > .filter-group:not(#monthFilterGroup) { display: none; }
   .brand {
     display: flex;
     align-items: baseline;
@@ -1538,8 +1546,19 @@ function buildPeriodControl() {
   document.body.appendChild(popover);
   const positionPopover = () => {
     const r = trigger.getBoundingClientRect();
+    const margin = 12;
     popover.style.top = (r.bottom + 8) + 'px';
-    popover.style.left = r.left + 'px';
+    // The trigger sits near the topbar's right edge (especially once the
+    // compact scrolled-down topbar hides everything else), so a naive
+    // left-aligned popover can run off the right edge of the viewport.
+    // Measure the popover's actual rendered width (must be un-hidden first)
+    // and clamp so it never overflows.
+    const popWidth = popover.offsetWidth;
+    let left = r.left;
+    if (left + popWidth > window.innerWidth - margin) {
+      left = Math.max(margin, window.innerWidth - margin - popWidth);
+    }
+    popover.style.left = left + 'px';
   };
   const presetsWrap = document.getElementById('periodPresets');
   const yearsWrap = document.getElementById('periodYears');
@@ -1597,8 +1616,14 @@ function buildPeriodControl() {
   trigger.addEventListener('click', (e) => {
     e.stopPropagation();
     const willOpen = popover.hidden;
-    if (willOpen) positionPopover();
-    popover.hidden = !willOpen;
+    if (willOpen) {
+      // Un-hide first so positionPopover() can measure the popover's real
+      // width to clamp it — offsetWidth reads 0 while display:none.
+      popover.hidden = false;
+      positionPopover();
+    } else {
+      popover.hidden = true;
+    }
     trigger.setAttribute('aria-expanded', String(willOpen));
   });
   popover.addEventListener('click', (e) => e.stopPropagation());
@@ -2586,12 +2611,29 @@ function bindTooltipDismiss() {
   }, { passive: true });
 }
 
+function bindCompactTopbar() {
+  const topbar = document.querySelector('.topbar');
+  let ticking = false;
+  const update = () => {
+    topbar.classList.toggle('is-compact', window.scrollY > 4);
+    ticking = false;
+  };
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+  update();
+}
+
 buildPeriodControl();
 buildChips();
 buildCategoryFilterOptions();
 bindTableControls();
 bindNav();
 bindTooltipDismiss();
+bindCompactTopbar();
 render();
 renderStrategy();
 showPage(location.hash ? location.hash.slice(1) : 'overview', { skipHash: true, skipScroll: true });
