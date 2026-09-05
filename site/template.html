@@ -1752,7 +1752,10 @@ function renderHero() {
     const idx = MONTH_KEYS.indexOf(monthsSelected[0]);
     if (idx > 0) {
       const prevMonth = MONTH_KEYS[idx - 1];
-      const prevTotal = TRANSACTIONS.filter(t => t.pay_month === prevMonth && state.cards.has(t.card))
+      // Must use the same content filter as `total` (from filtered()).
+      // Otherwise 前月比 compares living-cost current vs all-spend previous and
+      // can invert the sign (e.g. 4月 looks -16% vs 3月 when it is actually +105%).
+      const prevTotal = TRANSACTIONS.filter(t => t.pay_month === prevMonth && state.cards.has(t.card) && passesContentFilter(t))
         .reduce((s, t) => s + t.amount, 0);
       if (prevTotal > 0) {
         const diff = total - prevTotal;
@@ -1827,7 +1830,10 @@ function renderAccountSummary() {
 
 // ---------------- trend chart (stacked bars) ----------------
 function renderTrend() {
-  const rows = TRANSACTIONS.filter(t => state.cards.has(t.card));
+  // Same content filter as the hero / donut: 含める項目 (travel / housing /
+  // transport / PayPay conbini) must apply on 概要 or the stacked bars
+  // disagree with the hero total by a large rent/travel amount.
+  const rows = TRANSACTIONS.filter(t => state.cards.has(t.card) && passesContentFilter(t));
   const byMonth = {};
   MONTH_KEYS.forEach(m => byMonth[m] = {});
   rows.forEach(t => {
