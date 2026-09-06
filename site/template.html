@@ -1094,7 +1094,7 @@
       <div class="panel-head">
         <div>
           <div class="panel-title">取引明細</div>
-          <div class="panel-note">全カード横断で検索・絞り込みできます。このページだけ上部の月フィルターは「利用日」で絞り込みます（他のページは「お支払月」で絞り込むため、月ごとの金額が一致しないことがあります。参考として「お支払月」列も表示しています）。「全期間」を選んだ場合はお支払月の集計範囲より前の利用分（2025年分の一部など）も含めて全件表示します。</div>
+          <div class="panel-note">全カード横断で検索・絞り込みできます。上部の「お支払月」フィルターは実際の引き落とし月で絞り込むため、利用日が前月にまたがる行が含まれることがあります（「お支払月」列で確認できます）。</div>
         </div>
       </div>
       <div class="table-controls">
@@ -1538,23 +1538,6 @@ let budgets = loadBudgets();
 // ---------------- filtering ----------------
 function filtered() {
   return TRANSACTIONS.filter(t => state.months.has(t.pay_month) && state.cards.has(t.card) && passesContentFilter(t));
-}
-
-// t.date isn't consistently zero-padded ("2026-6-9" vs "2026-06-08"), so normalize
-// before deriving a "YYYY-MM" key from it.
-function useMonthOf(t) {
-  const [y, m] = t.date.split('-');
-  return `${y}-${String(Number(m)).padStart(2, '0')}`;
-}
-
-// 明細 (transactions table) filters by 利用日 (use date) instead of お支払月 (pay
-// month), unlike every other panel on the site. A handful of rows have a use-date
-// month (2025-11, 2025-12) that predates the card statements' pay-month range
-// entirely, so when "全期間" is selected (all of MONTH_KEYS) the month filter is
-// skipped altogether rather than silently hiding those rows.
-function filteredByUseDate() {
-  const allMonths = state.months.size === MONTH_KEYS.length;
-  return TRANSACTIONS.filter(t => (allMonths || state.months.has(useMonthOf(t))) && state.cards.has(t.card) && passesContentFilter(t));
 }
 
 // ---------------- period control (popover; scales past a handful of months) ----------------
@@ -2245,7 +2228,7 @@ function buildCategoryFilterOptions() {
 }
 
 function renderTable() {
-  let rows = filteredByUseDate();
+  let rows = filtered();
   if (state.category !== '__ALL__') rows = rows.filter(t => t.category === state.category);
   if (state.search) {
     const q = state.search.toLowerCase();
