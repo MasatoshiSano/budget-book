@@ -2021,13 +2021,17 @@ function renderDonut() {
 
   const slices = TOP_CATEGORIES.map(cat => ({ cat, amt: totalsByCat[cat] || 0, colorVar: CAT_COLOR_VAR[cat] }));
   const otherAmt = Object.keys(totalsByCat).filter(c => !TOP_CATEGORIES.includes(c)).reduce((s, c) => s + totalsByCat[c], 0);
-  if (otherAmt > 0) slices.push({ cat: 'その他', amt: otherAmt, colorVar: OTHER_COLOR_VAR });
+  // Include a negative 「その他」 so refunds there still appear in the legend.
+  if (otherAmt !== 0) slices.push({ cat: 'その他', amt: otherAmt, colorVar: OTHER_COLOR_VAR });
 
-  // Hidden categories drop out of both the chart AND the percentage base, so
-  // whatever stays checked always adds up to 100% (not 100% of everything).
+  // Hidden categories and non-positive slices (refunds) drop out of both the
+  // chart AND the percentage base, so whatever is drawn always adds up to 100%.
+  // Using a net total that includes negatives as the denominator makes positive
+  // slices exceed 360° — Aug 2026 with travel included is net ¥5,796 against
+  // ¥61,452 of positive categories (AEON VELTRA refunds).
   const shown = slices.filter(s => !state.hiddenCats.has(s.cat));
-  const total = shown.reduce((s, x) => s + x.amt, 0);
   const nonZero = shown.filter(s => s.amt > 0).sort((a,b) => b.amt - a.amt);
+  const total = nonZero.reduce((s, x) => s + x.amt, 0);
 
   const size = 220, cx = size/2, cy = size/2, rOuter = 96, rInner = 62;
   let angle = -90;
@@ -2061,7 +2065,7 @@ function renderDonut() {
   const legend = document.getElementById('donutLegend');
   legend.innerHTML = allSorted.map(s => {
     const hidden = state.hiddenCats.has(s.cat);
-    const pct = (!hidden && total > 0) ? (s.amt / total * 100).toFixed(1) + '%' : '—';
+    const pct = (!hidden && total > 0 && s.amt > 0) ? (s.amt / total * 100).toFixed(1) + '%' : '—';
     return `
     <li class="${hidden ? 'is-hidden' : ''}" data-cat="${s.cat}" role="button" tabindex="0" aria-pressed="${!hidden}">
       <span class="sw" style="background:${cssVar(s.colorVar)}"></span>
