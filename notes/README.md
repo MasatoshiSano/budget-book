@@ -17,6 +17,7 @@
 - [`open-issues.md`](./open-issues.md) — 未解決・要確認事項の一覧
 - [`cards/aeon-card.md`](./cards/aeon-card.md) — イオンカード固有のメモ
 - [`docomo/dcard-and-docomo-bank.md`](./docomo/dcard-and-docomo-bank.md) — dカード／ドコモの銀行／ahamo／リクルートカード比較の状況と結論
+- [`docomo/ymobile-switch.md`](./docomo/ymobile-switch.md) — ahamoからY!mobileへの乗り換え検討（機種・特典・24ヶ月コスト試算）
 - [`assets.md`](./assets.md) — 資産状況（証券口座の評価額等）のメモ。家計簿本体（フロー）とは別管理でダッシュボード未反映
 - [`../data/raw/README.md`](../data/raw/README.md) — アップロードされた明細書の原本アーカイブ（2026-08-03にこのリポジトリへ保存。それまではセッション用の一時領域にしかなく、消える可能性があった）
 
